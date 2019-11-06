@@ -24,7 +24,7 @@ namespace TracNghiem_CSDLPT
             Program.conn.Open();
             DataTable dt = new DataTable();
             dt = Program.ExecSqlDataTable("SELECT * FROM V_DS_PHANMANH");
-            Program.bds_dspm.DataSource = dt;
+            Program.bds_ListBrand.DataSource = dt;
             cmb_CoSo.DataSource = dt;
             cmb_CoSo.DisplayMember = "TENCOSO";
             cmb_CoSo.ValueMember = "TENSERVER";

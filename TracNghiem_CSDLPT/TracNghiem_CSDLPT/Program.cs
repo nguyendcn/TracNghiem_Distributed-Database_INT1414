@@ -31,7 +31,9 @@ namespace TracNghiem_CSDLPT
         public static String mHoten = "";
         public static int mChinhanh = 0;
 
-        public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
+        public static String studentCode = String.Empty;
+
+        public static BindingSource bds_ListBrand = new BindingSource();  // giữ bdsPM khi đăng nhập
         //public static frmMain frmChinh;
 
         public static int KetNoi()
@@ -46,6 +48,7 @@ namespace TracNghiem_CSDLPT
                 Program.conn.ConnectionString = Program.connstr;
                 Program.conn.Open();
                 return 1;
+
             }
 
             catch (Exception e)

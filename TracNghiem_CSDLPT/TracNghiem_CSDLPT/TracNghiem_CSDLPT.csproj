@@ -72,6 +72,18 @@
     <Compile Include="Frm_Login.Designer.cs">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_NhapKhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_NhapKhoa.Designer.cs">
+      <DependentUpon>Frm_NhapKhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_NhapLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_NhapLop.Designer.cs">
+      <DependentUpon>Frm_NhapLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_NhapMH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +111,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_NhapKhoa.resx">
+      <DependentUpon>Frm_NhapKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_NhapLop.resx">
+      <DependentUpon>Frm_NhapLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_NhapMH.resx">
       <DependentUpon>frm_NhapMH.cs</DependentUpon>

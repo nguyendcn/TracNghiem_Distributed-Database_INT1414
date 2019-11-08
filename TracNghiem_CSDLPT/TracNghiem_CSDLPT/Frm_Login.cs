@@ -19,6 +19,8 @@ namespace TracNghiem_CSDLPT
 
             InitDataForCmbBrand();
 
+            txt_UserName.Text = "TUYET";
+            txt_Password.Text = "nguyenne";
         }
 
         #region Function
@@ -122,6 +124,7 @@ namespace TracNghiem_CSDLPT
             }
             Program.mHoten = Program.myReader.GetString(1);
             Program.mGroup = Program.myReader.GetString(2);
+            Program.mChinhanh = cmb_Brand_GV.SelectedIndex + 1;
             Program.myReader.Close();
             Program.conn.Close();
             MessageBox.Show("Nhan vien - Nhom : " + Program.mHoten + " - " + Program.mGroup, "", MessageBoxButtons.OK);
@@ -171,10 +174,14 @@ namespace TracNghiem_CSDLPT
             }
             Program.mHoten = Program.myReader.GetString(1);
             Program.mGroup = Program.myReader.GetString(2);
+            Program.mChinhanh = cmb_Brand_GV.SelectedIndex;
             Program.myReader.Close();
             Program.conn.Close();
             MessageBox.Show("Nhan vien - Nhom : " + Program.mHoten + " - " + Program.mGroup, "", MessageBoxButtons.OK);
 
+
+            //Application.Run(new Frm_TN_CSDLPT());
+            //this.Dispose();
             Frm_TN_CSDLPT frm_Tn_csdlpt = new Frm_TN_CSDLPT();
             frm_Tn_csdlpt.Show();
             //this.Visible = false;

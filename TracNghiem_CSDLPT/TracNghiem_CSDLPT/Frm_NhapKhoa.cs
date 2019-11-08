@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.Diagnostics;
 
 namespace TracNghiem_CSDLPT
 {
@@ -16,6 +17,18 @@ namespace TracNghiem_CSDLPT
         public Frm_NhapKhoa()
         {
             InitializeComponent();
+
+            bs_Khoa.CurrentChanged += Bs_Khoa_CurrentChanged;
+        }
+
+        private void Bs_Khoa_CurrentChanged(object sender, EventArgs e)
+        {
+            if (bs_Khoa.Position != -1)
+            {
+                txt_CodeDepartment.Text = ((DataRowView)bs_Khoa[bs_Khoa.Position])["MAKH"].ToString().Trim();
+                txt_NameDepartment.Text = ((DataRowView)bs_Khoa[bs_Khoa.Position])["TENKH"].ToString().Trim();
+                txt_CodeBrand.Text = ((DataRowView)bs_Khoa[bs_Khoa.Position])["MACS"].ToString().Trim();
+            }
         }
 
         private void kHOABindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -44,72 +57,58 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Add_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (grb_Option.Text.Equals("Thêm"))
+            bool isEmpty = ValidateEmpty();
+
+            if (!isEmpty)
+                return;
+
+            // TODO: Check code course
+            DataView dt = (DataView)bs_Khoa.List;
+            dt.Sort = "MAKH";
+            if (dt.FindRows(txt_CodeDepartment.Text).Length != 0)
             {
-                if (txt_CodeDepartment.Text.Trim() == String.Empty || 
-                    txt_NameDepartment.Text.Trim() == String.Empty)
-                {
-                    MessageBox.Show("Mã và tên khoa không được để trống!");
-                    return;
-                }
-
-                // TODO: Check code course
-                DataView dt = (DataView)bs_Khoa.List;
-                dt.Sort = "MAKH";
-                if (dt.FindRows(txt_CodeDepartment.Text).Length != 0)
-                {
-                    MessageBox.Show("Mã khoa đã tồn tại.Vui lòng nhập lại!");
-                }
-                else
-                {
-                    DataRowView drv = (DataRowView)bs_Khoa.AddNew();
-                    drv.Row.ItemArray = new object[] { txt_CodeDepartment.Text, txt_NameDepartment.Text, txt_CodeBrand.Text };
-                }
-
+                MessageBox.Show("Mã khoa đã tồn tại.Vui lòng nhập lại!");
             }
             else
             {
-                this.txt_CodeDepartment.ReadOnly = false;
-                this.grb_Option.Text = "Thêm";
-                this.txt_CodeBrand.Text = "CS" + (Program.mChinhanh + 1);
-                this.ActiveControl = this.txt_CodeDepartment;
+                object[] data = new object[] { txt_CodeDepartment.Text, txt_NameDepartment.Text, txt_CodeBrand.Text };
+                DataRowView drv = (DataRowView)bs_Khoa.AddNew();
+                drv.Row.ItemArray = data;
             }
+
         }
 
         private void btn_Edit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            bool isEmpty = ValidateEmpty();
+
+            if (!isEmpty)
+                return;
+
             DataRowView currentRow = (DataRowView)bs_Khoa.Current;
-            if (grb_Option.Text.Equals("Sửa"))
+
+            if (currentRow != null)
             {
-                if (currentRow != null)
+                DataView dt = (DataView)bs_Khoa.List;
+                dt.Sort = "MAKH";
+                if (dt.FindRows(txt_CodeDepartment.Text.Trim()).Length != 0 &&
+                    !currentRow.Row.ItemArray[0].ToString().Trim().Equals(txt_CodeDepartment.Text.Trim()))
                 {
-                    //Save data edited or edit new data
-                    if (txt_CodeDepartment.Text.Equals(currentRow.Row.ItemArray[0].ToString()))
-                    {
-                        currentRow.Row.ItemArray = new object[] { txt_CodeDepartment.Text,
-                                                                  txt_NameDepartment.Text,
-                                                                  txt_CodeBrand.Text};
-                    }
-                    else
-                    {
-                        txt_CodeDepartment.ReadOnly = true;
-                        txt_CodeDepartment.Text = currentRow.Row.ItemArray[0].ToString();
-                        txt_NameDepartment.Text = currentRow.Row.ItemArray[1].ToString();
-                        txt_CodeBrand.Text = currentRow.Row.ItemArray[2].ToString();
-                    }
+                    MessageBox.Show("Mã khoa đã tồn tại.Vui lòng nhập lại!");
+                    this.ActiveControl = this.txt_CodeDepartment;
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng chọn dữ liệu muốn sửa!");
+                    object[] data = new object[] { txt_CodeDepartment.Text, txt_NameDepartment.Text, txt_CodeBrand.Text };
+                    currentRow.Row.ItemArray = data;
+
+                    MessageBox.Show("Sửa dữ liệu thành công.");
                 }
             }
             else
             {
-                grb_Option.Text = "Sửa";
-                txt_CodeDepartment.ReadOnly = true;
-                txt_CodeDepartment.Text = currentRow.Row.ItemArray[0].ToString();
-                txt_NameDepartment.Text = currentRow.Row.ItemArray[1].ToString();
-                txt_CodeBrand.Text = currentRow.Row.ItemArray[2].ToString();
+                MessageBox.Show("Vui lòng chọn dữ liệu muốn sửa!");
             }
         }
 
@@ -199,6 +198,25 @@ namespace TracNghiem_CSDLPT
             }
 
             this.Dispose();
+        }
+
+        public bool ValidateEmpty()
+        {
+            if (txt_CodeDepartment.Text.Trim().Equals(String.Empty))
+            {
+                MessageBox.Show("");
+                this.ActiveControl = this.txt_CodeDepartment;
+                return false;
+            }
+
+            if (txt_NameDepartment.Text.Trim().Equals(String.Empty))
+            {
+                MessageBox.Show("");
+                this.ActiveControl = this.txt_NameDepartment;
+                return false;
+            }
+
+            return true;
         }
 
     }

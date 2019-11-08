@@ -18,8 +18,18 @@ namespace TracNghiem_CSDLPT
         public frm_NhapMH()
         {
             InitializeComponent();
+
+            bs_MonHoc.CurrentChanged += Bs_MonHoc_CurrentChanged;
         }
 
+        private void Bs_MonHoc_CurrentChanged(object sender, EventArgs e)
+        {
+            if (bs_MonHoc.Position != -1)
+            {
+                txt_CodeCourse.Text = ((DataRowView)bs_MonHoc[bs_MonHoc.Position])["MAMH"].ToString().Trim();
+                txt_NameCourse.Text = ((DataRowView)bs_MonHoc[bs_MonHoc.Position])["TENMH"].ToString().Trim();
+            }
+        }
 
         private void frm_NhapMH_Load(object sender, EventArgs e)
         {
@@ -48,32 +58,23 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Add_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (grb_Option.Text.Equals("Thêm"))
-            {
-                if(txt_CodeCourse.Text.Trim() == String.Empty || txt_NameCourse.Text.Trim() == String.Empty)
-                {
-                    MessageBox.Show("Mã và tên môn học không được để trống!");
-                    return;
-                }
+            bool isEmpty = ValidateEmpty();
 
-                // TODO: Check code course
-                DataView dt = (DataView)bs_MonHoc.List;
-                dt.Sort = "MAMH";
-                if (dt.FindRows(txt_CodeCourse.Text).Length != 0)
-                {
-                    MessageBox.Show("Mã môn học đã tồn tại.Vui lòng nhập lại!");
-                }
-                else {
-                    DataRowView drv = (DataRowView)bs_MonHoc.AddNew();
-                    drv.Row.ItemArray = new object[] { txt_CodeCourse.Text, txt_NameCourse.Text };
-                }
-                
+            if (!isEmpty)
+                return;
+
+            // TODO: Check code course
+            DataView dt = (DataView)bs_MonHoc.List;
+            dt.Sort = "MAMH";
+            if (dt.FindRows(txt_CodeCourse.Text).Length != 0)
+            {
+                MessageBox.Show("Mã môn học đã tồn tại.Vui lòng nhập lại!");
             }
             else
             {
-                this.txt_CodeCourse.ReadOnly = false;
-                this.grb_Option.Text = "Thêm";
-                this.ActiveControl = this.txt_CodeCourse;
+                object[] data = new object[] { txt_CodeCourse.Text, txt_NameCourse.Text};
+                DataRowView drv = (DataRowView)bs_MonHoc.AddNew();
+                drv.Row.ItemArray = data;
             }
         }
 
@@ -116,36 +117,37 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Edit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            bool isEmpty = ValidateEmpty();
+
+            if (!isEmpty)
+                return;
+
             DataRowView currentRow = (DataRowView)bs_MonHoc.Current;
-            if (grb_Option.Text.Equals("Sửa"))
+
+            if (currentRow != null)
             {
-                if (currentRow != null)
+                DataView dt = (DataView)bs_MonHoc.List;
+                dt.Sort = "MAMH";
+                if (dt.FindRows(txt_CodeCourse.Text.Trim()).Length != 0 &&
+                    !currentRow.Row.ItemArray[0].ToString().Trim().Equals(txt_CodeCourse.Text.Trim()))
                 {
-                    //Save data edited or edit new data
-                    if (txt_CodeCourse.Text.Equals(currentRow.Row.ItemArray[0].ToString()))
-                    {
-                        currentRow.Row.ItemArray = new object[] { txt_CodeCourse.Text, txt_NameCourse.Text};
-                    }
-                    else
-                    {
-                        txt_CodeCourse.ReadOnly = true;
-                        txt_CodeCourse.Text = currentRow.Row.ItemArray[0].ToString();
-                        txt_NameCourse.Text = currentRow.Row.ItemArray[1].ToString();
-                    }
+                    MessageBox.Show("Mã khoa đã tồn tại.Vui lòng nhập lại!");
+                    this.ActiveControl = this.txt_CodeCourse;
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng chọn dữ liệu muốn sửa!");
+                    object[] data = new object[] { txt_CodeCourse.Text, txt_NameCourse.Text};
+                    currentRow.Row.ItemArray = data;
+
+                    MessageBox.Show("Sửa dữ liệu thành công.");
                 }
             }
             else
             {
-                grb_Option.Text = "Sửa";
-                txt_CodeCourse.ReadOnly = true;
-                txt_CodeCourse.Text = currentRow.Row.ItemArray[0].ToString();
-                txt_NameCourse.Text = currentRow.Row.ItemArray[1].ToString();
+                MessageBox.Show("Vui lòng chọn dữ liệu muốn sửa!");
             }
-            
+
         }
 
         private void btn_Delete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -201,6 +203,25 @@ namespace TracNghiem_CSDLPT
             }
 
             this.Dispose();
+        }
+
+        public bool ValidateEmpty()
+        {
+            if (txt_CodeCourse.Text.Trim().Equals(String.Empty))
+            {
+                MessageBox.Show("");
+                this.ActiveControl = this.txt_CodeCourse;
+                return false;
+            }
+
+            if (txt_NameCourse.Text.Trim().Equals(String.Empty))
+            {
+                MessageBox.Show("");
+                this.ActiveControl = this.txt_NameCourse;
+                return false;
+            }
+
+            return true;
         }
     }
 }

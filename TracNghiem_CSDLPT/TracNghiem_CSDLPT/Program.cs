@@ -29,7 +29,7 @@ namespace TracNghiem_CSDLPT
         public static String passwordDN = "";
         public static String mGroup = "";
         public static String mHoten = "";
-        public static int mChinhanh = 0;
+        public static String mChinhanh = String.Empty;
 
         public static String studentCode = String.Empty;
 

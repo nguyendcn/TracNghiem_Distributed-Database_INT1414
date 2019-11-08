@@ -85,7 +85,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 69);
             this.barDockControlTop.Manager = null;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlTop.Size = new System.Drawing.Size(909, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(934, 0);
             // 
             // barDockControl1
             // 
@@ -94,7 +94,7 @@
             this.barDockControl1.Location = new System.Drawing.Point(0, 69);
             this.barDockControl1.Manager = null;
             this.barDockControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl1.Size = new System.Drawing.Size(909, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(934, 0);
             // 
             // bar3
             // 
@@ -113,7 +113,7 @@
             this.barDockControl2.Location = new System.Drawing.Point(0, 69);
             this.barDockControl2.Manager = null;
             this.barDockControl2.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl2.Size = new System.Drawing.Size(909, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(934, 0);
             // 
             // barManager1
             // 
@@ -229,16 +229,16 @@
             this.barDockControl3.Location = new System.Drawing.Point(0, 0);
             this.barDockControl3.Manager = this.barManager1;
             this.barDockControl3.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl3.Size = new System.Drawing.Size(909, 69);
+            this.barDockControl3.Size = new System.Drawing.Size(934, 69);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 444);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 726);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(909, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(934, 23);
             // 
             // barDockControlLeft
             // 
@@ -247,16 +247,16 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 69);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 375);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 657);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(909, 69);
+            this.barDockControlRight.Location = new System.Drawing.Point(934, 69);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 375);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 657);
             // 
             // ds_TN_CSDLPT
             // 
@@ -298,13 +298,13 @@
             // 
             this.grv_Khoa.DataSource = this.bs_Khoa;
             this.grv_Khoa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grv_Khoa.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grv_Khoa.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
             this.grv_Khoa.Location = new System.Drawing.Point(0, 69);
             this.grv_Khoa.MainView = this.gridView1;
             this.grv_Khoa.Margin = new System.Windows.Forms.Padding(4);
             this.grv_Khoa.MenuManager = this.barManager1;
             this.grv_Khoa.Name = "grv_Khoa";
-            this.grv_Khoa.Size = new System.Drawing.Size(909, 375);
+            this.grv_Khoa.Size = new System.Drawing.Size(934, 657);
             this.grv_Khoa.TabIndex = 10;
             this.grv_Khoa.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -358,11 +358,11 @@
             this.grb_Option.Controls.Add(this.txt_CodeDepartment);
             this.grb_Option.Controls.Add(this.label1);
             this.grb_Option.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grb_Option.Location = new System.Drawing.Point(0, 264);
+            this.grb_Option.Location = new System.Drawing.Point(0, 541);
             this.grb_Option.Margin = new System.Windows.Forms.Padding(4);
             this.grb_Option.Name = "grb_Option";
             this.grb_Option.Padding = new System.Windows.Forms.Padding(4);
-            this.grb_Option.Size = new System.Drawing.Size(909, 180);
+            this.grb_Option.Size = new System.Drawing.Size(934, 185);
             this.grb_Option.TabIndex = 11;
             this.grb_Option.TabStop = false;
             // 
@@ -425,7 +425,8 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(909, 467);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(934, 749);
             this.Controls.Add(this.grb_Option);
             this.Controls.Add(this.grv_Khoa);
             this.Controls.Add(this.barDockControlTop);

@@ -41,7 +41,7 @@ namespace TracNghiem_CSDLPT
             Program.mlogin = txt_Username.Text; Program.password = txt_Password.Text;
             if (Program.KetNoi() == 0) return;
 
-            Program.mChinhanh = cmb_CoSo.SelectedIndex;
+            Program.mChinhanh = ((DataRowView)cmb_CoSo.SelectedItem).Row.ItemArray[0].ToString();
 
             Program.mloginDN = Program.mlogin;
             Program.passwordDN = Program.password;

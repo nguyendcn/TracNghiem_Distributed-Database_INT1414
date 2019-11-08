@@ -105,7 +105,7 @@ namespace TracNghiem_CSDLPT
             Program.mlogin = "student"; Program.password = "nguyenne";
             if (Program.KetNoi() == 0) return;
 
-            Program.mChinhanh = cmb_Brand_SV.SelectedIndex;
+            Program.mChinhanh = ((DataRowView)cmb_Brand_SV.SelectedItem).Row.ItemArray[0].ToString();
 
             Program.mloginDN = Program.mlogin;
             Program.passwordDN = Program.password;
@@ -124,7 +124,6 @@ namespace TracNghiem_CSDLPT
             }
             Program.mHoten = Program.myReader.GetString(1);
             Program.mGroup = Program.myReader.GetString(2);
-            Program.mChinhanh = cmb_Brand_GV.SelectedIndex + 1;
             Program.myReader.Close();
             Program.conn.Close();
             MessageBox.Show("Nhan vien - Nhom : " + Program.mHoten + " - " + Program.mGroup, "", MessageBoxButtons.OK);
@@ -155,7 +154,7 @@ namespace TracNghiem_CSDLPT
             Program.mlogin = txt_UserName.Text; Program.password = txt_Password.Text;
             if (Program.KetNoi() == 0) return;
 
-            Program.mChinhanh = cmb_Brand_SV.SelectedIndex;
+            Program.mChinhanh = ((DataRowView)cmb_Brand_GV.SelectedItem).Row.ItemArray[0].ToString();
 
             Program.mloginDN = Program.mlogin;
             Program.passwordDN = Program.password;
@@ -174,7 +173,6 @@ namespace TracNghiem_CSDLPT
             }
             Program.mHoten = Program.myReader.GetString(1);
             Program.mGroup = Program.myReader.GetString(2);
-            Program.mChinhanh = cmb_Brand_GV.SelectedIndex;
             Program.myReader.Close();
             Program.conn.Close();
             MessageBox.Show("Nhan vien - Nhom : " + Program.mHoten + " - " + Program.mGroup, "", MessageBoxButtons.OK);

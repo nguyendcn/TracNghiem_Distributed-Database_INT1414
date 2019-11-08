@@ -17,86 +17,76 @@ namespace TracNghiem_CSDLPT
         public Frm_NhapLop()
         {
             InitializeComponent();
+
+            bs_Lop.CurrentChanged += Bs_Lop_CurrentChanged;
         }
 
-        private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void Bs_Lop_CurrentChanged(object sender, EventArgs e)
         {
-            this.Validate();
-            this.bs_Lop.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.ds_TN_CSDLPT);
-
+            if (bs_Lop.Position != -1)
+            {
+                txt_CodeClass.Text = ((DataRowView)bs_Lop[bs_Lop.Position])["MALOP"].ToString().Trim();
+                txt_NameClass.Text = ((DataRowView)bs_Lop[bs_Lop.Position])["TENLOP"].ToString().Trim();
+                cmb_Khoa.SelectedIndex = 0;
+            }
         }
+
 
         private void btn_Add_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (grb_Option.Text.Equals("Thêm"))
+            bool isEmpty = ValidateEmpty();
+
+            if (!isEmpty)
+                return;
+
+            // TODO: Check code course
+            DataView dt = (DataView)bs_Lop.List;
+            dt.Sort = "MALOP";
+            if (dt.FindRows(txt_CodeClass.Text).Length != 0)
             {
-                if (txt_CodeClass.Text.Trim() == String.Empty || txt_NameClass.Text.Trim() == String.Empty)
-                {
-                    MessageBox.Show("Mã và tên môn học không được để trống!");
-                    return;
-                }
-
-                // TODO: Check code course
-                DataView dt = (DataView)bs_Lop.List;
-                dt.Sort = "MALOP";
-                if (dt.FindRows(txt_CodeClass.Text).Length != 0)
-                {
-                    MessageBox.Show("Mã môn học đã tồn tại.Vui lòng nhập lại!");
-                }
-                else
-                {
-                    DataRowView drv = (DataRowView)bs_Lop.AddNew();
-                    DataRowView rowView = (DataRowView)cmb_Khoa.SelectedItem;
-                    drv.Row.ItemArray = new object[] { txt_CodeClass.Text, txt_NameClass.Text,
-                                                       rowView.Row.ItemArray[0] };
-                }
-
+                MessageBox.Show("Mã lớp đã tồn tại.Vui lòng nhập lại!");
             }
             else
             {
-                this.txt_CodeClass.ReadOnly = false;
-                this.cmb_Khoa.Enabled = true;
-                this.grb_Option.Text = "Thêm";
-                this.ActiveControl = this.txt_CodeClass;
+                String codeDepartment = ((DataRowView)cmb_Khoa.SelectedItem).Row.ItemArray[0].ToString();
+                object[] data = new object[] { txt_CodeClass.Text, txt_NameClass.Text, codeDepartment};
+                DataRowView drv = (DataRowView)bs_Lop.AddNew();
+                drv.Row.ItemArray = data;
             }
         }
 
         private void btn_Edit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            bool isEmpty = ValidateEmpty();
+
+            if (!isEmpty)
+                return;
+
             DataRowView currentRow = (DataRowView)bs_Lop.Current;
-            if (grb_Option.Text.Equals("Sửa"))
+
+            if (currentRow != null)
             {
-                if (currentRow != null)
+                DataView dt = (DataView)bs_Lop.List;
+                dt.Sort = "MALOP";
+                if (dt.FindRows(txt_CodeClass.Text.Trim()).Length != 0 &&
+                    !currentRow.Row.ItemArray[0].ToString().Trim().Equals(txt_CodeClass.Text.Trim()))
                 {
-                    //Save data edited or edit new data
-                    if (txt_CodeClass.Text.Equals(currentRow.Row.ItemArray[0].ToString()))
-                    {
-                        DataRowView rowView = (DataRowView)cmb_Khoa.SelectedItem;
-                        currentRow.Row.ItemArray = new object[] { txt_CodeClass.Text, txt_NameClass.Text,
-                                                                  rowView.Row.ItemArray[0]};
-                    }
-                    else
-                    {
-                        txt_CodeClass.ReadOnly = true;
-                        txt_CodeClass.Text = currentRow.Row.ItemArray[0].ToString();
-                        txt_NameClass.Text = currentRow.Row.ItemArray[1].ToString();
-                        cmb_Khoa.SelectedIndex = 0;
-                    }
+                    MessageBox.Show("Mã lớp đã tồn tại.Vui lòng nhập lại!");
+                    this.ActiveControl = this.txt_CodeClass;
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng chọn dữ liệu muốn sửa!");
+                    String codeDepartment = ((DataRowView)cmb_Khoa.SelectedItem).Row.ItemArray[0].ToString();
+                    object[] data = new object[] { txt_CodeClass.Text, txt_NameClass.Text, codeDepartment };
+                    currentRow.Row.ItemArray = data;
+
+                    MessageBox.Show("Sửa dữ liệu thành công.");
                 }
             }
             else
             {
-                grb_Option.Text = "Sửa";
-                txt_CodeClass.ReadOnly = true;
-                txt_CodeClass.Text = currentRow.Row.ItemArray[0].ToString();
-                txt_NameClass.Text = currentRow.Row.ItemArray[1].ToString();
-                cmb_Khoa.SelectedIndex = 0;
-                cmb_Khoa.Enabled = false;
+                MessageBox.Show("Vui lòng chọn dữ liệu muốn sửa!");
             }
         }
 
@@ -203,6 +193,25 @@ namespace TracNghiem_CSDLPT
 
             this.tbla_Lop.Connection.ConnectionString = Program.connstr;
             this.tbla_Lop.Fill(this.ds_TN_CSDLPT.LOP);
+        }
+
+        public bool ValidateEmpty()
+        {
+            if (txt_CodeClass.Text.Trim().Equals(String.Empty))
+            {
+                MessageBox.Show("");
+                this.ActiveControl = this.txt_CodeClass;
+                return false;
+            }
+
+            if (txt_NameClass.Text.Trim().Equals(String.Empty))
+            {
+                MessageBox.Show("");
+                this.ActiveControl = this.txt_NameClass;
+                return false;
+            }
+
+            return true;
         }
     }
 }

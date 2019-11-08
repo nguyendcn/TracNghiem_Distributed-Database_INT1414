@@ -90,6 +90,12 @@
     <Compile Include="frm_NhapMH.Designer.cs">
       <DependentUpon>frm_NhapMH.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_NhapSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_NhapSinhVien.Designer.cs">
+      <DependentUpon>Frm_NhapSinhVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_TN_CSDLPT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_NhapMH.resx">
       <DependentUpon>frm_NhapMH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_NhapSinhVien.resx">
+      <DependentUpon>Frm_NhapSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_TN_CSDLPT.resx">
       <DependentUpon>Frm_TN_CSDLPT.cs</DependentUpon>

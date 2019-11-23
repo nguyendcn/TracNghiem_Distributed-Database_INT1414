@@ -38,5 +38,12 @@ namespace TracNghiem_CSDLPT
             frm_Lop.MdiParent = this;
             frm_Lop.Show();
         }
+
+        private void btn_NhapDe_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_NhapDe frm_NhapDe= new Frm_NhapDe();
+            frm_NhapDe.MdiParent = this;
+            frm_NhapDe.Show();
+        }
     }
 }

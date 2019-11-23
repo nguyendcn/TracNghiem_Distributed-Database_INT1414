@@ -34,7 +34,7 @@
             this.btn_Khoa = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_NhapDe = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Lop = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
@@ -70,7 +70,7 @@
             this.btn_Khoa,
             this.barButtonItem2,
             this.barButtonItem3,
-            this.barButtonItem4,
+            this.btn_NhapDe,
             this.btn_Lop,
             this.barButtonItem6,
             this.barButtonItem7,
@@ -108,12 +108,13 @@
             this.barButtonItem3.Id = 3;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
-            // barButtonItem4
+            // btn_NhapDe
             // 
-            this.barButtonItem4.Caption = "Bộ môn";
-            this.barButtonItem4.Id = 7;
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_NhapDe.Caption = "Bộ môn";
+            this.btn_NhapDe.Id = 7;
+            this.btn_NhapDe.Name = "btn_NhapDe";
+            this.btn_NhapDe.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_NhapDe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_NhapDe_ItemClick);
             // 
             // btn_Lop
             // 
@@ -175,7 +176,7 @@
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_Khoa);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_NhapDe);
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_Lop);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem6);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
@@ -236,7 +237,7 @@
             // ribbonPageGroup7
             // 
             this.ribbonPageGroup7.ItemLinks.Add(this.btn_Khoa);
-            this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup7.ItemLinks.Add(this.btn_NhapDe);
             this.ribbonPageGroup7.ItemLinks.Add(this.btn_Lop);
             this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem6);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
@@ -253,7 +254,7 @@
             // ribbonPageGroup9
             // 
             this.ribbonPageGroup9.ItemLinks.Add(this.btn_Khoa);
-            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup9.ItemLinks.Add(this.btn_NhapDe);
             this.ribbonPageGroup9.ItemLinks.Add(this.btn_Lop);
             this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem6);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
@@ -262,7 +263,7 @@
             // ribbonPageGroup10
             // 
             this.ribbonPageGroup10.ItemLinks.Add(this.btn_Khoa);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btn_NhapDe);
             this.ribbonPageGroup10.ItemLinks.Add(this.btn_Lop);
             this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem6);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
@@ -309,7 +310,7 @@
         private DevExpress.XtraBars.BarButtonItem btn_Khoa;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem btn_NhapDe;
         private DevExpress.XtraBars.BarButtonItem btn_Lop;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;

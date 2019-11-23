@@ -28,6 +28,27 @@ namespace TracNghiem_CSDLPT.Common
             return dt;
         }
 
+        public static bool StudentIsExist(String studentCode)
+        {
+            SqlDataReader reader = ExecSqlDataReader("Exec sp_CheckStudentExists '" + studentCode + "'");
+
+            while (reader.Read())
+            {
+                String result = reader.GetString(0);
+
+                if (result.Equals("1"))
+                {
+                    reader.Close(); // <- too easy to forget
+                    reader.Dispose(); // <- too easy to forget
+                    return true;
+                }
+            }
+            reader.Close(); // <- too easy to forget
+            reader.Dispose(); // <- too easy to forget
+            return false;
+        }
+
+
         /// <summary>
         /// Execuse query  by SqlCommand
         /// </summary>

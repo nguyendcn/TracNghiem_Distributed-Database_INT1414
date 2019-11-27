@@ -48,6 +48,21 @@ namespace TracNghiem_CSDLPT.Common
             return false;
         }
 
+        public static List<int> GetListQuestionCode()
+        {
+            List<int> lCode = new List<int>();
+
+            SqlDataReader reader = ExecSqlDataReader("Exec sp_GetListQuestionCode");
+
+            while (reader.Read())
+            {
+                lCode.Add(reader.GetInt32(0));
+            }
+            reader.Close(); // <- too easy to forget
+            reader.Dispose(); // <- too easy to forget
+            return lCode;
+        }
+
 
         /// <summary>
         /// Execuse query  by SqlCommand

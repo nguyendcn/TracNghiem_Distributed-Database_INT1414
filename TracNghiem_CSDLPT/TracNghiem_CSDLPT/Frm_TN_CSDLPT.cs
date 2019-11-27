@@ -45,5 +45,12 @@ namespace TracNghiem_CSDLPT
             frm_NhapDe.MdiParent = this;
             frm_NhapDe.Show();
         }
+
+        private void btn_RegisterExam_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_DangKyThi frm_DangKyThi = new Frm_DangKyThi();
+            frm_DangKyThi.MdiParent = this;
+            frm_DangKyThi.Show();
+        }
     }
 }

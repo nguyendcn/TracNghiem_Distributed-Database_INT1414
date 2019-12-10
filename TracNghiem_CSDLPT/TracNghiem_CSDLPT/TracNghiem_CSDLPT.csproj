@@ -116,6 +116,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Share\Action.cs" />
+    <Compile Include="Share\CallBackAction.cs" />
+    <Compile Include="Share\ErrorHandler.cs" />
+    <Compile Include="Share\ErrorCode.cs" />
+    <Compile Include="Share\TimerAction.cs" />
+    <Compile Include="SupportForm\Frm_ActionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupportForm\Frm_ActionInfo.Designer.cs">
+      <DependentUpon>Frm_ActionInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="TN_CSDLPTDataSet.cs">
       <DependentUpon>TN_CSDLPTDataSet.xsd</DependentUpon>
     </Compile>
@@ -161,6 +172,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SupportForm\Frm_ActionInfo.resx">
+      <DependentUpon>Frm_ActionInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

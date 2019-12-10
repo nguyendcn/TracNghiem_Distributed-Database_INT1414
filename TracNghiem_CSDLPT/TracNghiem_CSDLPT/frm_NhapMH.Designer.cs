@@ -49,36 +49,38 @@
             this.bs_MonHoc = new System.Windows.Forms.BindingSource(this.components);
             this.tbla_MonHoc = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.MONHOCTableAdapter();
             this.tableAdapterManager = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.TableAdapterManager();
-            this.gcv_MonHoc = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTENMH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grb_Option = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_CodeCourse = new System.Windows.Forms.TextBox();
-            this.txt_NameCourse = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.bs_GVDK = new System.Windows.Forms.BindingSource(this.components);
             this.tbla_GVDK = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter();
             this.bs_BoDe = new System.Windows.Forms.BindingSource(this.components);
             this.tbla_BoDe = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BODETableAdapter();
             this.bs_BangDiem = new System.Windows.Forms.BindingSource(this.components);
             this.tbla_BangDiem = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gcv_MonHoc = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTENMH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_ConstructArea = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_NameCourse = new System.Windows.Forms.TextBox();
+            this.txt_CodeCourse = new System.Windows.Forms.TextBox();
+            this.lbl_Err_CodeCourse = new System.Windows.Forms.Label();
+            this.lbl_Err_NameCourse = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_MonHoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcv_MonHoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.grb_Option.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GVDK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BoDe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BangDiem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcv_MonHoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.pnl_ConstructArea.SuspendLayout();
             this.SuspendLayout();
             // 
             // bar2
@@ -203,15 +205,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(763, 69);
+            this.barDockControlTop.Size = new System.Drawing.Size(844, 69);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 607);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 424);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(763, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(844, 23);
             // 
             // barDockControlLeft
             // 
@@ -219,15 +221,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 69);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 538);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 355);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(763, 69);
+            this.barDockControlRight.Location = new System.Drawing.Point(844, 69);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 538);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 355);
             // 
             // ds_TN_CSDLPT
             // 
@@ -257,128 +259,6 @@
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // gcv_MonHoc
-            // 
-            this.gcv_MonHoc.DataSource = this.bs_MonHoc;
-            this.gcv_MonHoc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcv_MonHoc.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
-            this.gcv_MonHoc.Location = new System.Drawing.Point(0, 69);
-            this.gcv_MonHoc.MainView = this.gridView1;
-            this.gcv_MonHoc.MenuManager = this.barManager1;
-            this.gcv_MonHoc.Name = "gcv_MonHoc";
-            this.gcv_MonHoc.Size = new System.Drawing.Size(763, 405);
-            this.gcv_MonHoc.TabIndex = 14;
-            this.gcv_MonHoc.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            this.gcv_MonHoc.Click += new System.EventHandler(this.gcv_MonHoc_Click);
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMAMH,
-            this.colTENMH});
-            this.gridView1.GridControl = this.gcv_MonHoc;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            // 
-            // colMAMH
-            // 
-            this.colMAMH.Caption = "Mã Môn học";
-            this.colMAMH.FieldName = "MAMH";
-            this.colMAMH.Name = "colMAMH";
-            this.colMAMH.Visible = true;
-            this.colMAMH.VisibleIndex = 0;
-            // 
-            // colTENMH
-            // 
-            this.colTENMH.Caption = "Tên Môn Học";
-            this.colTENMH.FieldName = "TENMH";
-            this.colTENMH.Name = "colTENMH";
-            this.colTENMH.Visible = true;
-            this.colTENMH.VisibleIndex = 1;
-            // 
-            // grb_Option
-            // 
-            this.grb_Option.Controls.Add(this.tableLayoutPanel1);
-            this.grb_Option.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grb_Option.Location = new System.Drawing.Point(0, 474);
-            this.grb_Option.Name = "grb_Option";
-            this.grb_Option.Size = new System.Drawing.Size(763, 133);
-            this.grb_Option.TabIndex = 19;
-            this.grb_Option.TabStop = false;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.txt_CodeCourse, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txt_NameCourse, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 21);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 109F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(757, 109);
-            this.tableLayoutPanel1.TabIndex = 4;
-            // 
-            // txt_CodeCourse
-            // 
-            this.txt_CodeCourse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_CodeCourse.Location = new System.Drawing.Point(192, 3);
-            this.txt_CodeCourse.Name = "txt_CodeCourse";
-            this.txt_CodeCourse.Size = new System.Drawing.Size(183, 25);
-            this.txt_CodeCourse.TabIndex = 1;
-            // 
-            // txt_NameCourse
-            // 
-            this.txt_NameCourse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_NameCourse.Location = new System.Drawing.Point(570, 3);
-            this.txt_NameCourse.Name = "txt_NameCourse";
-            this.txt_NameCourse.Size = new System.Drawing.Size(184, 25);
-            this.txt_NameCourse.TabIndex = 3;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(183, 100);
-            this.panel1.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(98, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Mã môn học:";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(381, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(183, 100);
-            this.panel2.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Location = new System.Drawing.Point(95, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tên môn học:";
-            // 
             // bs_GVDK
             // 
             this.bs_GVDK.DataMember = "FK_GIAOVIEN_DANGKY_MONHOC1";
@@ -406,14 +286,149 @@
             // 
             this.tbla_BangDiem.ClearBeforeFill = true;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 69);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.gcv_MonHoc);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.pnl_ConstructArea);
+            this.splitContainer1.Size = new System.Drawing.Size(844, 355);
+            this.splitContainer1.SplitterDistance = 232;
+            this.splitContainer1.TabIndex = 24;
+            // 
+            // gcv_MonHoc
+            // 
+            this.gcv_MonHoc.DataSource = this.bs_MonHoc;
+            this.gcv_MonHoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcv_MonHoc.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
+            this.gcv_MonHoc.Location = new System.Drawing.Point(0, 0);
+            this.gcv_MonHoc.MainView = this.gridView1;
+            this.gcv_MonHoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gcv_MonHoc.MenuManager = this.barManager1;
+            this.gcv_MonHoc.Name = "gcv_MonHoc";
+            this.gcv_MonHoc.Size = new System.Drawing.Size(844, 232);
+            this.gcv_MonHoc.TabIndex = 17;
+            this.gcv_MonHoc.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMAMH,
+            this.colTENMH});
+            this.gridView1.GridControl = this.gcv_MonHoc;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            // 
+            // colMAMH
+            // 
+            this.colMAMH.Caption = "Mã Môn học";
+            this.colMAMH.FieldName = "MAMH";
+            this.colMAMH.Name = "colMAMH";
+            this.colMAMH.Visible = true;
+            this.colMAMH.VisibleIndex = 0;
+            // 
+            // colTENMH
+            // 
+            this.colTENMH.Caption = "Tên Môn Học";
+            this.colTENMH.FieldName = "TENMH";
+            this.colTENMH.Name = "colTENMH";
+            this.colTENMH.Visible = true;
+            this.colTENMH.VisibleIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(586, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(232, 89);
+            this.panel1.TabIndex = 19;
+            // 
+            // pnl_ConstructArea
+            // 
+            this.pnl_ConstructArea.Controls.Add(this.lbl_Err_NameCourse);
+            this.pnl_ConstructArea.Controls.Add(this.lbl_Err_CodeCourse);
+            this.pnl_ConstructArea.Controls.Add(this.label2);
+            this.pnl_ConstructArea.Controls.Add(this.label1);
+            this.pnl_ConstructArea.Controls.Add(this.txt_NameCourse);
+            this.pnl_ConstructArea.Controls.Add(this.txt_CodeCourse);
+            this.pnl_ConstructArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_ConstructArea.Enabled = false;
+            this.pnl_ConstructArea.Location = new System.Drawing.Point(0, 0);
+            this.pnl_ConstructArea.Name = "pnl_ConstructArea";
+            this.pnl_ConstructArea.Size = new System.Drawing.Size(844, 119);
+            this.pnl_ConstructArea.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(233, 68);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 17);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Tên môn học";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(233, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 17);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Mã môn học";
+            // 
+            // txt_NameCourse
+            // 
+            this.txt_NameCourse.Location = new System.Drawing.Point(386, 65);
+            this.txt_NameCourse.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_NameCourse.Name = "txt_NameCourse";
+            this.txt_NameCourse.Size = new System.Drawing.Size(146, 25);
+            this.txt_NameCourse.TabIndex = 20;
+            // 
+            // txt_CodeCourse
+            // 
+            this.txt_CodeCourse.Location = new System.Drawing.Point(386, 26);
+            this.txt_CodeCourse.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_CodeCourse.Name = "txt_CodeCourse";
+            this.txt_CodeCourse.Size = new System.Drawing.Size(146, 25);
+            this.txt_CodeCourse.TabIndex = 19;
+            // 
+            // lbl_Err_CodeCourse
+            // 
+            this.lbl_Err_CodeCourse.AutoSize = true;
+            this.lbl_Err_CodeCourse.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Err_CodeCourse.Location = new System.Drawing.Point(547, 29);
+            this.lbl_Err_CodeCourse.Name = "lbl_Err_CodeCourse";
+            this.lbl_Err_CodeCourse.Size = new System.Drawing.Size(27, 17);
+            this.lbl_Err_CodeCourse.TabIndex = 23;
+            this.lbl_Err_CodeCourse.Text = "Err";
+            // 
+            // lbl_Err_NameCourse
+            // 
+            this.lbl_Err_NameCourse.AutoSize = true;
+            this.lbl_Err_NameCourse.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Err_NameCourse.Location = new System.Drawing.Point(547, 68);
+            this.lbl_Err_NameCourse.Name = "lbl_Err_NameCourse";
+            this.lbl_Err_NameCourse.Size = new System.Drawing.Size(27, 17);
+            this.lbl_Err_NameCourse.TabIndex = 24;
+            this.lbl_Err_NameCourse.Text = "Err";
+            // 
             // frm_NhapMH
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 630);
-            this.Controls.Add(this.grb_Option);
-            this.Controls.Add(this.gcv_MonHoc);
+            this.ClientSize = new System.Drawing.Size(844, 447);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -427,18 +442,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_MonHoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcv_MonHoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.grb_Option.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GVDK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BoDe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BangDiem)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcv_MonHoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.pnl_ConstructArea.ResumeLayout(false);
+            this.pnl_ConstructArea.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,23 +479,24 @@
         private TN_CSDLPTDataSet ds_TN_CSDLPT;
         private TN_CSDLPTDataSetTableAdapters.MONHOCTableAdapter tbla_MonHoc;
         private TN_CSDLPTDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private DevExpress.XtraGrid.GridControl gcv_MonHoc;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAMH;
-        private DevExpress.XtraGrid.Columns.GridColumn colTENMH;
-        private System.Windows.Forms.GroupBox grb_Option;
         private System.Windows.Forms.BindingSource bs_GVDK;
         private TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter tbla_GVDK;
         private System.Windows.Forms.BindingSource bs_BoDe;
         private TN_CSDLPTDataSetTableAdapters.BODETableAdapter tbla_BoDe;
         private System.Windows.Forms.BindingSource bs_BangDiem;
         private TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter tbla_BangDiem;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox txt_CodeCourse;
-        private System.Windows.Forms.TextBox txt_NameCourse;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private DevExpress.XtraGrid.GridControl gcv_MonHoc;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAMH;
+        private DevExpress.XtraGrid.Columns.GridColumn colTENMH;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnl_ConstructArea;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_NameCourse;
+        private System.Windows.Forms.TextBox txt_CodeCourse;
+        private System.Windows.Forms.Label lbl_Err_NameCourse;
+        private System.Windows.Forms.Label lbl_Err_CodeCourse;
     }
 }

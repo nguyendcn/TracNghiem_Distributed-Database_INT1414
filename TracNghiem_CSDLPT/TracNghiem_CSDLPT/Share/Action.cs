@@ -11,6 +11,11 @@ namespace TracNghiem_CSDLPT.Share
         Add,
         Edit,
         Delete,
-        None,
+        RecoveryAdd,
+        RecoveryEdit,
+        RecoveryDelete,
+        AddSuccess,
+        DeleteSuccess,
+        None
     }
 }

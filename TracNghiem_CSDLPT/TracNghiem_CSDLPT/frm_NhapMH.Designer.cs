@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_NhapMH));
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.brm_Option = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.btn_Add = new DevExpress.XtraBars.BarButtonItem();
@@ -55,29 +55,29 @@
             this.tbla_BoDe = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BODETableAdapter();
             this.bs_BangDiem = new System.Windows.Forms.BindingSource(this.components);
             this.tbla_BangDiem = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splc_Container = new System.Windows.Forms.SplitContainer();
             this.gcv_MonHoc = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENMH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnl_ConstructArea = new System.Windows.Forms.Panel();
+            this.lbl_Err_NameCourse = new System.Windows.Forms.Label();
+            this.lbl_Err_CodeCourse = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_NameCourse = new System.Windows.Forms.TextBox();
             this.txt_CodeCourse = new System.Windows.Forms.TextBox();
-            this.lbl_Err_CodeCourse = new System.Windows.Forms.Label();
-            this.lbl_Err_NameCourse = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_MonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GVDK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BoDe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BangDiem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splc_Container)).BeginInit();
+            this.splc_Container.Panel1.SuspendLayout();
+            this.splc_Container.Panel2.SuspendLayout();
+            this.splc_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcv_MonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.pnl_ConstructArea.SuspendLayout();
@@ -92,27 +92,27 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
-            // barManager1
+            // brm_Option
             // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.brm_Option.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.bar1,
             this.bar3,
             this.bar4});
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.brm_Option.DockControls.Add(this.barDockControlTop);
+            this.brm_Option.DockControls.Add(this.barDockControlBottom);
+            this.brm_Option.DockControls.Add(this.barDockControlLeft);
+            this.brm_Option.DockControls.Add(this.barDockControlRight);
+            this.brm_Option.Form = this;
+            this.brm_Option.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btn_Add,
             this.btn_Edit,
             this.btn_Write,
             this.btn_Reset,
             this.btn_Delete,
             this.btn_Exit});
-            this.barManager1.MainMenu = this.bar3;
-            this.barManager1.MaxItemId = 6;
-            this.barManager1.StatusBar = this.bar4;
+            this.brm_Option.MainMenu = this.bar3;
+            this.brm_Option.MaxItemId = 6;
+            this.brm_Option.StatusBar = this.bar4;
             // 
             // bar1
             // 
@@ -204,31 +204,31 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(844, 69);
+            this.barDockControlTop.Manager = this.brm_Option;
+            this.barDockControlTop.Size = new System.Drawing.Size(1010, 69);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 424);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(844, 23);
+            this.barDockControlBottom.Manager = this.brm_Option;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1010, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 69);
-            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Manager = this.brm_Option;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 355);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(844, 69);
-            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Location = new System.Drawing.Point(1010, 69);
+            this.barDockControlRight.Manager = this.brm_Option;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 355);
             // 
             // ds_TN_CSDLPT
@@ -286,23 +286,23 @@
             // 
             this.tbla_BangDiem.ClearBeforeFill = true;
             // 
-            // splitContainer1
+            // splc_Container
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 69);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splc_Container.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splc_Container.Location = new System.Drawing.Point(0, 69);
+            this.splc_Container.Name = "splc_Container";
+            this.splc_Container.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // splc_Container.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.gcv_MonHoc);
+            this.splc_Container.Panel1.Controls.Add(this.gcv_MonHoc);
             // 
-            // splitContainer1.Panel2
+            // splc_Container.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.pnl_ConstructArea);
-            this.splitContainer1.Size = new System.Drawing.Size(844, 355);
-            this.splitContainer1.SplitterDistance = 232;
-            this.splitContainer1.TabIndex = 24;
+            this.splc_Container.Panel2.Controls.Add(this.pnl_ConstructArea);
+            this.splc_Container.Size = new System.Drawing.Size(1010, 355);
+            this.splc_Container.SplitterDistance = 232;
+            this.splc_Container.TabIndex = 24;
             // 
             // gcv_MonHoc
             // 
@@ -311,10 +311,10 @@
             this.gcv_MonHoc.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.gcv_MonHoc.Location = new System.Drawing.Point(0, 0);
             this.gcv_MonHoc.MainView = this.gridView1;
-            this.gcv_MonHoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gcv_MonHoc.MenuManager = this.barManager1;
+            this.gcv_MonHoc.Margin = new System.Windows.Forms.Padding(2);
+            this.gcv_MonHoc.MenuManager = this.brm_Option;
             this.gcv_MonHoc.Name = "gcv_MonHoc";
-            this.gcv_MonHoc.Size = new System.Drawing.Size(844, 232);
+            this.gcv_MonHoc.Size = new System.Drawing.Size(1010, 232);
             this.gcv_MonHoc.TabIndex = 17;
             this.gcv_MonHoc.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -344,13 +344,6 @@
             this.colTENMH.Visible = true;
             this.colTENMH.VisibleIndex = 1;
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(586, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(232, 89);
-            this.panel1.TabIndex = 19;
-            // 
             // pnl_ConstructArea
             // 
             this.pnl_ConstructArea.Controls.Add(this.lbl_Err_NameCourse);
@@ -362,14 +355,37 @@
             this.pnl_ConstructArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_ConstructArea.Enabled = false;
             this.pnl_ConstructArea.Location = new System.Drawing.Point(0, 0);
+            this.pnl_ConstructArea.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_ConstructArea.Name = "pnl_ConstructArea";
-            this.pnl_ConstructArea.Size = new System.Drawing.Size(844, 119);
+            this.pnl_ConstructArea.Size = new System.Drawing.Size(1010, 119);
             this.pnl_ConstructArea.TabIndex = 0;
+            // 
+            // lbl_Err_NameCourse
+            // 
+            this.lbl_Err_NameCourse.AutoSize = true;
+            this.lbl_Err_NameCourse.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Err_NameCourse.Location = new System.Drawing.Point(604, 61);
+            this.lbl_Err_NameCourse.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Err_NameCourse.Name = "lbl_Err_NameCourse";
+            this.lbl_Err_NameCourse.Size = new System.Drawing.Size(27, 17);
+            this.lbl_Err_NameCourse.TabIndex = 24;
+            this.lbl_Err_NameCourse.Text = "Err";
+            // 
+            // lbl_Err_CodeCourse
+            // 
+            this.lbl_Err_CodeCourse.AutoSize = true;
+            this.lbl_Err_CodeCourse.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Err_CodeCourse.Location = new System.Drawing.Point(604, 17);
+            this.lbl_Err_CodeCourse.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Err_CodeCourse.Name = "lbl_Err_CodeCourse";
+            this.lbl_Err_CodeCourse.Size = new System.Drawing.Size(27, 17);
+            this.lbl_Err_CodeCourse.TabIndex = 23;
+            this.lbl_Err_CodeCourse.Text = "Err";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(233, 68);
+            this.label2.Location = new System.Drawing.Point(131, 61);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 17);
@@ -379,7 +395,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(233, 29);
+            this.label1.Location = new System.Drawing.Point(131, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 17);
@@ -388,47 +404,36 @@
             // 
             // txt_NameCourse
             // 
-            this.txt_NameCourse.Location = new System.Drawing.Point(386, 65);
+            this.txt_NameCourse.Location = new System.Drawing.Point(292, 58);
             this.txt_NameCourse.Margin = new System.Windows.Forms.Padding(2);
             this.txt_NameCourse.Name = "txt_NameCourse";
-            this.txt_NameCourse.Size = new System.Drawing.Size(146, 25);
+            this.txt_NameCourse.Size = new System.Drawing.Size(308, 25);
             this.txt_NameCourse.TabIndex = 20;
+            this.txt_NameCourse.DoubleClick += new System.EventHandler(this.Txt_InputText_DoubleClick);
             // 
             // txt_CodeCourse
             // 
-            this.txt_CodeCourse.Location = new System.Drawing.Point(386, 26);
+            this.txt_CodeCourse.Location = new System.Drawing.Point(292, 14);
             this.txt_CodeCourse.Margin = new System.Windows.Forms.Padding(2);
             this.txt_CodeCourse.Name = "txt_CodeCourse";
-            this.txt_CodeCourse.Size = new System.Drawing.Size(146, 25);
+            this.txt_CodeCourse.Size = new System.Drawing.Size(308, 25);
             this.txt_CodeCourse.TabIndex = 19;
+            this.txt_CodeCourse.DoubleClick += new System.EventHandler(this.Txt_InputText_DoubleClick);
             // 
-            // lbl_Err_CodeCourse
+            // panel1
             // 
-            this.lbl_Err_CodeCourse.AutoSize = true;
-            this.lbl_Err_CodeCourse.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Err_CodeCourse.Location = new System.Drawing.Point(547, 29);
-            this.lbl_Err_CodeCourse.Name = "lbl_Err_CodeCourse";
-            this.lbl_Err_CodeCourse.Size = new System.Drawing.Size(27, 17);
-            this.lbl_Err_CodeCourse.TabIndex = 23;
-            this.lbl_Err_CodeCourse.Text = "Err";
-            // 
-            // lbl_Err_NameCourse
-            // 
-            this.lbl_Err_NameCourse.AutoSize = true;
-            this.lbl_Err_NameCourse.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Err_NameCourse.Location = new System.Drawing.Point(547, 68);
-            this.lbl_Err_NameCourse.Name = "lbl_Err_NameCourse";
-            this.lbl_Err_NameCourse.Size = new System.Drawing.Size(27, 17);
-            this.lbl_Err_NameCourse.TabIndex = 24;
-            this.lbl_Err_NameCourse.Text = "Err";
+            this.panel1.Location = new System.Drawing.Point(586, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(232, 89);
+            this.panel1.TabIndex = 19;
             // 
             // frm_NhapMH
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 447);
-            this.Controls.Add(this.splitContainer1);
+            this.ClientSize = new System.Drawing.Size(1010, 447);
+            this.Controls.Add(this.splc_Container);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -439,16 +444,16 @@
             this.Text = "frm_NhapMH";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_NhapMH_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_MonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GVDK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BoDe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BangDiem)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splc_Container.Panel1.ResumeLayout(false);
+            this.splc_Container.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splc_Container)).EndInit();
+            this.splc_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcv_MonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.pnl_ConstructArea.ResumeLayout(false);
@@ -461,7 +466,7 @@
         #endregion
 
         private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarManager brm_Option;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarButtonItem btn_Add;
@@ -485,7 +490,7 @@
         private TN_CSDLPTDataSetTableAdapters.BODETableAdapter tbla_BoDe;
         private System.Windows.Forms.BindingSource bs_BangDiem;
         private TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter tbla_BangDiem;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splc_Container;
         private DevExpress.XtraGrid.GridControl gcv_MonHoc;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colMAMH;

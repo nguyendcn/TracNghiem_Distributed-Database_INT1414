@@ -16,6 +16,7 @@ namespace TracNghiem_CSDLPT.Share
         RecoveryDelete,
         AddSuccess,
         DeleteSuccess,
+        EditSuccess,
         None
     }
 }

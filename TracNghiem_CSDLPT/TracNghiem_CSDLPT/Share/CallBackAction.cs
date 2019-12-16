@@ -30,6 +30,12 @@ namespace TracNghiem_CSDLPT.Share
             this.Table = table;
         }
 
+        public void Reset()
+        {
+            this.BackAction = Action.None;
+            this.Table = null;
+        }
+
         public override String ToString()
         {
             return "";

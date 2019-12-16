@@ -15,6 +15,8 @@ using TracNghiem_CSDLPT.SupportForm;
 using DevExpress.XtraBars.Controls;
 using DevExpress.XtraBars;
 using System.Data.SqlClient;
+using TracNghiem_CSDLPT.Common;
+
 
 namespace TracNghiem_CSDLPT
 {
@@ -61,10 +63,10 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Add_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SetUpButtonForAdd();
-
             this.btn_Exit.Tag = "ADD";
             this.btn_Write.Tag = "ADD";
+
+            SetUpButtonForAction();
         }
 
         private void btn_Reset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -78,11 +80,11 @@ namespace TracNghiem_CSDLPT
             else
             {
 
-                Frm_ActionInfo frm_ActionInfo = new Frm_ActionInfo(
+                Frm_ActionInfo frm_Recovery = new Frm_ActionInfo(
                     new Object[] { this.splc_Container, this.brm_Option },
                     this._callAction);
 
-                frm_ActionInfo.Choosen += (result) =>
+                frm_Recovery.Choosen += (result) =>
                 {
                     if (result == DialogResult.Yes)
                     {
@@ -90,7 +92,9 @@ namespace TracNghiem_CSDLPT
                     }
                 };
 
-                frm_ActionInfo.Show();
+                frm_Recovery.Parent = this;
+                frm_Recovery.BringToFront();
+                frm_Recovery.Show();
             }
         }
 
@@ -98,6 +102,8 @@ namespace TracNghiem_CSDLPT
         {
             try
             {
+                if (btn_Write.Tag == null)
+                    return;
                 if (this.btn_Write.Tag.Equals("ADD"))
                 {
                     bool addSucess = Add();
@@ -108,7 +114,8 @@ namespace TracNghiem_CSDLPT
 
                         Frm_ActionInfo info = new Frm_ActionInfo(
                                             new Object[] { this.splc_Container, this.brm_Option },
-                                            new CallBackAction(Share.Action.AddSuccess, this._callAction.Table));
+                                            new CallBackAction(Share.Action.AddSuccess, this._callAction.Table)
+                                            );
 
                         info.Parent = this;
                         info.BringToFront();
@@ -117,8 +124,23 @@ namespace TracNghiem_CSDLPT
                 }
                 else if (this.btn_Write.Tag.Equals("EDIT"))
                 {
-                    Edit();
-                    MessageBox.Show("Sửa dữ liệu thành công.", "Sửa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bool editSuccess =  Edit();
+
+                    if (editSuccess)
+                    {
+                        WriteToDB();
+                        DataTable dt =  SetUpCurrentData(((DataRowView)bs_MonHoc.Current).Row.ItemArray);
+
+                        Frm_ActionInfo frm_edit = new Frm_ActionInfo(
+                                            new Object[] { this.splc_Container, this.brm_Option },
+                                            new CallBackAction(Share.Action.EditSuccess,
+                                                               SetUpCurrentData(new object[] {txt_CodeCourse.Text, txt_NameCourse.Text }))
+                                            );
+
+                        frm_edit.Parent = this;
+                        frm_edit.BringToFront();
+                        frm_edit.Show();
+                    }
                 }
                 else return;
             }
@@ -136,8 +158,9 @@ namespace TracNghiem_CSDLPT
         private void btn_Edit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.btn_Write.Tag = "EDIT";
+            this.btn_Exit.Tag = "EDIT";
 
-            SetUpButtonForAdd();
+            SetUpButtonForAction();
         }
 
         private void btn_Delete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -147,12 +170,26 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Exit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(XtraMessageBox.Show(
-                "Bạn có chắc muốn thoát quá trình nhập không?",
-                "Thoát",
-                MessageBoxButtons.YesNo) == DialogResult.Yes)
+
+            if (btn_Exit.Tag.Equals("ADD"))
             {
-                FreeAllControl();
+                if (XtraMessageBox.Show(
+                    "Bạn có chắc muốn thoát quá trình nhập không?",
+                    "Thoát",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    FreeAllControl();
+                }
+            }
+            else if (btn_Exit.Tag.Equals("EDIT"))
+            {
+                if (XtraMessageBox.Show(
+                    "Bạn có chắc muốn thoát quá trình sửa không?",
+                    "Thoát",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    FreeAllControl();
+                }
             }
         }
 
@@ -190,23 +227,22 @@ namespace TracNghiem_CSDLPT
             table.Rows.Add(dr);
 
             return table;
-
-
         }
 
         public void RecoveryDataByAction(CallBackAction cAction)
         {
-            if (cAction.BackAction == Share.Action.Add)
+            if (cAction.BackAction == Share.Action.RecoveryAdd)
             {
                 DataRow dr = cAction.Table.Rows[0];
                 int index = bs_MonHoc.Find("MAMH", dr.ItemArray[0]);
                 bs_MonHoc.RemoveAt(index);
+                WriteToDB();
             }
-            else if (cAction.BackAction == Share.Action.Delete)
+            else if (cAction.BackAction == Share.Action.RecoveryDelete)
             {
                 DataView dt = (DataView)bs_MonHoc.List;
                 dt.Sort = "MAMH";
-                if (dt.FindRows(txt_CodeCourse.Text).Length != 0)
+                if (dt.FindRows(cAction.Table.Rows[0]).Length != 0)
                 {
                     MessageBox.Show("Mã môn học đã tồn tại.Vui lòng nhập lại!");
                 }
@@ -215,9 +251,10 @@ namespace TracNghiem_CSDLPT
                     DataRow dr = cAction.Table.Rows[0];
                     DataRowView drv = (DataRowView)bs_MonHoc.AddNew();
                     drv.Row.ItemArray = dr.ItemArray;
+                    WriteToDB();
                 }
             }
-            else if (cAction.BackAction == Share.Action.Edit)
+            else if (cAction.BackAction == Share.Action.RecoveryEdit)
             {
                 DataRow dr = cAction.Table.Rows[0];
                 bs_MonHoc.Position = bs_MonHoc.Find("MAMH", dr.ItemArray[0]);
@@ -225,10 +262,14 @@ namespace TracNghiem_CSDLPT
                 DataRowView currentRow = (DataRowView)bs_MonHoc.Current;
 
                 currentRow.Row.ItemArray = dr.ItemArray;
+                WriteToDB();
             }
+
+            this._callAction.Reset();
+            this.Refresh();
         }
 
-        public void SetUpButtonForAdd()
+        public void SetUpButtonForAction()
         {
             this.pnl_ConstructArea.Enabled = true;
             this.btn_Add.Enabled = false;
@@ -236,18 +277,20 @@ namespace TracNghiem_CSDLPT
             this.btn_Delete.Enabled = false;
 
             this.lbl_Err_CodeCourse.Text = this.lbl_Err_NameCourse.Text = "";
-            this.txt_CodeCourse.Text = this.txt_NameCourse.Text = "";
-            this.ActiveControl = this.txt_CodeCourse;
 
-            try
+            if (this.btn_Write.Tag.Equals("ADD"))
             {
-                this.bs_MonHoc.CurrentChanged -= Bs_MonHoc_CurrentChanged;
+                this.txt_CodeCourse.Text = this.txt_NameCourse.Text = "";
+                this.ActiveControl = this.txt_CodeCourse;
+                try
+                {
+                    this.bs_MonHoc.CurrentChanged -= Bs_MonHoc_CurrentChanged;
+                }
+                catch (ArgumentNullException anex)
+                {
+                    Debug.WriteLine(anex.Message);
+                }
             }
-            catch (ArgumentNullException anex)
-            {
-                Debug.WriteLine(anex.Message);
-            }
-
         }
 
         public void FreeAllControl()
@@ -257,6 +300,8 @@ namespace TracNghiem_CSDLPT
             this.btn_Edit.Enabled = true;
             this.btn_Delete.Enabled = true;
 
+            this.btn_Exit.Tag = this.btn_Write.Tag = "";
+            
             try
             {
                 this.bs_MonHoc.CurrentChanged -= Bs_MonHoc_CurrentChanged;
@@ -300,19 +345,17 @@ namespace TracNghiem_CSDLPT
                 DataRowView drv = (DataRowView)bs_MonHoc.AddNew();
                 drv.Row.ItemArray = data;
 
-                this._callAction.FillData(Share.Action.Add, SetUpCurrentData(data));
+                this._callAction.FillData(Share.Action.RecoveryAdd, SetUpCurrentData(data));
                 return true;
             }
         }
 
-        public void Edit()
+        public bool Edit()
         {
             bool isEmpty = ValidateEmpty();
 
             if (!isEmpty)
-                return;
-
-            this.btn_Write.Tag = "ADD";
+                return false;
 
             DataRowView currentRow = (DataRowView)bs_MonHoc.Current;
 
@@ -320,26 +363,36 @@ namespace TracNghiem_CSDLPT
             {
                 DataView dt = (DataView)bs_MonHoc.List;
                 dt.Sort = "MAMH";
-                if (dt.FindRows(txt_CodeCourse.Text.Trim()).Length != 0 &&
-                    !currentRow.Row.ItemArray[0].ToString().Trim().Equals(txt_CodeCourse.Text.Trim()))
+                DataRowView[] rowsFound = dt.FindRows(txt_CodeCourse.Text.Trim());
+
+                bool isExists = false;
+                if (rowsFound.Length != 0)
                 {
-                    MessageBox.Show("Mã khoa đã tồn tại.Vui lòng nhập lại!");
+                    IEnumerable<DataRowView> exists = rowsFound.Where(x => x.Row.ItemArray[0].ToString().Trim().Equals(currentRow.Row.ItemArray[0].ToString().Trim()));
+                    isExists = exists.ToList().Count == 0;
+                }
+                
+                if (isExists)
+                {
+                    ErrorHandler.ShowError(lbl_Err_CodeCourse, new string[] { "Ox1001" });
                     this.ActiveControl = this.txt_CodeCourse;
-                    return;
+                    return false;
                 }
                 else
                 {
-                    this._callAction.FillData(Share.Action.Edit, SetUpCurrentData(currentRow.Row.ItemArray));
+                    ShowContentTable(SetUpCurrentData(currentRow.Row.ItemArray));
+                    this._callAction.FillData(Share.Action.RecoveryEdit, SetUpCurrentData(currentRow.Row.ItemArray));
 
                     object[] data = new object[] { txt_CodeCourse.Text, txt_NameCourse.Text };
                     currentRow.Row.ItemArray = data;
 
-                    MessageBox.Show("Sửa dữ liệu thành công.");
+                    return true;
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn dữ liệu muốn sửa!");
+                XtraMessageBox.Show(StringLibrary.E_EditEmpty, StringLibrary.E_EditNotify, MessageBoxButtons.OK);
+                return false;
             }
         }
 
@@ -350,7 +403,7 @@ namespace TracNghiem_CSDLPT
             {
                 Frm_ActionInfo frm_delete = new Frm_ActionInfo(
                     new Object[] { this.splc_Container, this.brm_Option },
-                    new CallBackAction(Share.Action.Delete, SetUpCurrentData(currentRow.Row.ItemArray)));
+                    new CallBackAction(Share.Action.RecoveryDelete, SetUpCurrentData(currentRow.Row.ItemArray)));
 
                 frm_delete.Choosen += (result) =>
                 {
@@ -358,12 +411,10 @@ namespace TracNghiem_CSDLPT
                     {
                         try
                         {
-                            this._callAction.FillData(Share.Action.Delete, SetUpCurrentData(currentRow.Row.ItemArray));
+                            this._callAction.FillData(Share.Action.RecoveryDelete, SetUpCurrentData(currentRow.Row.ItemArray));
 
                             bs_MonHoc.RemoveCurrent();
                             WriteToDB();
-
-                            XtraMessageBox.Show(StringLibrary.D_Success, "Xóa thành công.", MessageBoxButtons.OK);
                         }
                         catch (Exception ex)
                         {
@@ -417,6 +468,19 @@ namespace TracNghiem_CSDLPT
         private void Txt_InputText_DoubleClick(object sender, EventArgs e)
         {
             (sender as TextBox).SelectAll();
+        }
+
+        private void ShowContentTable(DataTable dt)
+        {
+            Debug.WriteLine("Start table: ");
+            foreach (DataRow row in dt.Rows)
+            {
+                string ID = row["Mã môn học"].ToString();
+                string Name = row["Tên môn học"].ToString();
+
+                Debug.WriteLine("{" + ID + ", " + Name + "}");
+            }
+            Debug.WriteLine("End table");
         }
     }
 }

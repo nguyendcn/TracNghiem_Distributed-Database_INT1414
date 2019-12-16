@@ -12,6 +12,7 @@ namespace TracNghiem_CSDLPT.Share
         public static String Ox0001 = "Trường dữ liệu khôn được bỏ trống.";
         public static String Ox1001 = "Mã môn học đã tồn tại.";
         public static String Ox1002 = "Mã môn học không hợp lệ.";
+        public static String Ox1003 = "Mã";
 
         public static String GetPropertyValue(String propName)
         {

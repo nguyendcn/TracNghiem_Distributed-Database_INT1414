@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using TracNghiem_CSDLPT.Share;
 using DevExpress.XtraBars;
+using System.Diagnostics;
 
 namespace TracNghiem_CSDLPT.SupportForm
 {
@@ -119,6 +120,11 @@ namespace TracNghiem_CSDLPT.SupportForm
             }
         }
 
+        public void Reset()
+        {
+           
+        }
+
         public void SetupForm(CallBackAction cb)
         {
             this.TopLevel = false;
@@ -149,7 +155,15 @@ namespace TracNghiem_CSDLPT.SupportForm
                 case Share.Action.DeleteSuccess:
                     this.lbl_Caption.Text = StringLibrary.D_Success;
                     this.btn_No.Visible = this.btn_Yes.Visible = false;
-                    return;
+                    break;
+                case Share.Action.EditSuccess:
+                    this.lbl_Caption.Text = StringLibrary.E_EditSuccess;
+                    this.btn_No.Visible = this.btn_Yes.Visible = false;
+                    break;
+                case Share.Action.Edit:
+                    this.lbl_Caption.Text = StringLibrary.EDIT;
+                    this.btn_Ok.Visible = false;
+                    break;
                 default:
                     return;
             }

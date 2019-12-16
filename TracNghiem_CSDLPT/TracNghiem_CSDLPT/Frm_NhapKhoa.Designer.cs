@@ -34,7 +34,7 @@
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.brm_Option = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btn_Add = new DevExpress.XtraBars.BarButtonItem();
@@ -65,27 +65,29 @@
             this.tbla_GVDK = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter();
             this.bs_BoDe = new System.Windows.Forms.BindingSource(this.components);
             this.tbla_BoDe = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BODETableAdapter();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splc_Container = new System.Windows.Forms.SplitContainer();
+            this.pnl_grv = new System.Windows.Forms.Panel();
             this.grv_Khoa = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACS = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grb_Option = new System.Windows.Forms.GroupBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.dgv_Teachers = new System.Windows.Forms.DataGridView();
-            this.mAGVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dIACHIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mAKHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnl_ConstructArea = new System.Windows.Forms.SplitContainer();
+            this.lbl_Error_NameDepart = new System.Windows.Forms.Label();
+            this.lbl_Error_CodeDepart = new System.Windows.Forms.Label();
             this.txt_CodeBrand = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_NameDepartment = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_CodeDepartment = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            this.dgv_Teachers = new System.Windows.Forms.DataGridView();
+            this.mAGVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dIACHIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mAKHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_Khoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_Lop)).BeginInit();
@@ -93,17 +95,17 @@
             this.ctxt_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GVDK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BoDe)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splc_Container)).BeginInit();
+            this.splc_Container.Panel1.SuspendLayout();
+            this.splc_Container.Panel2.SuspendLayout();
+            this.splc_Container.SuspendLayout();
+            this.pnl_grv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.grb_Option.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_ConstructArea)).BeginInit();
+            this.pnl_ConstructArea.Panel1.SuspendLayout();
+            this.pnl_ConstructArea.Panel2.SuspendLayout();
+            this.pnl_ConstructArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Teachers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +116,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 69);
             this.barDockControlTop.Manager = null;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlTop.Size = new System.Drawing.Size(848, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(984, 0);
             // 
             // barDockControl1
             // 
@@ -123,7 +125,7 @@
             this.barDockControl1.Location = new System.Drawing.Point(0, 69);
             this.barDockControl1.Manager = null;
             this.barDockControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl1.Size = new System.Drawing.Size(848, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(984, 0);
             // 
             // bar3
             // 
@@ -142,29 +144,29 @@
             this.barDockControl2.Location = new System.Drawing.Point(0, 69);
             this.barDockControl2.Manager = null;
             this.barDockControl2.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl2.Size = new System.Drawing.Size(848, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(984, 0);
             // 
-            // barManager1
+            // brm_Option
             // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.brm_Option.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.bar1,
             this.bar2,
             this.bar4});
-            this.barManager1.DockControls.Add(this.barDockControl3);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.brm_Option.DockControls.Add(this.barDockControl3);
+            this.brm_Option.DockControls.Add(this.barDockControlBottom);
+            this.brm_Option.DockControls.Add(this.barDockControlLeft);
+            this.brm_Option.DockControls.Add(this.barDockControlRight);
+            this.brm_Option.Form = this;
+            this.brm_Option.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btn_Add,
             this.btn_Edit,
             this.btn_Write,
             this.btn_Reset,
             this.btn_Delete,
             this.btn_Exit});
-            this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 6;
-            this.barManager1.StatusBar = this.bar4;
+            this.brm_Option.MainMenu = this.bar2;
+            this.brm_Option.MaxItemId = 6;
+            this.brm_Option.StatusBar = this.bar4;
             // 
             // bar1
             // 
@@ -256,36 +258,36 @@
             this.barDockControl3.CausesValidation = false;
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl3.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl3.Manager = this.barManager1;
+            this.barDockControl3.Manager = this.brm_Option;
             this.barDockControl3.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl3.Size = new System.Drawing.Size(848, 69);
+            this.barDockControl3.Size = new System.Drawing.Size(984, 69);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 588);
-            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 447);
+            this.barDockControlBottom.Manager = this.brm_Option;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(848, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(984, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 69);
-            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Manager = this.brm_Option;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 519);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 378);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(848, 69);
-            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Location = new System.Drawing.Point(984, 69);
+            this.barDockControlRight.Manager = this.brm_Option;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 519);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 378);
             // 
             // ds_TN_CSDLPT
             // 
@@ -389,23 +391,33 @@
             // 
             this.tbla_BoDe.ClearBeforeFill = true;
             // 
-            // splitContainer1
+            // splc_Container
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 69);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splc_Container.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splc_Container.Location = new System.Drawing.Point(0, 69);
+            this.splc_Container.Name = "splc_Container";
+            this.splc_Container.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // splc_Container.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.grv_Khoa);
+            this.splc_Container.Panel1.Controls.Add(this.pnl_grv);
             // 
-            // splitContainer1.Panel2
+            // splc_Container.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.grb_Option);
-            this.splitContainer1.Size = new System.Drawing.Size(848, 519);
-            this.splitContainer1.SplitterDistance = 310;
-            this.splitContainer1.TabIndex = 19;
+            this.splc_Container.Panel2.Controls.Add(this.pnl_ConstructArea);
+            this.splc_Container.Size = new System.Drawing.Size(984, 378);
+            this.splc_Container.SplitterDistance = 201;
+            this.splc_Container.TabIndex = 27;
+            // 
+            // pnl_grv
+            // 
+            this.pnl_grv.Controls.Add(this.grv_Khoa);
+            this.pnl_grv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_grv.Location = new System.Drawing.Point(0, 0);
+            this.pnl_grv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_grv.Name = "pnl_grv";
+            this.pnl_grv.Size = new System.Drawing.Size(984, 201);
+            this.pnl_grv.TabIndex = 0;
             // 
             // grv_Khoa
             // 
@@ -414,11 +426,11 @@
             this.grv_Khoa.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
             this.grv_Khoa.Location = new System.Drawing.Point(0, 0);
             this.grv_Khoa.MainView = this.gridView1;
-            this.grv_Khoa.Margin = new System.Windows.Forms.Padding(4);
-            this.grv_Khoa.MenuManager = this.barManager1;
+            this.grv_Khoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grv_Khoa.MenuManager = this.brm_Option;
             this.grv_Khoa.Name = "grv_Khoa";
-            this.grv_Khoa.Size = new System.Drawing.Size(848, 310);
-            this.grv_Khoa.TabIndex = 12;
+            this.grv_Khoa.Size = new System.Drawing.Size(984, 201);
+            this.grv_Khoa.TabIndex = 14;
             this.grv_Khoa.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -453,39 +465,109 @@
             this.colMACS.Visible = true;
             this.colMACS.VisibleIndex = 2;
             // 
-            // grb_Option
+            // pnl_ConstructArea
             // 
-            this.grb_Option.Controls.Add(this.splitContainer2);
-            this.grb_Option.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grb_Option.Location = new System.Drawing.Point(0, 0);
-            this.grb_Option.Margin = new System.Windows.Forms.Padding(4);
-            this.grb_Option.Name = "grb_Option";
-            this.grb_Option.Padding = new System.Windows.Forms.Padding(4);
-            this.grb_Option.Size = new System.Drawing.Size(848, 205);
-            this.grb_Option.TabIndex = 14;
-            this.grb_Option.TabStop = false;
+            this.pnl_ConstructArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_ConstructArea.Enabled = false;
+            this.pnl_ConstructArea.Location = new System.Drawing.Point(0, 0);
+            this.pnl_ConstructArea.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_ConstructArea.Name = "pnl_ConstructArea";
             // 
-            // splitContainer2
+            // pnl_ConstructArea.Panel1
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(4, 23);
-            this.splitContainer2.Name = "splitContainer2";
+            this.pnl_ConstructArea.Panel1.Controls.Add(this.lbl_Error_NameDepart);
+            this.pnl_ConstructArea.Panel1.Controls.Add(this.lbl_Error_CodeDepart);
+            this.pnl_ConstructArea.Panel1.Controls.Add(this.txt_CodeBrand);
+            this.pnl_ConstructArea.Panel1.Controls.Add(this.label3);
+            this.pnl_ConstructArea.Panel1.Controls.Add(this.txt_NameDepartment);
+            this.pnl_ConstructArea.Panel1.Controls.Add(this.label2);
+            this.pnl_ConstructArea.Panel1.Controls.Add(this.txt_CodeDepartment);
+            this.pnl_ConstructArea.Panel1.Controls.Add(this.label1);
             // 
-            // splitContainer2.Panel1
+            // pnl_ConstructArea.Panel2
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.txt_CodeBrand);
-            this.splitContainer2.Panel1.Controls.Add(this.label3);
-            this.splitContainer2.Panel1.Controls.Add(this.txt_NameDepartment);
-            this.splitContainer2.Panel1.Controls.Add(this.label2);
-            this.splitContainer2.Panel1.Controls.Add(this.txt_CodeDepartment);
-            this.splitContainer2.Panel1.Controls.Add(this.label1);
+            this.pnl_ConstructArea.Panel2.Controls.Add(this.dgv_Teachers);
+            this.pnl_ConstructArea.Size = new System.Drawing.Size(984, 173);
+            this.pnl_ConstructArea.SplitterDistance = 437;
+            this.pnl_ConstructArea.SplitterWidth = 3;
+            this.pnl_ConstructArea.TabIndex = 0;
             // 
-            // splitContainer2.Panel2
+            // lbl_Error_NameDepart
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.dgv_Teachers);
-            this.splitContainer2.Size = new System.Drawing.Size(840, 178);
-            this.splitContainer2.SplitterDistance = 301;
-            this.splitContainer2.TabIndex = 6;
+            this.lbl_Error_NameDepart.AutoSize = true;
+            this.lbl_Error_NameDepart.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Error_NameDepart.Location = new System.Drawing.Point(103, 66);
+            this.lbl_Error_NameDepart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Error_NameDepart.Name = "lbl_Error_NameDepart";
+            this.lbl_Error_NameDepart.Size = new System.Drawing.Size(28, 19);
+            this.lbl_Error_NameDepart.TabIndex = 19;
+            this.lbl_Error_NameDepart.Text = "Err";
+            // 
+            // lbl_Error_CodeDepart
+            // 
+            this.lbl_Error_CodeDepart.AutoSize = true;
+            this.lbl_Error_CodeDepart.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Error_CodeDepart.Location = new System.Drawing.Point(103, 16);
+            this.lbl_Error_CodeDepart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Error_CodeDepart.Name = "lbl_Error_CodeDepart";
+            this.lbl_Error_CodeDepart.Size = new System.Drawing.Size(28, 19);
+            this.lbl_Error_CodeDepart.TabIndex = 18;
+            this.lbl_Error_CodeDepart.Text = "Err";
+            // 
+            // txt_CodeBrand
+            // 
+            this.txt_CodeBrand.Location = new System.Drawing.Point(107, 130);
+            this.txt_CodeBrand.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txt_CodeBrand.Name = "txt_CodeBrand";
+            this.txt_CodeBrand.ReadOnly = true;
+            this.txt_CodeBrand.Size = new System.Drawing.Size(217, 26);
+            this.txt_CodeBrand.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 133);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 19);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Mã cơ sở:";
+            // 
+            // txt_NameDepartment
+            // 
+            this.txt_NameDepartment.Location = new System.Drawing.Point(107, 87);
+            this.txt_NameDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_NameDepartment.Name = "txt_NameDepartment";
+            this.txt_NameDepartment.Size = new System.Drawing.Size(217, 26);
+            this.txt_NameDepartment.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 90);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 19);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Tên Khoa:";
+            // 
+            // txt_CodeDepartment
+            // 
+            this.txt_CodeDepartment.Location = new System.Drawing.Point(107, 38);
+            this.txt_CodeDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_CodeDepartment.Name = "txt_CodeDepartment";
+            this.txt_CodeDepartment.Size = new System.Drawing.Size(217, 26);
+            this.txt_CodeDepartment.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 38);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 19);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Mã Khoa:";
             // 
             // dgv_Teachers
             // 
@@ -503,12 +585,10 @@
             this.dgv_Teachers.DataSource = this.bs_GiaoVien;
             this.dgv_Teachers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Teachers.Location = new System.Drawing.Point(0, 0);
+            this.dgv_Teachers.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.dgv_Teachers.Name = "dgv_Teachers";
-            this.dgv_Teachers.Size = new System.Drawing.Size(535, 178);
-            this.dgv_Teachers.TabIndex = 1;
-            this.dgv_Teachers.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_GiaoVien_CellValidated);
-            this.dgv_Teachers.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_GiaoVien_RowValidated);
-            this.dgv_Teachers.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgv_GiaoVien_RowValidating);
+            this.dgv_Teachers.Size = new System.Drawing.Size(544, 173);
+            this.dgv_Teachers.TabIndex = 2;
             // 
             // mAGVDataGridViewTextBoxColumn
             // 
@@ -550,68 +630,14 @@
             this.mAKHDataGridViewTextBoxColumn.Name = "mAKHDataGridViewTextBoxColumn";
             this.mAKHDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // txt_CodeBrand
-            // 
-            this.txt_CodeBrand.Location = new System.Drawing.Point(177, 131);
-            this.txt_CodeBrand.Name = "txt_CodeBrand";
-            this.txt_CodeBrand.ReadOnly = true;
-            this.txt_CodeBrand.Size = new System.Drawing.Size(186, 26);
-            this.txt_CodeBrand.TabIndex = 11;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 138);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 19);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Mã cơ sở:";
-            // 
-            // txt_NameDepartment
-            // 
-            this.txt_NameDepartment.Location = new System.Drawing.Point(177, 71);
-            this.txt_NameDepartment.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_NameDepartment.Name = "txt_NameDepartment";
-            this.txt_NameDepartment.Size = new System.Drawing.Size(186, 26);
-            this.txt_NameDepartment.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 78);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 19);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Tên Khoa:";
-            // 
-            // txt_CodeDepartment
-            // 
-            this.txt_CodeDepartment.Location = new System.Drawing.Point(177, 22);
-            this.txt_CodeDepartment.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_CodeDepartment.Name = "txt_CodeDepartment";
-            this.txt_CodeDepartment.Size = new System.Drawing.Size(186, 26);
-            this.txt_CodeDepartment.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 19);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Mã Khoa:";
-            // 
             // Frm_NhapKhoa
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(848, 611);
-            this.Controls.Add(this.splitContainer1);
+            this.ClientSize = new System.Drawing.Size(984, 470);
+            this.Controls.Add(this.splc_Container);
             this.Controls.Add(this.barDockControlTop);
             this.Controls.Add(this.barDockControl1);
             this.Controls.Add(this.barDockControl2);
@@ -624,7 +650,7 @@
             this.Name = "Frm_NhapKhoa";
             this.Text = "Frm_NhapKhoa";
             this.Load += new System.EventHandler(this.Frm_NhapKhoa_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_Khoa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_Lop)).EndInit();
@@ -632,18 +658,18 @@
             this.ctxt_Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bs_GVDK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_BoDe)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splc_Container.Panel1.ResumeLayout(false);
+            this.splc_Container.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splc_Container)).EndInit();
+            this.splc_Container.ResumeLayout(false);
+            this.pnl_grv.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.grb_Option.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel1.PerformLayout();
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.pnl_ConstructArea.Panel1.ResumeLayout(false);
+            this.pnl_ConstructArea.Panel1.PerformLayout();
+            this.pnl_ConstructArea.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_ConstructArea)).EndInit();
+            this.pnl_ConstructArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Teachers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -656,7 +682,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControl1;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControl2;
-        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarManager brm_Option;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem btn_Add;
@@ -687,25 +713,27 @@
         private TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter tbla_GVDK;
         private System.Windows.Forms.BindingSource bs_BoDe;
         private TN_CSDLPTDataSetTableAdapters.BODETableAdapter tbla_BoDe;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private DevExpress.XtraGrid.GridControl grv_Khoa;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
-        private DevExpress.XtraGrid.Columns.GridColumn colTENKH;
-        private DevExpress.XtraGrid.Columns.GridColumn colMACS;
-        private System.Windows.Forms.GroupBox grb_Option;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.TextBox txt_CodeBrand;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_NameDepartment;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_CodeDepartment;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SplitContainer splc_Container;
+        private System.Windows.Forms.SplitContainer pnl_ConstructArea;
         private System.Windows.Forms.DataGridView dgv_Teachers;
         private System.Windows.Forms.DataGridViewTextBoxColumn mAGVDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tENDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dIACHIDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mAKHDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label lbl_Error_NameDepart;
+        private System.Windows.Forms.Label lbl_Error_CodeDepart;
+        private System.Windows.Forms.TextBox txt_CodeBrand;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txt_NameDepartment;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_CodeDepartment;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnl_grv;
+        private DevExpress.XtraGrid.GridControl grv_Khoa;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
+        private DevExpress.XtraGrid.Columns.GridColumn colTENKH;
+        private DevExpress.XtraGrid.Columns.GridColumn colMACS;
     }
 }

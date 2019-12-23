@@ -32,27 +32,24 @@ namespace TracNghiem_CSDLPT.Common
 
         public static bool StudentIsExist(String studentCode)
         {
-            SqlDataReader reader = ExecSqlDataReader("Exec sp_CheckStudentExists '" + studentCode + "'");
 
-            while (reader.Read())
-            {
-                String result = reader.GetString(0);
-
-                if (result.Equals("1"))
-                {
-                    reader.Close(); // <- too easy to forget
-                    reader.Dispose(); // <- too easy to forget
-                    return true;
-                }
-            }
-            reader.Close(); // <- too easy to forget
-            reader.Dispose(); // <- too easy to forget
-            return false;
+            return CodeIsExist("sp_CheckStudentExists", studentCode);
         }
 
         public static bool DepartmentIsExist(String departmentCode)
         {
-            SqlDataReader reader = ExecSqlDataReader("Exec sp_CheckDepartmentExists '" + departmentCode + "'");
+            return CodeIsExist("sp_CheckDepartmentExists", departmentCode);
+        }
+
+        public static bool TeacherIsExists(String teacherCode)
+        {
+            return CodeIsExist("sp_CheckTecherExists", teacherCode);
+        }
+
+        private static bool CodeIsExist(String sp, String code)
+        {
+            String query = "Exec " + sp + " '" + code + "'";
+            SqlDataReader reader = ExecSqlDataReader(query);
 
             while (reader.Read())
             {

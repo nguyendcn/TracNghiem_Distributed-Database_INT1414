@@ -98,6 +98,7 @@ namespace TracNghiem_CSDLPT
 
                     if (addSucess)
                     {
+                        this.dgv_Teachers.DataSource = bs_GiaoVien;
                         WriteToDB();
 
                         Frm_ActionInfo info = new Frm_ActionInfo(
@@ -108,6 +109,9 @@ namespace TracNghiem_CSDLPT
                         info.Parent = this;
                         info.BringToFront();
                         info.Show();
+
+                        //this.dgv_Teachers.DataSource = this.bs_GiaoVien;
+                        //this.grv_Khoa.Enabled = false;
                     }
                 }
                 else if (this.btn_Write.Tag.Equals("EDIT"))
@@ -122,12 +126,20 @@ namespace TracNghiem_CSDLPT
                         Frm_ActionInfo frm_edit = new Frm_ActionInfo(
                                             new Object[] { this.splc_Container, this.brm_Option },
                                             new CallBackAction(Share.Action.EditSuccess,
-                                                               SetUpCurrentData(new object[] { txt_CodeBrand.Text, txt_NameDepartment.Text, txt_CodeBrand }))
+                                                               SetUpCurrentData(new object[] { txt_CodeDepartment.Text, txt_NameDepartment.Text, txt_CodeBrand.Text }))
                                             );
 
                         frm_edit.Parent = this;
                         frm_edit.BringToFront();
                         frm_edit.Show();
+
+                        pnl_grv.Enabled = true;
+                        bs_Khoa.DataSource = ds_TN_CSDLPT;
+                        grv_Khoa.Refresh();
+                        
+                        
+                        dgv_Teachers.Refresh();
+                        
                     }
                 }
                 else return;
@@ -145,21 +157,30 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Reset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Phục hồi dữ liệu", "Bạn có chắc muống phục hồi dữ liệu khoa không?",
-                                                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (this._callAction.BackAction == Share.Action.None)
             {
-                try
-                {
-                    this.tbla_Khoa.Fill(this.ds_TN_CSDLPT.KHOA);
+                MessageBox.Show("Không có dữ liệu để phục hồi. Vui lòng kiểm tra lại!", "Phục hồi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
 
-                    this.tbla_GiaoVien.Fill(this.ds_TN_CSDLPT.GIAOVIEN);
-                    MessageBox.Show("Phục hồi dữ liệu thành công.");
-                }
-                catch (Exception ex)
+                Frm_ActionInfo frm_Recovery = new Frm_ActionInfo(
+                    new Object[] { this.splc_Container, this.brm_Option },
+                    this._callAction);
+
+                frm_Recovery.Choosen += (result) =>
                 {
-                    MessageBox.Show("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    if (result == DialogResult.Yes)
+                    {
+                        RecoveryDataByAction(this._callAction);
+                    }
+                };
+
+                frm_Recovery.Parent = this;
+                frm_Recovery.BringToFront();
+                frm_Recovery.Show();
             }
         }
 
@@ -172,6 +193,7 @@ namespace TracNghiem_CSDLPT
         {
             if (btn_Exit.Tag.Equals("ADD"))
             {
+                ShowAll(bs_Khoa);
                 if (XtraMessageBox.Show(
                     "Bạn có chắc muốn thoát quá trình nhập không?",
                     "Thoát",
@@ -196,6 +218,9 @@ namespace TracNghiem_CSDLPT
         {
             try
             {
+                if (DGVHadError(dgv_Teachers))
+                    return;
+
                 DataRowView drv = (DataRowView)bs_GiaoVien.AddNew();
 
                 dgv_Teachers.CurrentRow.Cells[0].ReadOnly = false;
@@ -203,9 +228,8 @@ namespace TracNghiem_CSDLPT
                 dgv_Teachers.CurrentRow.Cells[2].ReadOnly = false;
                 dgv_Teachers.CurrentRow.Cells[3].ReadOnly = false;
 
-                dgv_Teachers.CellValidating += dgv_GiaoVien_CellValidating;
-
-                Debug.WriteLine("First Is new Row: " + dgv_Teachers.CurrentRow.IsNewRow);
+                dgv_Teachers.RowValidating += Dgv_Teachers_RowValidating;
+                dgv_Teachers.RowValidated += Dgv_Teachers_RowValidated;
 
             }
             catch (Exception ex)
@@ -219,13 +243,16 @@ namespace TracNghiem_CSDLPT
             dgv_Teachers.CurrentRow.Cells[1].ReadOnly = false;
             dgv_Teachers.CurrentRow.Cells[2].ReadOnly = false;
             dgv_Teachers.CurrentRow.Cells[3].ReadOnly = false;
+
+            dgv_Teachers.RowValidating += Dgv_Teachers_RowValidating;
+            dgv_Teachers.RowValidated += Dgv_Teachers_RowValidated;
         }
 
         private void tsmi_Delete_Click(object sender, EventArgs e)
         {
             try
             {
-                DataRowView currentRow = (DataRowView)bs_Lop.Current;
+                DataRowView currentRow = (DataRowView)bs_GiaoVien.Current;
 
                 if (bs_BoDe.Count != 0)
                 {
@@ -234,13 +261,14 @@ namespace TracNghiem_CSDLPT
                 }
                 else if(bs_GVDK.Count != 0)
                 {
-                    MessageBox.Show("Không thể xóa giáo viên này. Vì iáo viên đăng ký thi.", "Error",
+                    MessageBox.Show("Không thể xóa giáo viên này. Vì giáo viên đăng ký thi.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show(
-                    currentRow.Row.ItemArray.ToString(),
+                    object[] data = currentRow.Row.ItemArray;
+                    DialogResult dialogResult = MessageBox.Show( data.ToList<object>().ToString()
+                    ,
                     "Xoá",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -249,8 +277,9 @@ namespace TracNghiem_CSDLPT
                         try
                         {
                             bs_GiaoVien.RemoveCurrent();
-                            MessageBox.Show("Xóa thành công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            SaveTeacherToDb();
 
+                            MessageBox.Show("Xóa thành công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {
@@ -270,21 +299,7 @@ namespace TracNghiem_CSDLPT
 
         private void tsmi_Reset_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muống phục hồi dữ liệu giáo viên không?",
-                                                       "Phục hồi dữ liệu",
-                                                       MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                try
-                {
-                    this.tbla_GiaoVien.Fill(ds_TN_CSDLPT.GIAOVIEN);
-                    MessageBox.Show("Phục hồi dữ liệu thành công.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            
         }
 
         private void dgv_GiaoVien_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -293,59 +308,22 @@ namespace TracNghiem_CSDLPT
            dgv_Teachers.Columns[e.ColumnIndex].HeaderText;
             if (headerText.Equals("MAGV"))
             {
-                //string valCurrent = e.FormattedValue.ToString();
-                //if (StudentCodeIsExists(valCurrent))
-                //{
-                //    e.Cancel = true;
-                //    dgv_Students.Rows[e.RowIndex].ErrorText = "Student Code Exist.";
-
-                //    MessageBox.Show("Mã sinh viên đã tồn tại vui lòng nhập lại.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                string valCurrent = e.FormattedValue.ToString();
+                if (SqlRequestFunction.TeacherIsExists(valCurrent))
+                {
+                   
+                    //dgv_Teachers.Rows[e.RowIndex].ErrorText = "Had error";
+                    //dgv_Teachers.Rows[e.RowIndex].Cells[e.ColumnIndex].ErrorText = "Teacher Code Is Exists.";
+                    //dgv_Teachers.CurrentCell = dgv_Teachers.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    //e.Cancel = true;
+                }
             }
         }
-
 
         private void dgv_GiaoVien_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
+            Debug.WriteLine("Cell validated");
             dgv_Teachers.Rows[e.RowIndex].ErrorText = null;
-        }
-
-        private void dgv_GiaoVien_RowValidated(object sender, DataGridViewCellEventArgs e)
-        {
-            dgv_Teachers.Rows[e.RowIndex].ErrorText = null;
-
-            try
-            {
-                dgv_Teachers.CellValidating -= dgv_GiaoVien_CellValidating;
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void dgv_GiaoVien_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            try
-            {
-                foreach (DataGridViewCell drv in dgv_Teachers.Rows[e.RowIndex].Cells)
-                {
-                    if (String.IsNullOrEmpty(drv.Value.ToString()))
-                    {
-                        e.Cancel = true;
-
-                        dgv_Teachers.Rows[e.RowIndex].ErrorText = "Dose not empty.";
-
-                        MessageBox.Show("Không được để trống.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                        dgv_Teachers.CurrentCell = drv;
-
-                        return;
-                    }
-                }
-            }
-            catch { }
         }
 
         public bool ValidateEmpty()
@@ -399,7 +377,7 @@ namespace TracNghiem_CSDLPT
             else if (cAction.BackAction == Share.Action.RecoveryDelete)
             {
                 DataView dt = (DataView)bs_Khoa.List;
-                dt.Sort = "MAMH";
+                dt.Sort = "MAKH";
                 if (dt.FindRows(cAction.Table.Rows[0]).Length != 0)
                 {
                     MessageBox.Show("Mã môn học đã tồn tại.Vui lòng nhập lại!");
@@ -433,21 +411,29 @@ namespace TracNghiem_CSDLPT
             this.btn_Add.Enabled = false;
             this.btn_Edit.Enabled = false;
             this.btn_Delete.Enabled = false;
+            //this.pnl_grv.Enabled = false;
 
             this.lbl_Error_CodeDepart.Text = this.lbl_Error_NameDepart.Text = "";
 
             if (this.btn_Write.Tag.Equals("ADD"))
             {
-                this.lbl_Error_CodeDepart.Text = this.lbl_Error_NameDepart.Text = "";
-                this.ActiveControl = this.lbl_Error_CodeDepart;
-                try
-                {
-                    this.bs_Khoa.CurrentChanged -= Bs_Khoa_CurrentChanged;
-                }
-                catch (ArgumentNullException anex)
-                {
-                    Debug.WriteLine(anex.Message);
-                }
+                this.dgv_Teachers.DataSource = null;
+                this.txt_NameDepartment.Text = this.txt_CodeDepartment.Text = "";
+                this.ActiveControl = this.txt_CodeDepartment;
+            }
+            else if (this.btn_Write.Tag.Equals("EDIT"))
+            {
+                //this.txt_CodeDepartment.Enabled = false;
+                this.pnl_grv.Enabled = false;
+            }
+
+            try
+            {
+                this.bs_Khoa.CurrentChanged -= Bs_Khoa_CurrentChanged;
+            }
+            catch (ArgumentNullException anex)
+            {
+                Debug.WriteLine(anex.Message);
             }
         }
 
@@ -457,6 +443,8 @@ namespace TracNghiem_CSDLPT
             this.btn_Add.Enabled = true;
             this.btn_Edit.Enabled = true;
             this.btn_Delete.Enabled = true;
+            this.pnl_grv.Enabled = true;
+            this.dgv_Teachers.DataSource = bs_GiaoVien;
 
             this.btn_Exit.Tag = this.btn_Write.Tag = "";
 
@@ -493,6 +481,7 @@ namespace TracNghiem_CSDLPT
                 drv.Row.ItemArray = data;
 
                 this._callAction.FillData(Share.Action.RecoveryAdd, SetUpCurrentData(data));
+
                 return true;
             }
         }
@@ -527,7 +516,6 @@ namespace TracNghiem_CSDLPT
                 }
                 else
                 {
-                    ShowContentTable(SetUpCurrentData(currentRow.Row.ItemArray));
                     this._callAction.FillData(Share.Action.RecoveryEdit, SetUpCurrentData(currentRow.Row.ItemArray));
 
                     object[] data = new object[] { txt_CodeDepartment.Text, txt_NameDepartment.Text };
@@ -550,7 +538,7 @@ namespace TracNghiem_CSDLPT
             {
                 Frm_ActionInfo frm_delete = new Frm_ActionInfo(
                     new Object[] { this.splc_Container, this.brm_Option },
-                    new CallBackAction(Share.Action.RecoveryDelete, SetUpCurrentData(currentRow.Row.ItemArray)));
+                    new CallBackAction(Share.Action.Delete, SetUpCurrentData(currentRow.Row.ItemArray)));
 
                 frm_delete.Choosen += (result) =>
                 {
@@ -612,19 +600,6 @@ namespace TracNghiem_CSDLPT
             (sender as TextBox).SelectAll();
         }
 
-        private void ShowContentTable(DataTable dt)
-        {
-            Debug.WriteLine("Start table: ");
-            foreach (DataRow row in dt.Rows)
-            {
-                string ID = row["Mã môn học"].ToString();
-                string Name = row["Tên môn học"].ToString();
-
-                Debug.WriteLine("{" + ID + ", " + Name + "}");
-            }
-            Debug.WriteLine("End table");
-        }
-
         private DataRowView[] FindCurrentDataByDepartmentCode(String departmentCode)
         {
             DataView dt = (DataView)bs_Khoa.List;
@@ -632,6 +607,41 @@ namespace TracNghiem_CSDLPT
            return dt.FindRows(departmentCode);
         }
 
+        public void ShowAll(BindingSource src)
+        {
+            DataView dt = (DataView)src.List;
+            DataTable table = dt.Table;
+
+            Debug.WriteLine("Start show table content.");
+            foreach (DataRow row in table.Rows)
+            {
+                string ID = row["MAKH"].ToString();
+                string Name = row["TENKH"].ToString();
+                string FamilyName = row["MACS"].ToString();
+
+                Debug.WriteLine("{MAKH=" + ID + ", TENKH=" + Name + ", MACS=" + FamilyName + "}");
+            }
+        }
+
+        private bool DGVHadError(DataGridView dgv)
+        {
+            foreach(DataGridViewRow rowView in dgv.Rows)
+            {
+                bool a = rowView.IsNewRow;
+                if(rowView.ErrorText != "" )
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void SaveTeacherToDb()
+        {
+            bs_GiaoVien.EndEdit();
+            bs_GiaoVien.ResetCurrentItem();
+            this.tbla_GiaoVien.Update(ds_TN_CSDLPT.GIAOVIEN);
+        }
 
         private bool DepartmentIsExists(String departmentCode)
         {
@@ -639,6 +649,77 @@ namespace TracNghiem_CSDLPT
             bool isExistOnDatabase = SqlRequestFunction.DepartmentIsExist(departmentCode);
 
             return isExistInCurrentData || isExistOnDatabase;
+        }
+
+        private void dgv_Teachers_EnabledChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void Dgv_Teachers_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            dgv_Teachers.Rows[e.RowIndex].ErrorText = null;
+            foreach(DataGridViewCell cell in dgv_Teachers.Rows[e.RowIndex].Cells)
+            {
+                cell.ErrorText = null;
+            }
+
+            try
+            {
+                dgv_Teachers.RowValidating -= Dgv_Teachers_RowValidating;
+                dgv_Teachers.RowValidated -= Dgv_Teachers_RowValidated;
+
+                SaveTeacherToDb();
+                Debug.WriteLine("Rowvalidated");
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void Dgv_Teachers_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            try
+            {
+                bool isFirst = true;
+                int index = 0;
+                foreach (DataGridViewCell drv in dgv_Teachers.Rows[e.RowIndex].Cells)
+                {
+                    if (String.IsNullOrEmpty(drv.Value.ToString()))
+                    {
+                        e.Cancel = true;
+
+                        dgv_Teachers.Rows[e.RowIndex].ErrorText = "Had error";
+                        dgv_Teachers.Rows[e.RowIndex].Cells[index].ErrorText = "Dose not empty.";
+
+                        dgv_Teachers.CurrentCell = drv;
+                    }
+                    else
+                    {
+                        dgv_Teachers.Rows[e.RowIndex].Cells[index].ErrorText = null;
+                    }
+
+                    if (isFirst)
+                    {
+                        string valCurrent = drv.FormattedValue.ToString();
+
+                        if (SqlRequestFunction.TeacherIsExists(valCurrent))
+                        {
+                            dgv_Teachers.Rows[e.RowIndex].ErrorText = "Had error";
+                            dgv_Teachers.Rows[e.RowIndex].Cells[index].ErrorText = "Teacher Code Is Exists.";
+                            dgv_Teachers.CurrentCell = drv;
+                        }
+                        else
+                        {
+                            dgv_Teachers.Rows[e.RowIndex].Cells[index].ErrorText = null;
+                        }
+
+                        isFirst = false;
+                    }
+                    index++;
+                }
+            }
+            catch { }
         }
     }
 }

@@ -73,20 +73,26 @@
             this.colTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnl_ConstructArea = new System.Windows.Forms.SplitContainer();
-            this.lbl_Error_NameDepart = new System.Windows.Forms.Label();
-            this.lbl_Error_CodeDepart = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_CodeBrand = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt_NameDepartment = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txt_CodeDepartment = new System.Windows.Forms.TextBox();
+            this.txt_NameDepartment = new System.Windows.Forms.TextBox();
+            this.lbl_Error_CodeDepart = new System.Windows.Forms.Label();
+            this.lbl_Error_NameDepart = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.dgv_Teachers = new System.Windows.Forms.DataGridView();
             this.mAGVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tENDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dIACHIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mAKHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.simpleSeparator1 = new DevExpress.XtraLayout.SimpleSeparator();
+            this.simpleSeparator2 = new DevExpress.XtraLayout.SimpleSeparator();
+            this.simpleSeparator3 = new DevExpress.XtraLayout.SimpleSeparator();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_Khoa)).BeginInit();
@@ -106,7 +112,13 @@
             this.pnl_ConstructArea.Panel1.SuspendLayout();
             this.pnl_ConstructArea.Panel2.SuspendLayout();
             this.pnl_ConstructArea.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Teachers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // barDockControlTop
@@ -414,7 +426,7 @@
             this.pnl_grv.Controls.Add(this.grv_Khoa);
             this.pnl_grv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_grv.Location = new System.Drawing.Point(0, 0);
-            this.pnl_grv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_grv.Margin = new System.Windows.Forms.Padding(1);
             this.pnl_grv.Name = "pnl_grv";
             this.pnl_grv.Size = new System.Drawing.Size(984, 201);
             this.pnl_grv.TabIndex = 0;
@@ -426,7 +438,7 @@
             this.grv_Khoa.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
             this.grv_Khoa.Location = new System.Drawing.Point(0, 0);
             this.grv_Khoa.MainView = this.gridView1;
-            this.grv_Khoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grv_Khoa.Margin = new System.Windows.Forms.Padding(1);
             this.grv_Khoa.MenuManager = this.brm_Option;
             this.grv_Khoa.Name = "grv_Khoa";
             this.grv_Khoa.Size = new System.Drawing.Size(984, 201);
@@ -470,104 +482,131 @@
             this.pnl_ConstructArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_ConstructArea.Enabled = false;
             this.pnl_ConstructArea.Location = new System.Drawing.Point(0, 0);
-            this.pnl_ConstructArea.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_ConstructArea.Margin = new System.Windows.Forms.Padding(1);
             this.pnl_ConstructArea.Name = "pnl_ConstructArea";
             // 
             // pnl_ConstructArea.Panel1
             // 
-            this.pnl_ConstructArea.Panel1.Controls.Add(this.lbl_Error_NameDepart);
-            this.pnl_ConstructArea.Panel1.Controls.Add(this.lbl_Error_CodeDepart);
-            this.pnl_ConstructArea.Panel1.Controls.Add(this.txt_CodeBrand);
-            this.pnl_ConstructArea.Panel1.Controls.Add(this.label3);
-            this.pnl_ConstructArea.Panel1.Controls.Add(this.txt_NameDepartment);
-            this.pnl_ConstructArea.Panel1.Controls.Add(this.label2);
-            this.pnl_ConstructArea.Panel1.Controls.Add(this.txt_CodeDepartment);
-            this.pnl_ConstructArea.Panel1.Controls.Add(this.label1);
+            this.pnl_ConstructArea.Panel1.Controls.Add(this.tableLayoutPanel1);
             // 
             // pnl_ConstructArea.Panel2
             // 
             this.pnl_ConstructArea.Panel2.Controls.Add(this.dgv_Teachers);
             this.pnl_ConstructArea.Size = new System.Drawing.Size(984, 173);
             this.pnl_ConstructArea.SplitterDistance = 437;
-            this.pnl_ConstructArea.SplitterWidth = 3;
+            this.pnl_ConstructArea.SplitterWidth = 1;
             this.pnl_ConstructArea.TabIndex = 0;
             // 
-            // lbl_Error_NameDepart
+            // tableLayoutPanel1
             // 
-            this.lbl_Error_NameDepart.AutoSize = true;
-            this.lbl_Error_NameDepart.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error_NameDepart.Location = new System.Drawing.Point(103, 66);
-            this.lbl_Error_NameDepart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_Error_NameDepart.Name = "lbl_Error_NameDepart";
-            this.lbl_Error_NameDepart.Size = new System.Drawing.Size(28, 19);
-            this.lbl_Error_NameDepart.TabIndex = 19;
-            this.lbl_Error_NameDepart.Text = "Err";
-            // 
-            // lbl_Error_CodeDepart
-            // 
-            this.lbl_Error_CodeDepart.AutoSize = true;
-            this.lbl_Error_CodeDepart.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error_CodeDepart.Location = new System.Drawing.Point(103, 16);
-            this.lbl_Error_CodeDepart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_Error_CodeDepart.Name = "lbl_Error_CodeDepart";
-            this.lbl_Error_CodeDepart.Size = new System.Drawing.Size(28, 19);
-            this.lbl_Error_CodeDepart.TabIndex = 18;
-            this.lbl_Error_CodeDepart.Text = "Err";
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.72727F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.27273F));
+            this.tableLayoutPanel1.Controls.Add(this.txt_CodeBrand, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.txt_CodeDepartment, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txt_NameDepartment, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_Error_CodeDepart, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_Error_NameDepart, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 6);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(437, 173);
+            this.tableLayoutPanel1.TabIndex = 20;
             // 
             // txt_CodeBrand
             // 
-            this.txt_CodeBrand.Location = new System.Drawing.Point(107, 130);
-            this.txt_CodeBrand.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txt_CodeBrand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_CodeBrand.Enabled = false;
+            this.txt_CodeBrand.Location = new System.Drawing.Point(100, 131);
+            this.txt_CodeBrand.Margin = new System.Windows.Forms.Padding(1);
             this.txt_CodeBrand.Name = "txt_CodeBrand";
             this.txt_CodeBrand.ReadOnly = true;
-            this.txt_CodeBrand.Size = new System.Drawing.Size(217, 26);
+            this.txt_CodeBrand.Size = new System.Drawing.Size(336, 26);
             this.txt_CodeBrand.TabIndex = 17;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 133);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 19);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Mã cơ sở:";
-            // 
-            // txt_NameDepartment
-            // 
-            this.txt_NameDepartment.Location = new System.Drawing.Point(107, 87);
-            this.txt_NameDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txt_NameDepartment.Name = "txt_NameDepartment";
-            this.txt_NameDepartment.Size = new System.Drawing.Size(217, 26);
-            this.txt_NameDepartment.TabIndex = 15;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 90);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 19);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Tên Khoa:";
             // 
             // txt_CodeDepartment
             // 
-            this.txt_CodeDepartment.Location = new System.Drawing.Point(107, 38);
-            this.txt_CodeDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_CodeDepartment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_CodeDepartment.Location = new System.Drawing.Point(100, 24);
+            this.txt_CodeDepartment.Margin = new System.Windows.Forms.Padding(1);
             this.txt_CodeDepartment.Name = "txt_CodeDepartment";
-            this.txt_CodeDepartment.Size = new System.Drawing.Size(217, 26);
+            this.txt_CodeDepartment.Size = new System.Drawing.Size(336, 26);
             this.txt_CodeDepartment.TabIndex = 13;
+            // 
+            // txt_NameDepartment
+            // 
+            this.txt_NameDepartment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_NameDepartment.Location = new System.Drawing.Point(100, 89);
+            this.txt_NameDepartment.Margin = new System.Windows.Forms.Padding(1);
+            this.txt_NameDepartment.Name = "txt_NameDepartment";
+            this.txt_NameDepartment.Size = new System.Drawing.Size(336, 26);
+            this.txt_NameDepartment.TabIndex = 15;
+            // 
+            // lbl_Error_CodeDepart
+            // 
+            this.lbl_Error_CodeDepart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_Error_CodeDepart.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Error_CodeDepart.Location = new System.Drawing.Point(100, 0);
+            this.lbl_Error_CodeDepart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lbl_Error_CodeDepart.Name = "lbl_Error_CodeDepart";
+            this.lbl_Error_CodeDepart.Size = new System.Drawing.Size(336, 23);
+            this.lbl_Error_CodeDepart.TabIndex = 18;
+            this.lbl_Error_CodeDepart.Text = "Err";
+            // 
+            // lbl_Error_NameDepart
+            // 
+            this.lbl_Error_NameDepart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_Error_NameDepart.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Error_NameDepart.Location = new System.Drawing.Point(100, 65);
+            this.lbl_Error_NameDepart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lbl_Error_NameDepart.Name = "lbl_Error_NameDepart";
+            this.lbl_Error_NameDepart.Size = new System.Drawing.Size(336, 23);
+            this.lbl_Error_NameDepart.TabIndex = 19;
+            this.lbl_Error_NameDepart.Text = "Err";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 38);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(1, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 19);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Mã Khoa:";
+            this.label1.Size = new System.Drawing.Size(97, 39);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Mã Khoa";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(1, 88);
+            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 39);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Tên Khoa";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1, 130);
+            this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 19);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Mã CS";
             // 
             // dgv_Teachers
             // 
@@ -585,10 +624,11 @@
             this.dgv_Teachers.DataSource = this.bs_GiaoVien;
             this.dgv_Teachers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Teachers.Location = new System.Drawing.Point(0, 0);
-            this.dgv_Teachers.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.dgv_Teachers.Margin = new System.Windows.Forms.Padding(1);
             this.dgv_Teachers.Name = "dgv_Teachers";
-            this.dgv_Teachers.Size = new System.Drawing.Size(544, 173);
+            this.dgv_Teachers.Size = new System.Drawing.Size(546, 173);
             this.dgv_Teachers.TabIndex = 2;
+            this.dgv_Teachers.EnabledChanged += new System.EventHandler(this.dgv_Teachers_EnabledChanged);
             // 
             // mAGVDataGridViewTextBoxColumn
             // 
@@ -630,6 +670,43 @@
             this.mAKHDataGridViewTextBoxColumn.Name = "mAKHDataGridViewTextBoxColumn";
             this.mAKHDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 24);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(199, 34);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // simpleSeparator1
+            // 
+            this.simpleSeparator1.AllowHotTrack = false;
+            this.simpleSeparator1.Location = new System.Drawing.Point(0, 26);
+            this.simpleSeparator1.Name = "simpleSeparator1";
+            this.simpleSeparator1.Size = new System.Drawing.Size(199, 105);
+            // 
+            // simpleSeparator2
+            // 
+            this.simpleSeparator2.AllowHotTrack = false;
+            this.simpleSeparator2.Location = new System.Drawing.Point(0, 24);
+            this.simpleSeparator2.Name = "simpleSeparator2";
+            this.simpleSeparator2.Size = new System.Drawing.Size(199, 2);
+            // 
+            // simpleSeparator3
+            // 
+            this.simpleSeparator3.AllowHotTrack = false;
+            this.simpleSeparator3.Location = new System.Drawing.Point(121, 50);
+            this.simpleSeparator3.Name = "simpleSeparator3";
+            this.simpleSeparator3.Size = new System.Drawing.Size(78, 81);
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(199, 131);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // Frm_NhapKhoa
             // 
             this.Appearance.Options.UseFont = true;
@@ -666,11 +743,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.pnl_ConstructArea.Panel1.ResumeLayout(false);
-            this.pnl_ConstructArea.Panel1.PerformLayout();
             this.pnl_ConstructArea.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnl_ConstructArea)).EndInit();
             this.pnl_ConstructArea.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Teachers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,19 +804,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tENDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dIACHIDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mAKHDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label lbl_Error_NameDepart;
         private System.Windows.Forms.Label lbl_Error_CodeDepart;
         private System.Windows.Forms.TextBox txt_CodeBrand;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_NameDepartment;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_CodeDepartment;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnl_grv;
         private DevExpress.XtraGrid.GridControl grv_Khoa;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
         private DevExpress.XtraGrid.Columns.GridColumn colTENKH;
         private DevExpress.XtraGrid.Columns.GridColumn colMACS;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraLayout.SimpleSeparator simpleSeparator1;
+        private DevExpress.XtraLayout.SimpleSeparator simpleSeparator2;
+        private DevExpress.XtraLayout.SimpleSeparator simpleSeparator3;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private System.Windows.Forms.Label lbl_Error_NameDepart;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -18,12 +18,14 @@ namespace TracNghiem_CSDLPT
     public partial class Frm_NhapKhoa : DevExpress.XtraEditors.XtraForm
     {
         private CallBackAction _callAction;
+        private CallBackAction _callBackSubform;
 
         public Frm_NhapKhoa()
         {
             InitializeComponent();
 
             this._callAction = new CallBackAction();
+            this._callBackSubform = new CallBackAction();
 
             bs_Khoa.CurrentChanged += Bs_Khoa_CurrentChanged;
         }
@@ -221,6 +223,8 @@ namespace TracNghiem_CSDLPT
                 if (DGVHadError(dgv_Teachers))
                     return;
 
+                _callBackSubform.BackAction = Share.Action.RecoveryAdd;
+
                 DataRowView drv = (DataRowView)bs_GiaoVien.AddNew();
 
                 dgv_Teachers.CurrentRow.Cells[0].ReadOnly = false;
@@ -240,9 +244,14 @@ namespace TracNghiem_CSDLPT
 
         private void tsmi_Edit_Click(object sender, EventArgs e)
         {
+            _callBackSubform.BackAction = Share.Action.RecoveryEdit;
+
             dgv_Teachers.CurrentRow.Cells[1].ReadOnly = false;
             dgv_Teachers.CurrentRow.Cells[2].ReadOnly = false;
             dgv_Teachers.CurrentRow.Cells[3].ReadOnly = false;
+
+            object[] data = ((DataRowView)bs_GiaoVien.Current).Row.ItemArray;
+            this._callBackSubform.Table = SetUpCurrentDataSub(data);
 
             dgv_Teachers.RowValidating += Dgv_Teachers_RowValidating;
             dgv_Teachers.RowValidated += Dgv_Teachers_RowValidated;
@@ -267,8 +276,8 @@ namespace TracNghiem_CSDLPT
                 else
                 {
                     object[] data = currentRow.Row.ItemArray;
-                    DialogResult dialogResult = MessageBox.Show( data.ToList<object>().ToString()
-                    ,
+                    DialogResult dialogResult = MessageBox.Show(
+                    "Có chắc muốn xóa giáo viên: " + data[1] + " " + data[2],
                     "Xoá",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -278,6 +287,9 @@ namespace TracNghiem_CSDLPT
                         {
                             bs_GiaoVien.RemoveCurrent();
                             SaveTeacherToDb();
+
+                            this._callBackSubform.Table = SetUpCurrentDataSub(data);
+                            _callBackSubform.BackAction = Share.Action.RecoveryDelete;
 
                             MessageBox.Show("Xóa thành công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -299,7 +311,30 @@ namespace TracNghiem_CSDLPT
 
         private void tsmi_Reset_Click(object sender, EventArgs e)
         {
-            
+            if(_callBackSubform.BackAction == Share.Action.None)
+            {
+                MessageBox.Show("Không có dữ liệu để phục hồi. Vui lòng kiểm tra lại!", "Phục hồi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                Frm_ActionInfo frm_Recovery = new Frm_ActionInfo(
+                    new Object[] { this.splc_Container, this.brm_Option },
+                    this._callBackSubform);
+
+                frm_Recovery.Choosen += (result) =>
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        RecoveryDataByActionSub(this._callBackSubform);
+                    }
+                };
+
+                frm_Recovery.Parent = this;
+                frm_Recovery.BringToFront();
+                frm_Recovery.Show();
+            }
         }
 
         private void dgv_GiaoVien_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -365,12 +400,45 @@ namespace TracNghiem_CSDLPT
             return table;
         }
 
+        public DataTable SetUpCurrentDataSub(object[] datas)
+        {
+            DataTable table = new DataTable();
+
+            DataColumn dc = new DataColumn("Mã giáo viên");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Họ");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Tên");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Địa chỉ");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Mã Khoa");
+            table.Columns.Add(dc);
+
+            DataRow dr = table.NewRow();
+            dr.ItemArray = datas;
+            table.Rows.Add(dr);
+
+            return table;
+        }
+
         public void RecoveryDataByAction(CallBackAction cAction)
         {
             if (cAction.BackAction == Share.Action.RecoveryAdd)
             {
                 DataRow dr = cAction.Table.Rows[0];
                 int index = bs_Khoa.Find("MAKH", dr.ItemArray[0]);
+
+                if(bs_GiaoVien.Count != 0)
+                {
+                    MessageBox.Show("Không thể phục hồi khoa. Vì khoa này đã có giáo viên.",
+                        "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return;
+                }
                 bs_Khoa.RemoveAt(index);
                 WriteToDB();
             }
@@ -402,6 +470,57 @@ namespace TracNghiem_CSDLPT
             }
 
             this._callAction.Reset();
+            this.Refresh();
+        }
+
+        public void RecoveryDataByActionSub(CallBackAction cAction)
+        {
+            if (cAction.BackAction == Share.Action.RecoveryAdd)
+            {
+                DataView dt = (DataView)bs_GiaoVien.List;
+                
+                DataRow dr = cAction.Table.Rows[0];
+                String key = dr.ItemArray[0].ToString();
+                int index = dt.Find(key);
+
+                bs_GiaoVien.RemoveAt(index);
+
+                SaveTeacherToDb();
+            }
+            else if (cAction.BackAction == Share.Action.RecoveryDelete)
+            {
+                DataView dt = (DataView)bs_GiaoVien.List;
+                dt.Sort = "MAGV";
+                if (dt.FindRows(cAction.Table.Rows[0]).Length != 0)
+                {
+                    MessageBox.Show("Mã giáo viên đã tồn tại.Vui lòng nhập lại!");
+                }
+                else
+                {
+                    DataRow dr = cAction.Table.Rows[0];
+                    DataRowView drv = (DataRowView)bs_GiaoVien.AddNew();
+                    drv.Row.ItemArray = dr.ItemArray;
+
+                    SaveTeacherToDb();
+                }
+            }
+            else if (cAction.BackAction == Share.Action.RecoveryEdit)
+            {
+                DataView dt = (DataView)bs_GiaoVien.List;
+
+                DataRow dr = cAction.Table.Rows[0];
+                String key = dr.ItemArray[0].ToString();
+                int index = dt.Find(key);
+
+                bs_GiaoVien.Position = index;
+
+                DataRowView currentRow = (DataRowView)bs_GiaoVien.Current;
+
+                currentRow.Row.ItemArray = dr.ItemArray;
+                SaveTeacherToDb();
+            }
+
+            this._callBackSubform.Reset();
             this.Refresh();
         }
 
@@ -623,6 +742,22 @@ namespace TracNghiem_CSDLPT
             }
         }
 
+        public void ShowAllSub(BindingSource src)
+        {
+            DataView dt = (DataView)src.List;
+            DataTable table = dt.Table;
+
+            Debug.WriteLine("Start show table content.");
+            foreach (DataRow row in table.Rows)
+            {
+                string ID = row["MAGV"].ToString();
+                string Name = row["TEN"].ToString();
+                string FamilyName = row["HO"].ToString();
+
+                Debug.WriteLine("{MAGV=" + ID + ", TEN=" + Name + ", HO=" + FamilyName + "}");
+            }
+        }
+
         private bool DGVHadError(DataGridView dgv)
         {
             foreach(DataGridViewRow rowView in dgv.Rows)
@@ -669,6 +804,22 @@ namespace TracNghiem_CSDLPT
                 dgv_Teachers.RowValidated -= Dgv_Teachers_RowValidated;
 
                 SaveTeacherToDb();
+                if (this._callBackSubform.BackAction == Share.Action.RecoveryAdd)
+                {
+                    object[] data = new object[] { dgv_Teachers.Rows[e.RowIndex].Cells[0].Value,
+                                               dgv_Teachers.Rows[e.RowIndex].Cells[1].Value,
+                                               dgv_Teachers.Rows[e.RowIndex].Cells[2].Value,
+                                               dgv_Teachers.Rows[e.RowIndex].Cells[3].Value,
+                                               dgv_Teachers.Rows[e.RowIndex].Cells[4].Value};
+                    this._callBackSubform.Table = SetUpCurrentDataSub(data);
+                }
+                else if (this._callBackSubform.BackAction == Share.Action.RecoveryEdit)
+                {
+                    dgv_Teachers.CurrentRow.Cells[1].ReadOnly = true;
+                    dgv_Teachers.CurrentRow.Cells[2].ReadOnly = true;
+                    dgv_Teachers.CurrentRow.Cells[3].ReadOnly = true;
+                }
+
                 Debug.WriteLine("Rowvalidated");
             }
             catch (Exception ex)
@@ -721,5 +872,6 @@ namespace TracNghiem_CSDLPT
             }
             catch { }
         }
+
     }
 }

@@ -372,9 +372,9 @@
             this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.dgv_Students);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(447, 22);
+            this.panel2.Location = new System.Drawing.Point(429, 22);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(561, 329);
+            this.panel2.Size = new System.Drawing.Size(579, 329);
             this.panel2.TabIndex = 7;
             // 
             // dgv_Students
@@ -394,7 +394,7 @@
             this.dgv_Students.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Students.Location = new System.Drawing.Point(0, 0);
             this.dgv_Students.Name = "dgv_Students";
-            this.dgv_Students.Size = new System.Drawing.Size(561, 329);
+            this.dgv_Students.Size = new System.Drawing.Size(579, 329);
             this.dgv_Students.TabIndex = 0;
             this.dgv_Students.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Students_CellClick);
             this.dgv_Students.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Students_CellEndEdit);
@@ -499,7 +499,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(444, 329);
+            this.panel1.Size = new System.Drawing.Size(426, 329);
             this.panel1.TabIndex = 6;
             // 
             // cmb_Khoa

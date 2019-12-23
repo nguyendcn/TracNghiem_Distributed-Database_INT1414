@@ -346,6 +346,7 @@
             // 
             this.bs_GiaoVien.DataMember = "FK_GIAOVIEN_KHOA";
             this.bs_GiaoVien.DataSource = this.bs_Khoa;
+            this.bs_GiaoVien.Sort = "MAGV";
             // 
             // ctxt_Menu
             // 
@@ -517,10 +518,10 @@
             this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(437, 173);
             this.tableLayoutPanel1.TabIndex = 20;
@@ -529,7 +530,7 @@
             // 
             this.txt_CodeBrand.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_CodeBrand.Enabled = false;
-            this.txt_CodeBrand.Location = new System.Drawing.Point(100, 131);
+            this.txt_CodeBrand.Location = new System.Drawing.Point(100, 133);
             this.txt_CodeBrand.Margin = new System.Windows.Forms.Padding(1);
             this.txt_CodeBrand.Name = "txt_CodeBrand";
             this.txt_CodeBrand.ReadOnly = true;
@@ -539,7 +540,7 @@
             // txt_CodeDepartment
             // 
             this.txt_CodeDepartment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_CodeDepartment.Location = new System.Drawing.Point(100, 24);
+            this.txt_CodeDepartment.Location = new System.Drawing.Point(100, 25);
             this.txt_CodeDepartment.Margin = new System.Windows.Forms.Padding(1);
             this.txt_CodeDepartment.Name = "txt_CodeDepartment";
             this.txt_CodeDepartment.Size = new System.Drawing.Size(336, 26);
@@ -548,7 +549,7 @@
             // txt_NameDepartment
             // 
             this.txt_NameDepartment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_NameDepartment.Location = new System.Drawing.Point(100, 89);
+            this.txt_NameDepartment.Location = new System.Drawing.Point(100, 91);
             this.txt_NameDepartment.Margin = new System.Windows.Forms.Padding(1);
             this.txt_NameDepartment.Name = "txt_NameDepartment";
             this.txt_NameDepartment.Size = new System.Drawing.Size(336, 26);
@@ -561,7 +562,7 @@
             this.lbl_Error_CodeDepart.Location = new System.Drawing.Point(100, 0);
             this.lbl_Error_CodeDepart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_Error_CodeDepart.Name = "lbl_Error_CodeDepart";
-            this.lbl_Error_CodeDepart.Size = new System.Drawing.Size(336, 23);
+            this.lbl_Error_CodeDepart.Size = new System.Drawing.Size(336, 24);
             this.lbl_Error_CodeDepart.TabIndex = 18;
             this.lbl_Error_CodeDepart.Text = "Err";
             // 
@@ -569,10 +570,10 @@
             // 
             this.lbl_Error_NameDepart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Error_NameDepart.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error_NameDepart.Location = new System.Drawing.Point(100, 65);
+            this.lbl_Error_NameDepart.Location = new System.Drawing.Point(100, 66);
             this.lbl_Error_NameDepart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_Error_NameDepart.Name = "lbl_Error_NameDepart";
-            this.lbl_Error_NameDepart.Size = new System.Drawing.Size(336, 23);
+            this.lbl_Error_NameDepart.Size = new System.Drawing.Size(336, 24);
             this.lbl_Error_NameDepart.TabIndex = 19;
             this.lbl_Error_NameDepart.Text = "Err";
             // 
@@ -580,10 +581,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(1, 23);
+            this.label1.Location = new System.Drawing.Point(1, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 39);
+            this.label1.Size = new System.Drawing.Size(97, 40);
             this.label1.TabIndex = 20;
             this.label1.Text = "Mã Khoa";
             // 
@@ -591,17 +592,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(1, 88);
+            this.label2.Location = new System.Drawing.Point(1, 90);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 39);
+            this.label2.Size = new System.Drawing.Size(97, 40);
             this.label2.TabIndex = 21;
             this.label2.Text = "Tên Khoa";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1, 130);
+            this.label3.Location = new System.Drawing.Point(1, 132);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 19);

@@ -41,7 +41,6 @@ namespace TracNghiem_CSDLPT
             dgv_Students.CellClick += Dgv_Students_CellClick;
         }
 
-
         private void DatePicker_TextChanged(object sender, EventArgs e)
         {
             dgv_Students.CurrentCell.Value = datePicker.Text.ToString();

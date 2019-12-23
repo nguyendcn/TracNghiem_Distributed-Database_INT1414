@@ -88,6 +88,7 @@
             this.NGAYSINH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dIACHIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mALOPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_Lop)).BeginInit();
@@ -109,6 +110,7 @@
             this.splc_ConstructArea.Panel2.SuspendLayout();
             this.splc_ConstructArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Students)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barDockControl3
@@ -471,14 +473,7 @@
             // 
             // splc_ConstructArea.Panel1
             // 
-            this.splc_ConstructArea.Panel1.Controls.Add(this.lbl_Error_NameClass);
-            this.splc_ConstructArea.Panel1.Controls.Add(this.lbl_Error_CodeClass);
-            this.splc_ConstructArea.Panel1.Controls.Add(this.txt_CodeClass);
-            this.splc_ConstructArea.Panel1.Controls.Add(this.cmb_Khoa);
-            this.splc_ConstructArea.Panel1.Controls.Add(this.label2);
-            this.splc_ConstructArea.Panel1.Controls.Add(this.label1);
-            this.splc_ConstructArea.Panel1.Controls.Add(this.txt_NameClass);
-            this.splc_ConstructArea.Panel1.Controls.Add(this.label3);
+            this.splc_ConstructArea.Panel1.Controls.Add(this.tableLayoutPanel1);
             // 
             // splc_ConstructArea.Panel2
             // 
@@ -489,53 +484,59 @@
             // 
             // txt_CodeClass
             // 
-            this.txt_CodeClass.Location = new System.Drawing.Point(117, 26);
+            this.txt_CodeClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_CodeClass.Location = new System.Drawing.Point(85, 36);
             this.txt_CodeClass.Name = "txt_CodeClass";
-            this.txt_CodeClass.Size = new System.Drawing.Size(210, 26);
+            this.txt_CodeClass.Size = new System.Drawing.Size(254, 26);
             this.txt_CodeClass.TabIndex = 8;
             // 
             // cmb_Khoa
             // 
             this.cmb_Khoa.DataSource = this.ds_Khoa;
             this.cmb_Khoa.DisplayMember = "TENKH";
+            this.cmb_Khoa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmb_Khoa.FormattingEnabled = true;
-            this.cmb_Khoa.Location = new System.Drawing.Point(117, 132);
+            this.cmb_Khoa.Location = new System.Drawing.Point(85, 165);
             this.cmb_Khoa.Name = "cmb_Khoa";
-            this.cmb_Khoa.Size = new System.Drawing.Size(210, 27);
+            this.cmb_Khoa.Size = new System.Drawing.Size(254, 27);
             this.cmb_Khoa.TabIndex = 12;
             this.cmb_Khoa.ValueMember = "MAKH";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 81);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(3, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 19);
+            this.label2.Size = new System.Drawing.Size(76, 38);
             this.label2.TabIndex = 9;
             this.label2.Text = "Tên Lớp:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 26);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 19);
+            this.label1.Size = new System.Drawing.Size(76, 38);
             this.label1.TabIndex = 7;
             this.label1.Text = "Mã Lớp:";
             // 
             // txt_NameClass
             // 
-            this.txt_NameClass.Location = new System.Drawing.Point(117, 78);
+            this.txt_NameClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_NameClass.Location = new System.Drawing.Point(85, 107);
             this.txt_NameClass.Name = "txt_NameClass";
-            this.txt_NameClass.Size = new System.Drawing.Size(210, 26);
+            this.txt_NameClass.Size = new System.Drawing.Size(254, 26);
             this.txt_NameClass.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 135);
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(3, 162);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 19);
+            this.label3.Size = new System.Drawing.Size(76, 41);
             this.label3.TabIndex = 11;
             this.label3.Text = "Mã Khoa:";
             // 
@@ -563,21 +564,23 @@
             // 
             // lbl_Error_CodeClass
             // 
+            this.lbl_Error_CodeClass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Error_CodeClass.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error_CodeClass.Location = new System.Drawing.Point(117, 1);
+            this.lbl_Error_CodeClass.Location = new System.Drawing.Point(83, 5);
             this.lbl_Error_CodeClass.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_Error_CodeClass.Name = "lbl_Error_CodeClass";
-            this.lbl_Error_CodeClass.Size = new System.Drawing.Size(210, 22);
+            this.lbl_Error_CodeClass.Size = new System.Drawing.Size(258, 23);
             this.lbl_Error_CodeClass.TabIndex = 19;
             this.lbl_Error_CodeClass.Text = "Err";
             // 
             // lbl_Error_NameClass
             // 
+            this.lbl_Error_NameClass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Error_NameClass.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error_NameClass.Location = new System.Drawing.Point(117, 55);
+            this.lbl_Error_NameClass.Location = new System.Drawing.Point(83, 76);
             this.lbl_Error_NameClass.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_Error_NameClass.Name = "lbl_Error_NameClass";
-            this.lbl_Error_NameClass.Size = new System.Drawing.Size(210, 22);
+            this.lbl_Error_NameClass.Size = new System.Drawing.Size(258, 23);
             this.lbl_Error_NameClass.TabIndex = 20;
             this.lbl_Error_NameClass.Text = "Err";
             // 
@@ -629,6 +632,36 @@
             this.mALOPDataGridViewTextBoxColumn.Name = "mALOPDataGridViewTextBoxColumn";
             this.mALOPDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.97661F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.02339F));
+            this.tableLayoutPanel1.Controls.Add(this.lbl_Error_CodeClass, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_Error_NameClass, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.txt_CodeClass, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txt_NameClass, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.cmb_Khoa, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 9);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 10;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(342, 203);
+            this.tableLayoutPanel1.TabIndex = 21;
+            // 
             // Frm_NhapLop
             // 
             this.Appearance.Options.UseFont = true;
@@ -664,11 +697,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.pnl_ConstructArea.ResumeLayout(false);
             this.splc_ConstructArea.Panel1.ResumeLayout(false);
-            this.splc_ConstructArea.Panel1.PerformLayout();
             this.splc_ConstructArea.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splc_ConstructArea)).EndInit();
             this.splc_ConstructArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Students)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -734,5 +768,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NGAYSINH;
         private System.Windows.Forms.DataGridViewTextBoxColumn dIACHIDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mALOPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

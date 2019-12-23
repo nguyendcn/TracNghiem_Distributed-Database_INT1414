@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Diagnostics;
 using TracNghiem_CSDLPT.Common;
+using TracNghiem_CSDLPT.Share;
+using TracNghiem_CSDLPT.SupportForm;
 
 namespace TracNghiem_CSDLPT
 {
@@ -17,6 +19,9 @@ namespace TracNghiem_CSDLPT
     {
         DateTimePicker datePicker = new DateTimePicker();
         Rectangle _rectangle;
+
+        private CallBackAction _callAction;
+        private CallBackAction _callBackSubform;
 
         public Frm_NhapLop()
         {
@@ -28,23 +33,19 @@ namespace TracNghiem_CSDLPT
 
             datePicker.TextChanged += DatePicker_TextChanged;
 
+            this._callAction = new CallBackAction();
+            this._callBackSubform = new CallBackAction();
 
             bs_Lop.CurrentChanged += Bs_Lop_CurrentChanged;
 
-            dgv_Students.CurrentCellChanged += Dgv_Students_CurrentCellChanged;
+            dgv_Students.CellClick += Dgv_Students_CellClick;
         }
 
-        private void Dgv_Students_CurrentCellChanged(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Cell change to: " + dgv_Students.CurrentCell);
-        }
 
         private void DatePicker_TextChanged(object sender, EventArgs e)
         {
             dgv_Students.CurrentCell.Value = datePicker.Text.ToString();
         }
-
-
 
         private void Bs_Lop_CurrentChanged(object sender, EventArgs e)
         {
@@ -56,154 +57,149 @@ namespace TracNghiem_CSDLPT
             }
         }
 
-
         private void btn_Add_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bool isEmpty = ValidateEmpty();
+            this.btn_Exit.Tag = "ADD";
+            this.btn_Write.Tag = "ADD";
 
-            if (!isEmpty)
-                return;
-
-            // TODO: Check code course
-            DataView dt = (DataView)bs_Lop.List;
-            dt.Sort = "MALOP";
-            if (dt.FindRows(txt_CodeClass.Text).Length != 0)
-            {
-                MessageBox.Show("Mã lớp đã tồn tại.Vui lòng nhập lại!");
-            }
-            else
-            {
-                String codeDepartment = ((DataRowView)cmb_Khoa.SelectedItem).Row.ItemArray[0].ToString();
-                object[] data = new object[] { txt_CodeClass.Text, txt_NameClass.Text, codeDepartment };
-                DataRowView drv = (DataRowView)bs_Lop.AddNew();
-                drv.Row.ItemArray = data;
-            }
+            SetUpButtonForAction();
         }
 
         private void btn_Edit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bool isEmpty = ValidateEmpty();
+            this.btn_Write.Tag = "EDIT";
+            this.btn_Exit.Tag = "EDIT";
 
-            if (!isEmpty)
-                return;
-
-            DataRowView currentRow = (DataRowView)bs_Lop.Current;
-
-            if (currentRow != null)
-            {
-                DataView dt = (DataView)bs_Lop.List;
-                dt.Sort = "MALOP";
-                if (dt.FindRows(txt_CodeClass.Text.Trim()).Length != 0 &&
-                    !currentRow.Row.ItemArray[0].ToString().Trim().Equals(txt_CodeClass.Text.Trim()))
-                {
-                    MessageBox.Show("Mã lớp đã tồn tại.Vui lòng nhập lại!");
-                    this.ActiveControl = this.txt_CodeClass;
-                    return;
-                }
-                else
-                {
-                    String codeDepartment = ((DataRowView)cmb_Khoa.SelectedItem).Row.ItemArray[0].ToString();
-                    object[] data = new object[] { txt_CodeClass.Text, txt_NameClass.Text, codeDepartment };
-                    currentRow.Row.ItemArray = data;
-
-                    MessageBox.Show("Sửa dữ liệu thành công.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn dữ liệu muốn sửa!");
-            }
+            SetUpButtonForAction(); 
         }
 
         private void btn_Write_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
-                bs_Lop.EndEdit();
-                bs_Lop.ResetCurrentItem();
-                this.tbla_Lop.Update(this.ds_TN_CSDLPT.LOP);
+                if (btn_Write.Tag == null)
+                    return;
+                if (this.btn_Write.Tag.Equals("ADD"))
+                {
+                    bool addSucess = Add();
 
-                this.tbla_SinhVien.Update(this.ds_TN_CSDLPT.SINHVIEN);
+                    if (addSucess)
+                    {
+                        this.dgv_Students.DataSource = bs_SinhVien;
 
-                MessageBox.Show("Ghi dư liệu thành công.");
+                        SaveClassToDb();
+
+                        Frm_ActionInfo info = new Frm_ActionInfo(
+                                            new Object[] { this.splc_Container, this.brm_Option },
+                                            new CallBackAction(Share.Action.AddSuccess, this._callAction.Table)
+                                            );
+
+                        info.Parent = this;
+                        info.BringToFront();
+                        info.Show();
+
+                    }
+                }
+                else if (this.btn_Write.Tag.Equals("EDIT"))
+                {
+                    bool editSuccess = Edit();
+
+                    if (editSuccess)
+                    {
+                        SaveClassToDb();
+                        DataTable dt = SetUpCurrentData(((DataRowView)bs_Lop.Current).Row.ItemArray);
+
+                        Frm_ActionInfo frm_edit = new Frm_ActionInfo(
+                                            new Object[] { this.splc_Container, this.brm_Option },
+                                            new CallBackAction(Share.Action.EditSuccess,
+                                                               SetUpCurrentData(new object[] { txt_CodeClass.Text, txt_NameClass.Text, cmb_Khoa.SelectedValue }))
+                                            );
+
+                        frm_edit.Parent = this;
+                        frm_edit.BringToFront();
+                        frm_edit.Show();
+
+                        pnl_grv.Enabled = true;
+                        bs_Lop.DataSource = ds_TN_CSDLPT;
+                        grv_Lop.Refresh();
+
+
+                        dgv_Students.Refresh();
+
+                    }
+                }
+                else return;
             }
             catch (Exception ex)
             {
                 if (ex.Message.Contains("MALOP"))
-                    MessageBox.Show("Mã lop không được trùng", "", MessageBoxButtons.OK);
+                    MessageBox.Show("Mã lớp không được trùng", "", MessageBoxButtons.OK);
                 else
-                    MessageBox.Show("Lỗi ghi Lopn học. " + ex.Message, "", MessageBoxButtons.OK);
+                {
+                    MessageBox.Show("Lỗi ghi Lớp" + ex.Message, "", MessageBoxButtons.OK);
+                }
             }
         }
 
         private void btn_Reset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Phục hồi dữ liệu", "Bạn có chắc muống phục hồi dữ liệu không?",
-                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (this._callAction.BackAction == Share.Action.None)
             {
-                try
+                MessageBox.Show("Không có dữ liệu để phục hồi. Vui lòng kiểm tra lại!", "Phục hồi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+
+                Frm_ActionInfo frm_Recovery = new Frm_ActionInfo(
+                    new Object[] { this.splc_Container, this.brm_Option },
+                    this._callAction);
+
+                frm_Recovery.Choosen += (result) =>
                 {
-                    this.tbla_Lop.Fill(this.ds_TN_CSDLPT.LOP);
-                    this.tbla_SinhVien.Fill(this.ds_TN_CSDLPT.SINHVIEN);
-                    MessageBox.Show("Phục hồi dữ liệu thành công.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    if (result == DialogResult.Yes)
+                    {
+                        RecoveryDataByAction(this._callAction);
+                    }
+                };
+
+                frm_Recovery.Parent = this;
+                frm_Recovery.BringToFront();
+                frm_Recovery.Show();
             }
         }
 
         private void btn_Delete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DataRowView currentRow = (DataRowView)bs_Lop.Current;
-            if (bs_GVDK.Count != 0)
-            {
-                MessageBox.Show("Không thể xóa lớp học này. Vì lớp học này đã được đăng ký thi.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (bs_SinhVien.Count != 0)
-            {
-                MessageBox.Show("Không thể xóa lớp học này. Vì lớp học đã có sinh viên theo học.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show(
-                    "Bạn có chắc muốn xóa lớp học: {" + currentRow.Row.ItemArray[0] + ", " + currentRow.Row.ItemArray[1] + "}.",
-                    "Xoá",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (dialogResult == DialogResult.Yes)
-                {
-                    try
-                    {
-                        bs_Lop.RemoveCurrent();
-                        MessageBox.Show("Xóa thành công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Can not delete row because: " + ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-            }
+            Delete();
         }
 
         private void btn_Exit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn lưu dữ liệu trước khi thoát không?", "Exit",
-               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (btn_Exit.Tag == null)
+                return;
 
-            if (dialogResult == DialogResult.Yes)
+            if (btn_Exit.Tag.Equals("ADD"))
             {
-                btn_Write.PerformClick();
+                if (XtraMessageBox.Show(
+                    "Bạn có chắc muốn thoát quá trình nhập không?",
+                    "Thoát",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    FreeAllControl();
+                }
             }
-
-            this.Dispose();
+            else if (btn_Exit.Tag.Equals("EDIT"))
+            {
+                if (XtraMessageBox.Show(
+                    "Bạn có chắc muốn thoát quá trình sửa không?",
+                    "Thoát",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    FreeAllControl();
+                }
+            }
         }
 
         private void Frm_NhapLop_Load(object sender, EventArgs e)
@@ -233,22 +229,20 @@ namespace TracNghiem_CSDLPT
         {
             if (txt_CodeClass.Text.Trim().Equals(String.Empty))
             {
-                MessageBox.Show("");
+                ErrorHandler.ShowError(lbl_Error_CodeClass, new string[] { "Ox0001" });
                 this.ActiveControl = this.txt_CodeClass;
                 return false;
             }
 
-            if (txt_NameClass.Text.Trim().Equals(String.Empty))
+            if (txt_CodeClass.Text.Trim().Equals(String.Empty))
             {
-                MessageBox.Show("");
+                ErrorHandler.ShowError(lbl_Error_NameClass, new string[] { "Ox0001" });
                 this.ActiveControl = this.txt_NameClass;
                 return false;
             }
 
             return true;
         }
-
-
 
         private void tsmi_Delete_Click(object sender, EventArgs e)
         {
@@ -257,8 +251,6 @@ namespace TracNghiem_CSDLPT
             {
                 DataRowView currentRow = (DataRowView)bs_SinhVien.Current;
 
-                Debug.WriteLine("Current row:" + bs_SinhVien.Position);
-
                 if (bs_BangDiem.Count != 0)
                 {
                     MessageBox.Show("Không thể xóa sinh viên này. Vì sinh viên này đã được lập bảng điểm.", "Error",
@@ -266,8 +258,9 @@ namespace TracNghiem_CSDLPT
                 }
                 else
                 {
+                    object[] data = currentRow.Row.ItemArray;
                     DialogResult dialogResult = MessageBox.Show(
-                    currentRow.Row.ItemArray.ToString(),
+                    "Có chắc muốn xóa sinh viên: " + data[1] + " " + data[2],
                     "Xoá",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -276,8 +269,12 @@ namespace TracNghiem_CSDLPT
                         try
                         {
                             bs_SinhVien.RemoveCurrent();
-                            MessageBox.Show("Xóa thành công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            SaveStudentToDb();
 
+                            this._callBackSubform.Table = SetUpCurrentDataSub(data);
+                            _callBackSubform.BackAction = Share.Action.RecoveryDelete;
+
+                            MessageBox.Show("Xóa thành công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {
@@ -296,7 +293,7 @@ namespace TracNghiem_CSDLPT
 
         }
 
-        private void dgv_Students_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void Dgv_Students_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgv_Students.CurrentCell.ReadOnly)
                 return;
@@ -336,45 +333,56 @@ namespace TracNghiem_CSDLPT
 
         private void tsmi_Reset_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muống phục hồi dữ liệu sinh viên không?",
-                                                        "Phục hồi dữ liệu",
-                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (_callBackSubform.BackAction == Share.Action.None)
             {
-                try
+                MessageBox.Show("Không có dữ liệu để phục hồi. Vui lòng kiểm tra lại!", "Phục hồi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                Frm_ActionInfo frm_Recovery = new Frm_ActionInfo(
+                    new Object[] { this.splc_Container, this.brm_Option },
+                    this._callBackSubform);
+
+                frm_Recovery.Choosen += (result) =>
                 {
-                    this.tbla_SinhVien.Fill(ds_TN_CSDLPT.SINHVIEN);
-                    MessageBox.Show("Phục hồi dữ liệu thành công.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    if (result == DialogResult.Yes)
+                    {
+                        RecoveryDataByActionSub(this._callBackSubform);
+                    }
+                };
+
+                frm_Recovery.Parent = this;
+                frm_Recovery.BringToFront();
+                frm_Recovery.Show();
             }
         }
 
         private void tsmi_Edit_Click(object sender, EventArgs e)
         {
-            //dgv_Students.CurrentRow.Cells[0].ReadOnly = false;
+            _callBackSubform.BackAction = Share.Action.RecoveryEdit;
+
             dgv_Students.CurrentRow.Cells[1].ReadOnly = false;
             dgv_Students.CurrentRow.Cells[2].ReadOnly = false;
             dgv_Students.CurrentRow.Cells[3].ReadOnly = false;
             dgv_Students.CurrentRow.Cells[4].ReadOnly = false;
 
+            object[] data = ((DataRowView)bs_SinhVien.Current).Row.ItemArray;
+            this._callBackSubform.Table = SetUpCurrentDataSub(data);
+
+            dgv_Students.RowValidating += Dgv_Students_RowValidating;
+            dgv_Students.RowValidated += Dgv_Students_RowValidated;
         }
 
         private void tsmi_Add_Click(object sender, EventArgs e)
         {
             try
             {
-                //dgv_Students.AllowUserToAddRows = true;
+                if (DGVHadError(dgv_Students))
+                    return;
 
-                //object[] data = new object[] { "1111", "Dang", "Nguyen", "2019-07-03", "address" };
-                //DataRowView drv = (DataRowView)bs_SinhVien.AddNew();
-                //drv.Row.ItemArray = data;
-
-                //bs_SinhVien.EndEdit();
-                //dgv_Students.Refresh();
+                _callBackSubform.BackAction = Share.Action.RecoveryAdd;
 
                 DataRowView drv = (DataRowView)bs_SinhVien.AddNew();
 
@@ -384,10 +392,8 @@ namespace TracNghiem_CSDLPT
                 dgv_Students.CurrentRow.Cells[3].ReadOnly = false;
                 dgv_Students.CurrentRow.Cells[4].ReadOnly = false;
 
-                dgv_Students.CellValidating += dgv_Students_CellValidating;
-
-                Debug.WriteLine("First Is new Row: " + dgv_Students.CurrentRow.IsNewRow);
-
+                dgv_Students.RowValidating += Dgv_Students_RowValidating;
+                dgv_Students.RowValidated += Dgv_Students_RowValidated;
             }
             catch (Exception ex)
             {
@@ -414,70 +420,452 @@ namespace TracNghiem_CSDLPT
             }
         }
 
-        private void dgv_Students_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        public void FreeAllControl()
         {
-            Debug.WriteLine("Cell end edit.");
+            this.splc_ConstructArea.Enabled = false;
+            this.btn_Add.Enabled = true;
+            this.btn_Edit.Enabled = true;
+            this.btn_Delete.Enabled = true;
+            this.pnl_grv.Enabled = true;
+            this.dgv_Students.DataSource = bs_SinhVien;
+
+            this.btn_Exit.Tag = this.btn_Write.Tag = "";
+
+            try
+            {
+                this.bs_Lop.CurrentChanged -= Bs_Lop_CurrentChanged;
+                this.bs_Lop.CurrentChanged += Bs_Lop_CurrentChanged;
+            }
+            catch (ArgumentNullException anex)
+            {
+                this.bs_Lop.CurrentChanged += Bs_Lop_CurrentChanged;
+
+                Debug.WriteLine(anex.Message);
+            }
+
         }
 
-        private void dgv_Students_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        public bool Add()
         {
-            string headerText =
-           dgv_Students.Columns[e.ColumnIndex].HeaderText;
-            if (headerText.Equals("MASV"))
-            {
-                string valCurrent = e.FormattedValue.ToString();
-                if (StudentCodeIsExists(valCurrent))
-                {
-                    e.Cancel = true;
-                    dgv_Students.Rows[e.RowIndex].ErrorText = "Student Code Exist.";
+            bool isEmpty = ValidateEmpty();
 
-                    MessageBox.Show("Mã sinh viên đã tồn tại vui lòng nhập lại.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            if (!isEmpty)
+                return false;
+
+            if (DepartmentIsExists(txt_CodeClass.Text.Trim()))
+            {
+                ErrorHandler.ShowError(lbl_Error_CodeClass, new string[] { "Ox1001" });
+                return false;
+            }
+            else
+            {
+                String codeDepartment = ((DataRowView)cmb_Khoa.SelectedItem).Row.ItemArray[0].ToString();
+                object[] data = new object[] { txt_CodeClass.Text, txt_NameClass.Text, codeDepartment };
+                DataRowView drv = (DataRowView)bs_Lop.AddNew();
+                drv.Row.ItemArray = data;
+
+                this._callAction.FillData(Share.Action.RecoveryAdd, SetUpCurrentData(data));
+
+                return true;
             }
         }
 
-        private void dgv_Students_CellValidated(object sender, DataGridViewCellEventArgs e)
+        public bool Edit()
         {
-            dgv_Students.Rows[e.RowIndex].ErrorText = null;
+            bool isEmpty = ValidateEmpty();
 
+            if (!isEmpty)
+                return false;
+
+            DataRowView currentRow = (DataRowView)bs_Lop.Current;
+
+            if (currentRow != null)
+            {
+                DataView dt = (DataView)bs_Lop.List;
+                dt.Sort = "MALOP";
+                DataRowView[] rowsFound = dt.FindRows(txt_CodeClass.Text.Trim());
+
+                bool isExists = false;
+                if (rowsFound.Length != 0)
+                {
+                    IEnumerable<DataRowView> exists = rowsFound.Where(x => x.Row.ItemArray[0].ToString().Trim().Equals(currentRow.Row.ItemArray[0].ToString().Trim()));
+                    isExists = exists.ToList().Count == 0;
+                }
+
+                if (isExists)
+                {
+                    ErrorHandler.ShowError(lbl_Error_CodeClass, new string[] { "Ox1001" });
+                    this.ActiveControl = this.txt_CodeClass;
+                    return false;
+                }
+                else
+                {
+                    this._callAction.FillData(Share.Action.RecoveryEdit, SetUpCurrentData(currentRow.Row.ItemArray));
+
+                    String codeDepartment = ((DataRowView)cmb_Khoa.SelectedItem).Row.ItemArray[0].ToString();
+                    object[] data = new object[] { txt_CodeClass.Text, txt_NameClass.Text, codeDepartment };
+                    currentRow.Row.ItemArray = data;
+
+                    return true;
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show(StringLibrary.E_EditEmpty, StringLibrary.E_EditNotify, MessageBoxButtons.OK);
+                return false;
+            }
         }
 
-        private void dgv_Students_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        public void Delete()
+        {
+            DataRowView currentRow = (DataRowView)bs_Lop.Current;
+            if (AbleDeleteClass())
+            {
+                Frm_ActionInfo frm_delete = new Frm_ActionInfo(
+                    new Object[] { this.splc_Container, this.brm_Option },
+                    new CallBackAction(Share.Action.Delete, SetUpCurrentData(currentRow.Row.ItemArray)));
+
+                frm_delete.Choosen += (result) =>
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            this._callAction.FillData(Share.Action.RecoveryDelete, SetUpCurrentData(currentRow.Row.ItemArray));
+
+                            bs_Lop.RemoveCurrent();
+                            SaveClassToDb();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Can not delete row because: " + ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                };
+
+                frm_delete.Parent = this;
+                frm_delete.BringToFront();
+                frm_delete.Show();
+            }
+        }
+
+        public bool AbleDeleteClass()
+        {
+            DataRowView currentRow = (DataRowView)bs_Lop.Current;
+            if (bs_GVDK.Count != 0)
+            {
+                MessageBox.Show("Không thể xóa lớp học này. Vì lớp học này đã được đăng ký thi.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (bs_SinhVien.Count != 0)
+            {
+                MessageBox.Show("Không thể xóa lớp học này. Vì lớp học đã có sinh viên theo học.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public void SaveClassToDb()
+        {
+            this.bs_Lop.EndEdit();
+            this.bs_Lop.ResetCurrentItem();
+            this.tbla_Lop.Update(this.ds_TN_CSDLPT.LOP);
+        }
+
+        public void SaveStudentToDb()
+        {
+            this.bs_SinhVien.EndEdit();
+            this.bs_SinhVien.ResetCurrentItem();
+            this.tbla_SinhVien.Update(this.ds_TN_CSDLPT.SINHVIEN);
+        }
+
+        public DataTable SetUpCurrentData(object[] datas)
+        {
+            DataTable table = new DataTable();
+
+            DataColumn dc = new DataColumn("Mã lớp");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Tên lớp");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Mã khoa");
+            table.Columns.Add(dc);
+
+            DataRow dr = table.NewRow();
+            dr.ItemArray = datas;
+            table.Rows.Add(dr);
+
+            return table;
+        }
+
+        public DataTable SetUpCurrentDataSub(object[] datas)
+        {
+            DataTable table = new DataTable();
+
+            DataColumn dc = new DataColumn("Mã sinh viên");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Họ");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Tên");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Ngày Sinh");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Địa chỉ");
+            table.Columns.Add(dc);
+
+            dc = new DataColumn("Mã Lớp");
+            table.Columns.Add(dc);
+
+            DataRow dr = table.NewRow();
+            dr.ItemArray = datas;
+            table.Rows.Add(dr);
+
+            return table;
+        }
+
+        public void RecoveryDataByAction(CallBackAction cAction)
+        {
+            if (cAction.BackAction == Share.Action.RecoveryAdd)
+            {
+                DataRow dr = cAction.Table.Rows[0];
+                int index = bs_Lop.Find("MALOP", dr.ItemArray[0]);
+                bs_Lop.RemoveAt(index);
+                SaveClassToDb();
+            }
+            else if (cAction.BackAction == Share.Action.RecoveryDelete)
+            {
+                DataView dt = (DataView)bs_Lop.List;
+                dt.Sort = "MALOP";
+                if (dt.FindRows(cAction.Table.Rows[0]).Length != 0)
+                {
+                    MessageBox.Show("Mã lớp đã tồn tại.Vui lòng nhập lại!");
+                }
+                else
+                {
+                    DataRow dr = cAction.Table.Rows[0];
+                    DataRowView drv = (DataRowView)bs_Lop.AddNew();
+                    drv.Row.ItemArray = dr.ItemArray;
+                    SaveClassToDb();
+                }
+            }
+            else if (cAction.BackAction == Share.Action.RecoveryEdit)
+            {
+                DataRow dr = cAction.Table.Rows[0];
+                bs_Lop.Position = bs_Lop.Find("MALOP", dr.ItemArray[0]);
+
+                DataRowView currentRow = (DataRowView)bs_Lop.Current;
+
+                currentRow.Row.ItemArray = dr.ItemArray;
+                SaveClassToDb();
+            }
+
+            this._callAction.Reset();
+            this.Refresh();
+        }
+
+        public void RecoveryDataByActionSub(CallBackAction cAction)
+        {
+            if (cAction.BackAction == Share.Action.RecoveryAdd)
+            {
+                DataView dt = (DataView)bs_SinhVien.List;
+
+                DataRow dr = cAction.Table.Rows[0];
+                String key = dr.ItemArray[0].ToString();
+                int index = dt.Find(key);
+
+                bs_SinhVien.RemoveAt(index);
+
+                SaveStudentToDb();
+            }
+            else if (cAction.BackAction == Share.Action.RecoveryDelete)
+            {
+                DataView dt = (DataView)bs_SinhVien.List;
+                dt.Sort = "MASV";
+                if (dt.FindRows(cAction.Table.Rows[0]).Length != 0)
+                {
+                    MessageBox.Show("Mã sinh viên đã tồn tại.Vui lòng nhập lại!");
+                }
+                else
+                {
+                    DataRow dr = cAction.Table.Rows[0];
+                    DataRowView drv = (DataRowView)bs_SinhVien.AddNew();
+                    drv.Row.ItemArray = dr.ItemArray;
+
+                    SaveStudentToDb();
+                }
+            }
+            else if (cAction.BackAction == Share.Action.RecoveryEdit)
+            {
+                DataView dt = (DataView)bs_SinhVien.List;
+
+                DataRow dr = cAction.Table.Rows[0];
+                String key = dr.ItemArray[0].ToString();
+                int index = dt.Find(key);
+
+                bs_SinhVien.Position = index;
+
+                DataRowView currentRow = (DataRowView)bs_SinhVien.Current;
+
+                currentRow.Row.ItemArray = dr.ItemArray;
+                SaveStudentToDb();
+            }
+
+            this._callBackSubform.Reset();
+            this.Refresh();
+        }
+
+        private void Dgv_Students_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            dgv_Students.Rows[e.RowIndex].ErrorText = null;
+            foreach (DataGridViewCell cell in dgv_Students.Rows[e.RowIndex].Cells)
+            {
+                cell.ErrorText = null;
+            }
+
+            try
+            {
+                dgv_Students.RowValidating -= Dgv_Students_RowValidating;
+                dgv_Students.RowValidated -= Dgv_Students_RowValidated;
+
+                SaveStudentToDb();
+                if (this._callBackSubform.BackAction == Share.Action.RecoveryAdd)
+                {
+                    object[] data = new object[] { dgv_Students.Rows[e.RowIndex].Cells[0].Value,
+                                               dgv_Students.Rows[e.RowIndex].Cells[1].Value,
+                                               dgv_Students.Rows[e.RowIndex].Cells[2].Value,
+                                               dgv_Students.Rows[e.RowIndex].Cells[3].Value,
+                                               dgv_Students.Rows[e.RowIndex].Cells[4].Value,
+                                               dgv_Students.Rows[e.RowIndex].Cells[5].Value};
+                    this._callBackSubform.Table = SetUpCurrentDataSub(data);
+                }
+                else if (this._callBackSubform.BackAction == Share.Action.RecoveryEdit)
+                {
+                    dgv_Students.CurrentRow.Cells[1].ReadOnly = true;
+                    dgv_Students.CurrentRow.Cells[2].ReadOnly = true;
+                    dgv_Students.CurrentRow.Cells[3].ReadOnly = true;
+                    dgv_Students.CurrentRow.Cells[4].ReadOnly = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void Dgv_Students_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             try
             {
+                bool isFirst = true;
+                int index = 0;
                 foreach (DataGridViewCell drv in dgv_Students.Rows[e.RowIndex].Cells)
                 {
                     if (String.IsNullOrEmpty(drv.Value.ToString()))
                     {
                         e.Cancel = true;
 
-                        dgv_Students.Rows[e.RowIndex].ErrorText = "Dose not empty.";
-
-                        MessageBox.Show("Không được để trống.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dgv_Students.Rows[e.RowIndex].ErrorText = "Had error";
+                        dgv_Students.Rows[e.RowIndex].Cells[index].ErrorText = "Dose not empty.";
 
                         dgv_Students.CurrentCell = drv;
-
-                        return;
                     }
+                    else
+                    {
+                        dgv_Students.Rows[e.RowIndex].Cells[index].ErrorText = null;
+                    }
+
+                    if (isFirst)
+                    {
+                        string valCurrent = drv.FormattedValue.ToString();
+
+                        if (SqlRequestFunction.StudentIsExist(valCurrent))
+                        {
+                            dgv_Students.Rows[e.RowIndex].ErrorText = "Had error";
+                            dgv_Students.Rows[e.RowIndex].Cells[index].ErrorText = "Student Code Is Exists.";
+                            dgv_Students.CurrentCell = drv;
+                        }
+                        else
+                        {
+                            dgv_Students.Rows[e.RowIndex].Cells[index].ErrorText = null;
+                        }
+
+                        isFirst = false;
+                    }
+                    index++;
                 }
             }
             catch { }
         }
 
-        private void dgv_Students_RowValidated(object sender, DataGridViewCellEventArgs e)
+        public void SetUpButtonForAction()
         {
-            dgv_Students.Rows[e.RowIndex].ErrorText = null;
+            this.splc_ConstructArea.Enabled = true;
+            this.btn_Add.Enabled = false;
+            this.btn_Edit.Enabled = false;
+            this.btn_Delete.Enabled = false;
+            //this.pnl_grv.Enabled = false;
+
+            this.lbl_Error_CodeClass.Text = this.lbl_Error_NameClass.Text = "";
+
+            if (this.btn_Write.Tag.Equals("ADD"))
+            {
+                this.dgv_Students.DataSource = null;
+                this.txt_NameClass.Text = this.txt_CodeClass.Text = "";
+                this.ActiveControl = this.txt_CodeClass;
+            }
+            else if (this.btn_Write.Tag.Equals("EDIT"))
+            {
+                //this.txt_CodeDepartment.Enabled = false;
+                this.pnl_grv.Enabled = false;
+            }
 
             try
             {
-                dgv_Students.CellValidating -= dgv_Students_CellValidating;
-
+                this.bs_Lop.CurrentChanged -= Bs_Lop_CurrentChanged;
             }
-            catch (Exception ex)
+            catch (ArgumentNullException anex)
             {
-
+                Debug.WriteLine(anex.Message);
             }
+        }
+
+        private bool DepartmentIsExists(String classCode)
+        {
+            bool isExistInCurrentData = (FindCurrentDataByClassCode(classCode)).Length > 0;
+            bool isExistOnDatabase = SqlRequestFunction.ClassIsExist(classCode);
+
+            return isExistInCurrentData || isExistOnDatabase;
+        }
+
+        private DataRowView[] FindCurrentDataByClassCode(String departmentCode)
+        {
+            DataView dt = (DataView)bs_Lop.List;
+            dt.Sort = "MALOP";
+            return dt.FindRows(departmentCode);
+        }
+
+        private bool DGVHadError(DataGridView dgv)
+        {
+            foreach (DataGridViewRow rowView in dgv.Rows)
+            {
+                bool a = rowView.IsNewRow;
+                if (rowView.ErrorText != "")
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

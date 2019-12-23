@@ -67,12 +67,7 @@
             this.tbla_BoDe = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BODETableAdapter();
             this.splc_Container = new System.Windows.Forms.SplitContainer();
             this.pnl_grv = new System.Windows.Forms.Panel();
-            this.grv_Khoa = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMACS = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.pnl_ConstructArea = new System.Windows.Forms.SplitContainer();
+            this.splc_ConstructArea = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_CodeBrand = new System.Windows.Forms.TextBox();
             this.txt_CodeDepartment = new System.Windows.Forms.TextBox();
@@ -93,6 +88,11 @@
             this.simpleSeparator2 = new DevExpress.XtraLayout.SimpleSeparator();
             this.simpleSeparator3 = new DevExpress.XtraLayout.SimpleSeparator();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMACS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grv_Khoa = new DevExpress.XtraGrid.GridControl();
             ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_Khoa)).BeginInit();
@@ -106,12 +106,10 @@
             this.splc_Container.Panel2.SuspendLayout();
             this.splc_Container.SuspendLayout();
             this.pnl_grv.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnl_ConstructArea)).BeginInit();
-            this.pnl_ConstructArea.Panel1.SuspendLayout();
-            this.pnl_ConstructArea.Panel2.SuspendLayout();
-            this.pnl_ConstructArea.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splc_ConstructArea)).BeginInit();
+            this.splc_ConstructArea.Panel1.SuspendLayout();
+            this.splc_ConstructArea.Panel2.SuspendLayout();
+            this.splc_ConstructArea.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Teachers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
@@ -119,6 +117,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).BeginInit();
             this.SuspendLayout();
             // 
             // barDockControlTop
@@ -417,7 +417,7 @@
             // 
             // splc_Container.Panel2
             // 
-            this.splc_Container.Panel2.Controls.Add(this.pnl_ConstructArea);
+            this.splc_Container.Panel2.Controls.Add(this.splc_ConstructArea);
             this.splc_Container.Size = new System.Drawing.Size(984, 378);
             this.splc_Container.SplitterDistance = 201;
             this.splc_Container.TabIndex = 27;
@@ -432,71 +432,25 @@
             this.pnl_grv.Size = new System.Drawing.Size(984, 201);
             this.pnl_grv.TabIndex = 0;
             // 
-            // grv_Khoa
+            // splc_ConstructArea
             // 
-            this.grv_Khoa.DataSource = this.bs_Khoa;
-            this.grv_Khoa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grv_Khoa.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
-            this.grv_Khoa.Location = new System.Drawing.Point(0, 0);
-            this.grv_Khoa.MainView = this.gridView1;
-            this.grv_Khoa.Margin = new System.Windows.Forms.Padding(1);
-            this.grv_Khoa.MenuManager = this.brm_Option;
-            this.grv_Khoa.Name = "grv_Khoa";
-            this.grv_Khoa.Size = new System.Drawing.Size(984, 201);
-            this.grv_Khoa.TabIndex = 14;
-            this.grv_Khoa.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.splc_ConstructArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splc_ConstructArea.Enabled = false;
+            this.splc_ConstructArea.Location = new System.Drawing.Point(0, 0);
+            this.splc_ConstructArea.Margin = new System.Windows.Forms.Padding(1);
+            this.splc_ConstructArea.Name = "splc_ConstructArea";
             // 
-            // gridView1
+            // splc_ConstructArea.Panel1
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMAKH,
-            this.colTENKH,
-            this.colMACS});
-            this.gridView1.GridControl = this.grv_Khoa;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
+            this.splc_ConstructArea.Panel1.Controls.Add(this.tableLayoutPanel1);
             // 
-            // colMAKH
+            // splc_ConstructArea.Panel2
             // 
-            this.colMAKH.FieldName = "MAKH";
-            this.colMAKH.Name = "colMAKH";
-            this.colMAKH.Visible = true;
-            this.colMAKH.VisibleIndex = 0;
-            // 
-            // colTENKH
-            // 
-            this.colTENKH.FieldName = "TENKH";
-            this.colTENKH.Name = "colTENKH";
-            this.colTENKH.Visible = true;
-            this.colTENKH.VisibleIndex = 1;
-            // 
-            // colMACS
-            // 
-            this.colMACS.FieldName = "MACS";
-            this.colMACS.Name = "colMACS";
-            this.colMACS.Visible = true;
-            this.colMACS.VisibleIndex = 2;
-            // 
-            // pnl_ConstructArea
-            // 
-            this.pnl_ConstructArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_ConstructArea.Enabled = false;
-            this.pnl_ConstructArea.Location = new System.Drawing.Point(0, 0);
-            this.pnl_ConstructArea.Margin = new System.Windows.Forms.Padding(1);
-            this.pnl_ConstructArea.Name = "pnl_ConstructArea";
-            // 
-            // pnl_ConstructArea.Panel1
-            // 
-            this.pnl_ConstructArea.Panel1.Controls.Add(this.tableLayoutPanel1);
-            // 
-            // pnl_ConstructArea.Panel2
-            // 
-            this.pnl_ConstructArea.Panel2.Controls.Add(this.dgv_Teachers);
-            this.pnl_ConstructArea.Size = new System.Drawing.Size(984, 173);
-            this.pnl_ConstructArea.SplitterDistance = 437;
-            this.pnl_ConstructArea.SplitterWidth = 1;
-            this.pnl_ConstructArea.TabIndex = 0;
+            this.splc_ConstructArea.Panel2.Controls.Add(this.dgv_Teachers);
+            this.splc_ConstructArea.Size = new System.Drawing.Size(984, 173);
+            this.splc_ConstructArea.SplitterDistance = 437;
+            this.splc_ConstructArea.SplitterWidth = 1;
+            this.splc_ConstructArea.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -708,6 +662,52 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(199, 131);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMAKH,
+            this.colTENKH,
+            this.colMACS});
+            this.gridView1.GridControl = this.grv_Khoa;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            // 
+            // colMAKH
+            // 
+            this.colMAKH.FieldName = "MAKH";
+            this.colMAKH.Name = "colMAKH";
+            this.colMAKH.Visible = true;
+            this.colMAKH.VisibleIndex = 0;
+            // 
+            // colTENKH
+            // 
+            this.colTENKH.FieldName = "TENKH";
+            this.colTENKH.Name = "colTENKH";
+            this.colTENKH.Visible = true;
+            this.colTENKH.VisibleIndex = 1;
+            // 
+            // colMACS
+            // 
+            this.colMACS.FieldName = "MACS";
+            this.colMACS.Name = "colMACS";
+            this.colMACS.Visible = true;
+            this.colMACS.VisibleIndex = 2;
+            // 
+            // grv_Khoa
+            // 
+            this.grv_Khoa.DataSource = this.bs_Khoa;
+            this.grv_Khoa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grv_Khoa.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
+            this.grv_Khoa.Location = new System.Drawing.Point(0, 0);
+            this.grv_Khoa.MainView = this.gridView1;
+            this.grv_Khoa.Margin = new System.Windows.Forms.Padding(1);
+            this.grv_Khoa.MenuManager = this.brm_Option;
+            this.grv_Khoa.Name = "grv_Khoa";
+            this.grv_Khoa.Size = new System.Drawing.Size(984, 201);
+            this.grv_Khoa.TabIndex = 14;
+            this.grv_Khoa.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
             // Frm_NhapKhoa
             // 
             this.Appearance.Options.UseFont = true;
@@ -741,12 +741,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splc_Container)).EndInit();
             this.splc_Container.ResumeLayout(false);
             this.pnl_grv.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.pnl_ConstructArea.Panel1.ResumeLayout(false);
-            this.pnl_ConstructArea.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pnl_ConstructArea)).EndInit();
-            this.pnl_ConstructArea.ResumeLayout(false);
+            this.splc_ConstructArea.Panel1.ResumeLayout(false);
+            this.splc_ConstructArea.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splc_ConstructArea)).EndInit();
+            this.splc_ConstructArea.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Teachers)).EndInit();
@@ -755,6 +753,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -798,7 +798,7 @@
         private System.Windows.Forms.BindingSource bs_BoDe;
         private TN_CSDLPTDataSetTableAdapters.BODETableAdapter tbla_BoDe;
         private System.Windows.Forms.SplitContainer splc_Container;
-        private System.Windows.Forms.SplitContainer pnl_ConstructArea;
+        private System.Windows.Forms.SplitContainer splc_ConstructArea;
         private System.Windows.Forms.DataGridView dgv_Teachers;
         private System.Windows.Forms.DataGridViewTextBoxColumn mAGVDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hODataGridViewTextBoxColumn;
@@ -810,11 +810,6 @@
         private System.Windows.Forms.TextBox txt_NameDepartment;
         private System.Windows.Forms.TextBox txt_CodeDepartment;
         private System.Windows.Forms.Panel pnl_grv;
-        private DevExpress.XtraGrid.GridControl grv_Khoa;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
-        private DevExpress.XtraGrid.Columns.GridColumn colTENKH;
-        private DevExpress.XtraGrid.Columns.GridColumn colMACS;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraLayout.SimpleSeparator simpleSeparator1;
         private DevExpress.XtraLayout.SimpleSeparator simpleSeparator2;
@@ -825,5 +820,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private DevExpress.XtraGrid.GridControl grv_Khoa;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
+        private DevExpress.XtraGrid.Columns.GridColumn colTENKH;
+        private DevExpress.XtraGrid.Columns.GridColumn colMACS;
     }
 }

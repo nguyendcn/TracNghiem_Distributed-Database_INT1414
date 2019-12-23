@@ -195,7 +195,6 @@ namespace TracNghiem_CSDLPT
         {
             if (btn_Exit.Tag.Equals("ADD"))
             {
-                ShowAll(bs_Khoa);
                 if (XtraMessageBox.Show(
                     "Bạn có chắc muốn thoát quá trình nhập không?",
                     "Thoát",
@@ -526,7 +525,7 @@ namespace TracNghiem_CSDLPT
 
         public void SetUpButtonForAction()
         {
-            this.pnl_ConstructArea.Enabled = true;
+            this.splc_ConstructArea.Enabled = true;
             this.btn_Add.Enabled = false;
             this.btn_Edit.Enabled = false;
             this.btn_Delete.Enabled = false;
@@ -558,7 +557,7 @@ namespace TracNghiem_CSDLPT
 
         public void FreeAllControl()
         {
-            this.pnl_ConstructArea.Enabled = false;
+            this.splc_ConstructArea.Enabled = false;
             this.btn_Add.Enabled = true;
             this.btn_Edit.Enabled = true;
             this.btn_Delete.Enabled = true;
@@ -705,14 +704,12 @@ namespace TracNghiem_CSDLPT
             }
         }
 
-
         public void WriteToDB()
         {
             bs_Khoa.EndEdit();
             bs_Khoa.ResetCurrentItem();
             this.tbla_Khoa.Update(this.ds_TN_CSDLPT.KHOA);
         }
-
 
         private void Txt_InputText_DoubleClick(object sender, EventArgs e)
         {

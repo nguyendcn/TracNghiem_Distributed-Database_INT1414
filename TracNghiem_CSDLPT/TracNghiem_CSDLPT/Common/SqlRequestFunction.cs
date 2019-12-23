@@ -41,6 +41,11 @@ namespace TracNghiem_CSDLPT.Common
             return CodeIsExist("sp_CheckDepartmentExists", departmentCode);
         }
 
+        public static bool ClassIsExist(String classCode)
+        {
+            return CodeIsExist("sp_CheckClassExists", classCode);
+        }
+
         public static bool TeacherIsExists(String teacherCode)
         {
             return CodeIsExist("sp_CheckTecherExists", teacherCode);

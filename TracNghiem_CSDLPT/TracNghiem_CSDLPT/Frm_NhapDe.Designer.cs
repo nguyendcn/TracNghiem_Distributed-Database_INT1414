@@ -42,7 +42,6 @@
             this.btn_Reset = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Delete = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Exit = new DevExpress.XtraBars.BarButtonItem();
-            this.bar6 = new DevExpress.XtraBars.Bar();
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -63,7 +62,7 @@
             this.colD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDAP_AN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAGV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splc_WorkArea = new System.Windows.Forms.SplitContainer();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cmb_CourseCode = new System.Windows.Forms.ComboBox();
@@ -75,19 +74,28 @@
             this.txt_QuestionContent = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmb_TrueAnswer = new System.Windows.Forms.ComboBox();
-            this.txt_AnsA = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_AnsD = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_AnsB = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txt_AnsA = new System.Windows.Forms.TextBox();
             this.txt_AnsC = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txt_AnsD = new System.Windows.Forms.TextBox();
             this.tbla_GiaoVien = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.GIAOVIENTableAdapter();
             this.tableAdapterManager = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.TableAdapterManager();
             this.tbla_BoDe = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BODETableAdapter();
             this.tbl_MonHoc = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.MONHOCTableAdapter();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_Err_A = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_Err_Content = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -98,19 +106,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.bs_BoDe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GiaoVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splc_WorkArea)).BeginInit();
+            this.splc_WorkArea.Panel1.SuspendLayout();
+            this.splc_WorkArea.Panel2.SuspendLayout();
+            this.splc_WorkArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bs_MonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.Panel2.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // bar2
@@ -147,8 +155,7 @@
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.bar4,
-            this.bar5,
-            this.bar6});
+            this.bar5});
             this.barManager1.DockControls.Add(this.barDockControl3);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -163,7 +170,6 @@
             this.btn_Exit});
             this.barManager1.MainMenu = this.bar5;
             this.barManager1.MaxItemId = 6;
-            this.barManager1.StatusBar = this.bar6;
             // 
             // bar4
             // 
@@ -235,18 +241,6 @@
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Exit_ItemClick);
             // 
-            // bar6
-            // 
-            this.bar6.BarName = "Status bar";
-            this.bar6.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar6.DockCol = 0;
-            this.bar6.DockRow = 0;
-            this.bar6.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar6.OptionsBar.AllowQuickCustomization = false;
-            this.bar6.OptionsBar.DrawDragBorder = false;
-            this.bar6.OptionsBar.UseWholeRow = true;
-            this.bar6.Text = "Status bar";
-            // 
             // barDockControl3
             // 
             this.barDockControl3.CausesValidation = false;
@@ -260,10 +254,10 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 605);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 628);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(5);
-            this.barDockControlBottom.Size = new System.Drawing.Size(937, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(937, 0);
             // 
             // barDockControlLeft
             // 
@@ -272,7 +266,7 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 69);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(5);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 536);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 559);
             // 
             // barDockControlRight
             // 
@@ -281,7 +275,7 @@
             this.barDockControlRight.Location = new System.Drawing.Point(937, 69);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(5);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 536);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 559);
             // 
             // ds_TN_CSDLPT
             // 
@@ -304,9 +298,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer1.Size = new System.Drawing.Size(937, 536);
-            this.splitContainer1.SplitterDistance = 299;
+            this.splitContainer1.Panel2.Controls.Add(this.splc_WorkArea);
+            this.splitContainer1.Size = new System.Drawing.Size(937, 559);
+            this.splitContainer1.SplitterDistance = 311;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 6;
             // 
@@ -320,7 +314,7 @@
             this.grv_BoDe.Margin = new System.Windows.Forms.Padding(2);
             this.grv_BoDe.MenuManager = this.barManager1;
             this.grv_BoDe.Name = "grv_BoDe";
-            this.grv_BoDe.Size = new System.Drawing.Size(937, 299);
+            this.grv_BoDe.Size = new System.Drawing.Size(937, 311);
             this.grv_BoDe.TabIndex = 0;
             this.grv_BoDe.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -422,47 +416,45 @@
             this.colMAGV.Visible = true;
             this.colMAGV.VisibleIndex = 9;
             // 
-            // splitContainer3
+            // splc_WorkArea
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.splitContainer3.Name = "splitContainer3";
+            this.splc_WorkArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splc_WorkArea.Enabled = false;
+            this.splc_WorkArea.Location = new System.Drawing.Point(0, 0);
+            this.splc_WorkArea.Margin = new System.Windows.Forms.Padding(2);
+            this.splc_WorkArea.Name = "splc_WorkArea";
             // 
-            // splitContainer3.Panel1
+            // splc_WorkArea.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.label7);
-            this.splitContainer3.Panel1.Controls.Add(this.label8);
-            this.splitContainer3.Panel1.Controls.Add(this.cmb_CourseCode);
-            this.splitContainer3.Panel1.Controls.Add(this.cmb_Level);
-            this.splitContainer3.Panel1.Controls.Add(this.label6);
-            this.splitContainer3.Panel1.Controls.Add(this.txt_QuestionCode);
+            this.splc_WorkArea.Panel1.Controls.Add(this.tableLayoutPanel3);
             // 
-            // splitContainer3.Panel2
+            // splc_WorkArea.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer3.Size = new System.Drawing.Size(937, 232);
-            this.splitContainer3.SplitterDistance = 312;
-            this.splitContainer3.SplitterWidth = 3;
-            this.splitContainer3.TabIndex = 12;
+            this.splc_WorkArea.Panel2.Controls.Add(this.splitContainer2);
+            this.splc_WorkArea.Size = new System.Drawing.Size(937, 243);
+            this.splc_WorkArea.SplitterDistance = 312;
+            this.splc_WorkArea.SplitterWidth = 2;
+            this.splc_WorkArea.TabIndex = 12;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(38, 62);
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(22, 100);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 17);
+            this.label7.Size = new System.Drawing.Size(59, 60);
             this.label7.TabIndex = 5;
             this.label7.Text = "Môn học:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(36, 94);
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(22, 180);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 17);
+            this.label8.Size = new System.Drawing.Size(59, 63);
             this.label8.TabIndex = 6;
             this.label8.Text = "Trình độ:";
             // 
@@ -472,12 +464,13 @@
             this.cmb_CourseCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_CourseCode.DataSource = this.bs_MonHoc;
             this.cmb_CourseCode.DisplayMember = "TENMH";
+            this.cmb_CourseCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmb_CourseCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_CourseCode.FormattingEnabled = true;
-            this.cmb_CourseCode.Location = new System.Drawing.Point(138, 62);
+            this.cmb_CourseCode.Location = new System.Drawing.Point(105, 102);
             this.cmb_CourseCode.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_CourseCode.Name = "cmb_CourseCode";
-            this.cmb_CourseCode.Size = new System.Drawing.Size(118, 25);
+            this.cmb_CourseCode.Size = new System.Drawing.Size(185, 25);
             this.cmb_CourseCode.TabIndex = 0;
             this.cmb_CourseCode.ValueMember = "MAMH";
             // 
@@ -490,72 +483,72 @@
             // 
             this.cmb_Level.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmb_Level.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_Level.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmb_Level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Level.FormattingEnabled = true;
-            this.cmb_Level.Location = new System.Drawing.Point(138, 94);
+            this.cmb_Level.Location = new System.Drawing.Point(105, 182);
             this.cmb_Level.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_Level.Name = "cmb_Level";
-            this.cmb_Level.Size = new System.Drawing.Size(117, 25);
+            this.cmb_Level.Size = new System.Drawing.Size(185, 25);
             this.cmb_Level.TabIndex = 2;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 22);
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(22, 20);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 17);
+            this.label6.Size = new System.Drawing.Size(59, 60);
             this.label6.TabIndex = 4;
             this.label6.Text = "Câu hỏi:";
             // 
             // txt_QuestionCode
             // 
-            this.txt_QuestionCode.Location = new System.Drawing.Point(137, 22);
+            this.txt_QuestionCode.Location = new System.Drawing.Point(105, 22);
             this.txt_QuestionCode.Margin = new System.Windows.Forms.Padding(2);
             this.txt_QuestionCode.Name = "txt_QuestionCode";
             this.txt_QuestionCode.ReadOnly = true;
-            this.txt_QuestionCode.Size = new System.Drawing.Size(61, 25);
+            this.txt_QuestionCode.Size = new System.Drawing.Size(67, 25);
             this.txt_QuestionCode.TabIndex = 3;
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.txt_QuestionContent);
-            this.splitContainer2.Panel1.Controls.Add(this.label5);
-            this.splitContainer2.Panel1.Controls.Add(this.cmb_TrueAnswer);
+            this.splitContainer2.Panel1.Controls.Add(this.tableLayoutPanel1);
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(622, 232);
+            this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel2);
+            this.splitContainer2.Size = new System.Drawing.Size(623, 243);
             this.splitContainer2.SplitterDistance = 296;
-            this.splitContainer2.SplitterWidth = 3;
+            this.splitContainer2.SplitterWidth = 2;
             this.splitContainer2.TabIndex = 11;
             // 
             // txt_QuestionContent
             // 
-            this.txt_QuestionContent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_QuestionContent.Location = new System.Drawing.Point(0, 0);
+            this.txt_QuestionContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_QuestionContent.Location = new System.Drawing.Point(2, 74);
             this.txt_QuestionContent.Margin = new System.Windows.Forms.Padding(2);
             this.txt_QuestionContent.Multiline = true;
             this.txt_QuestionContent.Name = "txt_QuestionContent";
-            this.txt_QuestionContent.Size = new System.Drawing.Size(296, 95);
+            this.txt_QuestionContent.Size = new System.Drawing.Size(292, 167);
             this.txt_QuestionContent.TabIndex = 1;
             this.txt_QuestionContent.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Txt__MouseDoubleClick);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 146);
+            this.label5.Location = new System.Drawing.Point(2, 204);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 17);
+            this.label5.Size = new System.Drawing.Size(55, 34);
             this.label5.TabIndex = 10;
             this.label5.Text = "Đáp án đúng:";
             // 
@@ -568,91 +561,99 @@
             "B",
             "C",
             "D"});
-            this.cmb_TrueAnswer.Location = new System.Drawing.Point(142, 143);
+            this.cmb_TrueAnswer.Location = new System.Drawing.Point(80, 206);
             this.cmb_TrueAnswer.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_TrueAnswer.Name = "cmb_TrueAnswer";
-            this.cmb_TrueAnswer.Size = new System.Drawing.Size(93, 25);
+            this.cmb_TrueAnswer.Size = new System.Drawing.Size(71, 25);
             this.cmb_TrueAnswer.TabIndex = 0;
-            // 
-            // txt_AnsA
-            // 
-            this.txt_AnsA.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_AnsA.Location = new System.Drawing.Point(0, 50);
-            this.txt_AnsA.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_AnsA.Name = "txt_AnsA";
-            this.txt_AnsA.Size = new System.Drawing.Size(273, 25);
-            this.txt_AnsA.TabIndex = 3;
-            this.txt_AnsA.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Txt__MouseDoubleClick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 98);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(19, 17);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "D";
-            // 
-            // txt_AnsD
-            // 
-            this.txt_AnsD.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_AnsD.Location = new System.Drawing.Point(0, 0);
-            this.txt_AnsD.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_AnsD.Name = "txt_AnsD";
-            this.txt_AnsD.Size = new System.Drawing.Size(273, 25);
-            this.txt_AnsD.TabIndex = 9;
-            this.txt_AnsD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Txt__MouseDoubleClick);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 66);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "C";
-            // 
-            // txt_AnsB
-            // 
-            this.txt_AnsB.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_AnsB.Location = new System.Drawing.Point(0, 75);
-            this.txt_AnsB.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_AnsB.Name = "txt_AnsB";
-            this.txt_AnsB.Size = new System.Drawing.Size(273, 25);
-            this.txt_AnsB.TabIndex = 5;
-            this.txt_AnsB.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Txt__MouseDoubleClick);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 38);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label2.Location = new System.Drawing.Point(11, 70);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 17);
+            this.label2.Size = new System.Drawing.Size(65, 32);
             this.label2.TabIndex = 4;
-            this.label2.Text = "B";
+            this.label2.Text = "Đáp án B";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // txt_AnsC
+            // label4
             // 
-            this.txt_AnsC.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_AnsC.Location = new System.Drawing.Point(0, 25);
-            this.txt_AnsC.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_AnsC.Name = "txt_AnsC";
-            this.txt_AnsC.Size = new System.Drawing.Size(273, 25);
-            this.txt_AnsC.TabIndex = 7;
-            this.txt_AnsC.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Txt__MouseDoubleClick);
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label4.Location = new System.Drawing.Point(10, 172);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 32);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Đáp án D";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 11);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label1.Location = new System.Drawing.Point(11, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 17);
+            this.label1.Size = new System.Drawing.Size(65, 32);
             this.label1.TabIndex = 2;
-            this.label1.Text = "A";
+            this.label1.Text = "Đáp án A";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label3.Location = new System.Drawing.Point(11, 121);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 32);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Đáp án C";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // txt_AnsB
+            // 
+            this.txt_AnsB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_AnsB.Location = new System.Drawing.Point(80, 72);
+            this.txt_AnsB.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_AnsB.Name = "txt_AnsB";
+            this.txt_AnsB.Size = new System.Drawing.Size(243, 25);
+            this.txt_AnsB.TabIndex = 5;
+            this.txt_AnsB.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Txt__MouseDoubleClick);
+            // 
+            // txt_AnsA
+            // 
+            this.txt_AnsA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_AnsA.Location = new System.Drawing.Point(80, 21);
+            this.txt_AnsA.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_AnsA.Name = "txt_AnsA";
+            this.txt_AnsA.Size = new System.Drawing.Size(243, 25);
+            this.txt_AnsA.TabIndex = 3;
+            this.txt_AnsA.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Txt__MouseDoubleClick);
+            // 
+            // txt_AnsC
+            // 
+            this.txt_AnsC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_AnsC.Location = new System.Drawing.Point(80, 123);
+            this.txt_AnsC.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_AnsC.Name = "txt_AnsC";
+            this.txt_AnsC.Size = new System.Drawing.Size(243, 25);
+            this.txt_AnsC.TabIndex = 7;
+            this.txt_AnsC.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Txt__MouseDoubleClick);
+            // 
+            // txt_AnsD
+            // 
+            this.txt_AnsD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_AnsD.Location = new System.Drawing.Point(80, 174);
+            this.txt_AnsD.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_AnsD.Name = "txt_AnsD";
+            this.txt_AnsD.Size = new System.Drawing.Size(243, 25);
+            this.txt_AnsD.TabIndex = 9;
+            this.txt_AnsD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Txt__MouseDoubleClick);
             // 
             // tbla_GiaoVien
             // 
@@ -680,28 +681,157 @@
             // 
             this.tbl_MonHoc.ClearBeforeFill = true;
             // 
-            // splitContainer4
+            // tableLayoutPanel1
             // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.txt_QuestionContent, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(296, 243);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // splitContainer4.Panel1
+            // panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.label2);
-            this.splitContainer4.Panel1.Controls.Add(this.label4);
-            this.splitContainer4.Panel1.Controls.Add(this.label1);
-            this.splitContainer4.Panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.lbl_Err_Content);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(290, 66);
+            this.panel1.TabIndex = 2;
             // 
-            // splitContainer4.Panel2
+            // label9
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.txt_AnsB);
-            this.splitContainer4.Panel2.Controls.Add(this.txt_AnsA);
-            this.splitContainer4.Panel2.Controls.Add(this.txt_AnsC);
-            this.splitContainer4.Panel2.Controls.Add(this.txt_AnsD);
-            this.splitContainer4.Size = new System.Drawing.Size(323, 152);
-            this.splitContainer4.SplitterDistance = 46;
-            this.splitContainer4.TabIndex = 10;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(82, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(125, 17);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Nội dung câu hỏi thi";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76F));
+            this.tableLayoutPanel2.Controls.Add(this.txt_AnsD, 1, 7);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.txt_AnsC, 1, 5);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 7);
+            this.tableLayoutPanel2.Controls.Add(this.txt_AnsA, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txt_AnsB, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 0, 8);
+            this.tableLayoutPanel2.Controls.Add(this.cmb_TrueAnswer, 1, 8);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.lbl_Err_A, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label10, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label11, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.label12, 1, 6);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 9;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.108109F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.51351F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.108109F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.51351F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.108109F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.51351F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.108109F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.51351F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.51351F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(325, 243);
+            this.tableLayoutPanel2.TabIndex = 11;
+            // 
+            // lbl_Err_A
+            // 
+            this.lbl_Err_A.AutoSize = true;
+            this.lbl_Err_A.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_Err_A.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Err_A.Location = new System.Drawing.Point(81, 0);
+            this.lbl_Err_A.Name = "lbl_Err_A";
+            this.lbl_Err_A.Size = new System.Drawing.Size(241, 19);
+            this.lbl_Err_A.TabIndex = 11;
+            this.lbl_Err_A.Text = "Err";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(81, 51);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(241, 19);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Err";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(81, 102);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(241, 19);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Err";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(81, 153);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(241, 19);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Err";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 5;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.txt_QuestionCode, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 1, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.cmb_Level, 3, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.cmb_CourseCode, 3, 3);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 6;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(312, 243);
+            this.tableLayoutPanel3.TabIndex = 7;
+            // 
+            // lbl_Err_Content
+            // 
+            this.lbl_Err_Content.AutoSize = true;
+            this.lbl_Err_Content.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbl_Err_Content.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Err_Content.Location = new System.Drawing.Point(0, 49);
+            this.lbl_Err_Content.Name = "lbl_Err_Content";
+            this.lbl_Err_Content.Size = new System.Drawing.Size(27, 17);
+            this.lbl_Err_Content.TabIndex = 12;
+            this.lbl_Err_Content.Text = "Err";
             // 
             // Frm_NhapDe
             // 
@@ -730,23 +860,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.bs_BoDe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GiaoVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel1.PerformLayout();
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
+            this.splc_WorkArea.Panel1.ResumeLayout(false);
+            this.splc_WorkArea.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splc_WorkArea)).EndInit();
+            this.splc_WorkArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bs_MonHoc)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel1.PerformLayout();
-            this.splitContainer4.Panel2.ResumeLayout(false);
-            this.splitContainer4.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -766,7 +896,6 @@
         private DevExpress.XtraBars.BarButtonItem btn_Reset;
         private DevExpress.XtraBars.BarButtonItem btn_Delete;
         private DevExpress.XtraBars.BarButtonItem btn_Exit;
-        private DevExpress.XtraBars.Bar bar6;
         private DevExpress.XtraBars.BarDockControl barDockControl3;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -810,7 +939,16 @@
         private System.Windows.Forms.BindingSource bs_MonHoc;
         private TN_CSDLPTDataSetTableAdapters.MONHOCTableAdapter tbl_MonHoc;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.SplitContainer splc_WorkArea;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label lbl_Err_Content;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label lbl_Err_A;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }

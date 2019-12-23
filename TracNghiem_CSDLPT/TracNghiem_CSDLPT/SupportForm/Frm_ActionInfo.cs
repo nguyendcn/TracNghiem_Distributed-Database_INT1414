@@ -169,7 +169,13 @@ namespace TracNghiem_CSDLPT.SupportForm
             }
 
             this.dgv_Data.DataSource = cb.Table;
+
+            this.dgv_Data.ColumnAdded += Dgv_Data_ColumnAdded;
         }
 
+        private void Dgv_Data_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
+        {
+            e.Column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
     }
 }

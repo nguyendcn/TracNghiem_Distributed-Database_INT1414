@@ -10,14 +10,20 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Diagnostics;
 using TracNghiem_CSDLPT.Common;
+using TracNghiem_CSDLPT.Share;
+using TracNghiem_CSDLPT.SupportForm;
 
 namespace TracNghiem_CSDLPT
 {
     public partial class Frm_NhapDe : DevExpress.XtraEditors.XtraForm
     {
+        private CallBackAction _callAction;
+
         public Frm_NhapDe()
         {
             InitializeComponent();
+
+            _callAction = new CallBackAction();
 
             SetUp();
 
@@ -26,7 +32,7 @@ namespace TracNghiem_CSDLPT
 
         private void Bs_BoDe_CurrentChanged(object sender, EventArgs e)
         {
-            if(bs_BoDe.Position != -1)
+            if (bs_BoDe.Position != -1)
             {
                 txt_QuestionCode.Text = ((DataRowView)bs_BoDe[bs_BoDe.Position])["CAUHOI"].ToString().Trim();
 
@@ -54,7 +60,7 @@ namespace TracNghiem_CSDLPT
             tableLevel.Columns.Add("Name");
 
             DataRow dataRow = tableLevel.NewRow();
-            dataRow.ItemArray = new object[] {"A", "Đại Học" };
+            dataRow.ItemArray = new object[] { "A", "Đại Học" };
             tableLevel.Rows.Add(dataRow);
 
             dataRow = tableLevel.NewRow();
@@ -69,11 +75,12 @@ namespace TracNghiem_CSDLPT
             cmb_Level.ValueMember = "Symbol";
             cmb_Level.DisplayMember = "Name";
 
+            ClearAllMessageError();
         }
 
         private int GetIndexOfDataTable(DataTable dt, String key)
         {
-            for(int i =0; i< dt.Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
                 if (dt.Rows[i].ItemArray[0].Equals(key))
                     return i;
@@ -129,11 +136,9 @@ namespace TracNghiem_CSDLPT
             return lCode[count - 1] + 1;
         }
 
-
-
         private void Frm_NhapDe_Load(object sender, EventArgs e)
         {
-           
+
 
             this.ds_TN_CSDLPT.EnforceConstraints = false;
 
@@ -151,26 +156,136 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Add_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bool isEmpty = DataEmptyOrNull();
+            this.btn_Exit.Tag = "ADD";
+            this.btn_Write.Tag = "ADD";
 
-            if (!isEmpty)
+            SetUpButtonForAction();
+
+            AutoFillForAddAction();
+        }
+
+        private void btn_Edit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.btn_Write.Tag = "EDIT";
+            this.btn_Exit.Tag = "EDIT";
+
+            SetUpButtonForAction();
+        }
+
+        private void btn_Exit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (btn_Exit.Tag == null)
+                return;
+
+            if (btn_Exit.Tag.Equals("ADD"))
             {
-                try
+                if (XtraMessageBox.Show(
+                    "Bạn có chắc muốn thoát quá trình nhập không?",
+                    "Thoát",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    int qCode = GetIndexCodeForQuestion();
-                    object[] data = new object[] {qCode, cmb_CourseCode.SelectedValue, cmb_Level.SelectedValue,
-                    txt_QuestionContent.Text, txt_AnsA.Text, txt_AnsB.Text, txt_AnsC.Text,
-                    txt_AnsD.Text, cmb_TrueAnswer.Text };
-
-                    DataRowView drv = (DataRowView)bs_BoDe.AddNew();
-                    drv.Row.ItemArray = data;
+                    FreeAllControl();
                 }
-                catch(Exception ex)
-                {
-                    Debug.Fail("Error.");
-                }
-                
             }
+            else if (btn_Exit.Tag.Equals("EDIT"))
+            {
+                if (XtraMessageBox.Show(
+                    "Bạn có chắc muốn thoát quá trình sửa không?",
+                    "Thoát",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    FreeAllControl();
+                }
+            }
+        }
+
+        private void btn_Reset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (this._callAction.BackAction == Share.Action.None)
+            {
+                MessageBox.Show("Không có dữ liệu để phục hồi. Vui lòng kiểm tra lại!", "Phục hồi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+
+                Frm_ActionInfo frm_Recovery = new Frm_ActionInfo(
+                    new Object[] { this.splc_Container, this.brm_Option },
+                    this._callAction);
+
+                frm_Recovery.Choosen += (result) =>
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        RecoveryDataByAction(this._callAction);
+                    }
+                };
+
+                frm_Recovery.Parent = this;
+                frm_Recovery.BringToFront();
+                frm_Recovery.Show();
+            }
+        }
+
+        private void btn_Write_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                if (btn_Write.Tag == null)
+                    return;
+                if (this.btn_Write.Tag.Equals("ADD"))
+                {
+                    bool addSucess = Add();
+
+                    if (addSucess)
+                    {
+                        Frm_ActionInfo info = new Frm_ActionInfo(
+                                            new Object[] { this.splc_Container, this.brm_Option },
+                                            new CallBackAction(Share.Action.AddSuccess, this._callAction.Table)
+                                            );
+
+                        info.Parent = this;
+                        info.BringToFront();
+                        info.Show();
+
+                        txt_QuestionCode.Text = GetIndexCodeForQuestion().ToString();
+                    }
+                }
+                else if (this.btn_Write.Tag.Equals("EDIT"))
+                {
+                    bool editSuccess = Edit();
+
+                    if (editSuccess)
+                    {
+                        DataTable dt = SetUpCurrentData(((DataRowView)bs_BoDe.Current).Row.ItemArray);
+
+                        Frm_ActionInfo frm_edit = new Frm_ActionInfo(
+                                            new Object[] { this.splc_Container, this.brm_Option },
+                                            new CallBackAction(Share.Action.EditSuccess, dt)
+                                            );
+
+                        frm_edit.Parent = this;
+                        frm_edit.BringToFront();
+                        frm_edit.Show();
+                    }
+                }
+                else return;
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("CAUHOI"))
+                    MessageBox.Show("Mã CH không được trùng", "", MessageBoxButtons.OK);
+                else
+                {
+                    MessageBox.Show("Lỗi ghi Bộ đề" + ex.Message, "", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void btn_Delete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Delete();
         }
 
         private void Txt__MouseDoubleClick(object sender, MouseEventArgs e)
@@ -180,63 +295,279 @@ namespace TracNghiem_CSDLPT
             tb.SelectAll();
         }
 
-        private void btn_Exit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private bool Add()
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn lưu dữ liệu trước khi thoát không?", "Exit",
-              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            bool isEmpty = ValidateEmpty();
 
-            if (dialogResult == DialogResult.Yes)
-            {
-                btn_Write.PerformClick();
-            }
+            if (!isEmpty)
+                return false;
 
-            this.Dispose();
+            object[] data = GetAllDataOfQuestion();
+            DataRowView drv = (DataRowView)bs_BoDe.AddNew();
+            drv.Row.ItemArray = data;
+
+            SaveDBToDb();
+
+            this._callAction.FillData(Share.Action.RecoveryAdd, SetUpCurrentData(data));
+            return true;
         }
 
-        private void btn_Delete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private bool Edit()
         {
+            bool isEmpty = ValidateEmpty();
+
+            if (!isEmpty)
+                return false;
+
             DataRowView currentRow = (DataRowView)bs_BoDe.Current;
 
-            DialogResult dialogResult = MessageBox.Show(
-                   "Bạn có chắc muốn xóa câu hỏi: {" + currentRow.Row.ItemArray[0] + ", " + currentRow.Row.ItemArray[1] + "}.",
-                   "Xoá",
-                   MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (dialogResult == DialogResult.Yes)
+            if (currentRow != null)
             {
                 try
                 {
-                    bs_BoDe.RemoveCurrent();
-                    MessageBox.Show("Xóa thành công!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this._callAction.FillData(Share.Action.RecoveryEdit, SetUpCurrentData(currentRow.Row.ItemArray));
 
+                    object[] data = GetAllDataOfQuestion();
+                    currentRow.Row.ItemArray = data;
+
+                    SaveDBToDb();
+
+                    return true;
                 }
-                catch (Exception ex)
+                catch(Exception)
                 {
-                    MessageBox.Show("Can not delete row because: " + ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
-
+            }
+            else
+            {
+                XtraMessageBox.Show(StringLibrary.E_EditEmpty, StringLibrary.E_EditNotify, MessageBoxButtons.OK);
+                return false;
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void Delete()
         {
+            DataRowView currentRow = (DataRowView)bs_BoDe.Current;
+            if (AbleDelete())
+            {
+                Frm_ActionInfo frm_delete = new Frm_ActionInfo(
+                    new Object[] { this.splc_Container, this.brm_Option },
+                    new CallBackAction(Share.Action.Delete, SetUpCurrentData(currentRow.Row.ItemArray)));
+
+                frm_delete.Choosen += (result) =>
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            this._callAction.FillData(Share.Action.RecoveryDelete, SetUpCurrentData(currentRow.Row.ItemArray));
+
+                            bs_BoDe.RemoveCurrent();
+                            SaveDBToDb();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Can not delete row because: " + ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                };
+
+                frm_delete.Parent = this;
+                frm_delete.BringToFront();
+                frm_delete.Show();
+            }
+        }
+
+        private void SaveDBToDb()
+        {
+            this.bs_BoDe.EndEdit();
+            this.bs_BoDe.ResetCurrentItem();
+            this.tbla_BoDe.Update(this.ds_TN_CSDLPT.BODE);
+        }
+
+        private bool AbleDelete()
+        {
+            return true;
+        }
+
+        public void RecoveryDataByAction(CallBackAction cAction)
+        {
+            if (cAction.BackAction == Share.Action.RecoveryAdd)
+            {
+                DataView dt = (DataView)bs_BoDe.List;
+
+                DataRow dr = cAction.Table.Rows[0];
+                String key = dr.ItemArray[0].ToString();
+                int index = dt.Find(key);
+
+                bs_BoDe.RemoveAt(index);
+                SaveDBToDb();
+            }
+            else if (cAction.BackAction == Share.Action.RecoveryDelete)
+            {
+                DataView dt = (DataView)bs_BoDe.List;
+                dt.Sort = "CAUHOI";
+                if (dt.FindRows(cAction.Table.Rows[0]).Length != 0)
+                {
+                    MessageBox.Show("Mã CH đã tồn tại.Vui lòng nhập lại!");
+                }
+                else
+                {
+                    DataRow dr = cAction.Table.Rows[0];
+                    DataRowView drv = (DataRowView)bs_BoDe.AddNew();
+                    drv.Row.ItemArray = dr.ItemArray;
+                    SaveDBToDb();
+                }
+            }
+            else if (cAction.BackAction == Share.Action.RecoveryEdit)
+            {
+                DataView dt = (DataView)bs_BoDe.List;
+
+                DataRow dr = cAction.Table.Rows[0];
+                String key = dr.ItemArray[0].ToString();
+                int index = dt.Find(key);
+
+                bs_BoDe.Position = index;
+
+                DataRowView currentRow = (DataRowView)bs_BoDe.Current;
+
+                currentRow.Row.ItemArray = dr.ItemArray;
+                SaveDBToDb();
+            }
+
+            this._callAction.Reset();
+            this.Refresh();
+        }
+
+        private void ClearAllMessageError()
+        {
+            lbl_Err_A.Text = lbl_Err_B.Text = lbl_Err_C.Text = lbl_Err_D.Text = "";
+            lbl_Err_Content.Text = "";
+        }
+
+        private void ClearFieldContent()
+        {
+            this.txt_AnsA.Text = txt_AnsB.Text = txt_AnsC.Text = txt_AnsD.Text = "";
+            this.txt_QuestionContent.Text = "";
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void SetUpButtonForAction()
         {
+            this.splc_WorkArea.Enabled = true;
+            this.btn_Add.Enabled = false;
+            this.btn_Edit.Enabled = false;
+            this.btn_Delete.Enabled = false;
+
+            if (this.btn_Write.Tag.Equals("ADD"))
+            {
+                ClearFieldContent();
+                this.ActiveControl = this.txt_QuestionContent;
+                try
+                {
+                    this.bs_MonHoc.CurrentChanged -= Bs_BoDe_CurrentChanged;
+                }
+                catch (ArgumentNullException anex)
+                {
+                    Debug.WriteLine(anex.Message);
+                }
+            }
+        }
+
+        private void FreeAllControl()
+        {
+            this.splc_WorkArea.Enabled = false;
+            this.btn_Add.Enabled = true;
+            this.btn_Edit.Enabled = true;
+            this.btn_Delete.Enabled = true;
+
+            this.btn_Exit.Tag = this.btn_Write.Tag = "";
+
+            try
+            {
+                this.bs_MonHoc.CurrentChanged -= Bs_BoDe_CurrentChanged;
+                this.bs_MonHoc.CurrentChanged += Bs_BoDe_CurrentChanged;
+            }
+            catch (ArgumentNullException anex)
+            {
+                this.bs_MonHoc.CurrentChanged += Bs_BoDe_CurrentChanged;
+
+                Debug.WriteLine(anex.Message);
+            }
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private bool ValidateEmpty()
         {
+            bool validate = true;
+            if (txt_QuestionContent.Text.Trim().Equals(String.Empty))
+            {
+                ErrorHandler.ShowError(lbl_Err_Content, new string[] { "Ox0001" });
+                this.ActiveControl = this.txt_QuestionContent;
+                validate = false;
+            }
 
+            if (txt_AnsA.Text.Trim().Equals(String.Empty))
+            {
+                ErrorHandler.ShowError(lbl_Err_A, new string[] { "Ox0001" });
+                this.ActiveControl = this.txt_AnsA;
+                validate = false;
+            }
+            if (txt_AnsB.Text.Trim().Equals(String.Empty))
+            {
+                ErrorHandler.ShowError(lbl_Err_B, new string[] { "Ox0001" });
+                this.ActiveControl = this.txt_AnsB;
+                validate = false;
+            }
+            if (txt_AnsC.Text.Trim().Equals(String.Empty))
+            {
+                ErrorHandler.ShowError(lbl_Err_C, new string[] { "Ox0001" });
+                this.ActiveControl = this.txt_AnsC;
+                validate = false;
+            }
+            if (txt_AnsD.Text.Trim().Equals(String.Empty))
+            {
+                ErrorHandler.ShowError(lbl_Err_D, new string[] { "Ox0001" });
+                this.ActiveControl = this.txt_AnsD;
+                validate = false;
+            }
+
+            return validate;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private object[] GetAllDataOfQuestion()
         {
-
+            return new object[] {txt_QuestionCode.Text, cmb_CourseCode.SelectedValue, cmb_Level.SelectedValue,
+                    txt_QuestionContent.Text, txt_AnsA.Text, txt_AnsB.Text, txt_AnsC.Text,
+                    txt_AnsD.Text, cmb_TrueAnswer.Text, Program.username};
         }
+
+        private DataTable SetUpCurrentData(object[] datas)
+        {
+            DataTable table = new DataTable();
+
+            DataColumn []dcs = new DataColumn[] { new DataColumn("Số câu"), new DataColumn("Mã môn học")
+                                                ,new DataColumn("Trình độ"), new DataColumn("Nội dung")
+                                                ,new DataColumn("A"), new DataColumn("B")
+                                                ,new DataColumn("C"), new DataColumn("D")
+                                                ,new DataColumn("Đáp Án Đúng"), new DataColumn("Mã giáo viên")};
+
+            table.Columns.AddRange(dcs);
+
+            DataRow dr = table.NewRow();
+            dr.ItemArray = datas;
+            table.Rows.Add(dr);
+
+            return table;
+        }
+
+        private void AutoFillForAddAction()
+        {
+            txt_QuestionCode.Text = GetIndexCodeForQuestion().ToString();
+        }
+
     }
 }
+

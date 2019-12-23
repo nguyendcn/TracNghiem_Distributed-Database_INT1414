@@ -409,7 +409,7 @@ namespace TracNghiem_CSDLPT
             {
                 DataView dt = (DataView)bs_BoDe.List;
                 dt.Sort = "CAUHOI";
-                if (dt.FindRows(cAction.Table.Rows[0]).Length != 0)
+                if (dt.FindRows(cAction.Table.Rows[0].ItemArray[0]).Length != 0)
                 {
                     MessageBox.Show("Mã CH đã tồn tại.Vui lòng nhập lại!");
                 }

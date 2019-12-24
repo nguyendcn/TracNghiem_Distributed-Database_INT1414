@@ -110,8 +110,9 @@ namespace TracNghiem_CSDLPT
                 Frm_RegisterExamSuccess frm_Success = new Frm_RegisterExamSuccess(SetUpDataSuccess(data));
 
                 frm_Success.TopLevel = false;
-                frm_Success.MdiParent = this;
+                frm_Success.Parent = this;
                 frm_Success.Show();
+                frm_Success.BringToFront();
             }
             catch (Exception ex)
             {
@@ -363,12 +364,57 @@ namespace TracNghiem_CSDLPT
 
         public object[] SetUpDataSuccess(object[] data)
         {
-            String teacherName = "";
-            String courseName = "";
-            String className = "";
-            String level = "";
+            String teacherName = GetTeacherName(data[0].ToString());
+            String courseName = GetCourseName(data[1].ToString());
+            String className = GetClassName(data[2].ToString());
+            String level = GetLevelName(data[3].ToString());
 
             return new object[] { teacherName, courseName, className, level, data[4], data[5] , data[6] , data[7] };
+        }
+
+        public String GetTeacherName(String teacherCode)
+        {
+            DataView dt = (DataView)bs_GiaoVien.List;
+            dt.Sort = "MAGV";
+
+            DataRowView  rowView = dt.FindRows(teacherCode)[0];
+
+            return rowView.Row.ItemArray[1] + " " + rowView.Row.ItemArray[2];
+        }
+
+        public String GetCourseName(String courseCode)
+        {
+            DataView dt = (DataView)bs_MonHoc.List;
+            dt.Sort = "MAMH";
+
+            DataRowView rowView = dt.FindRows(courseCode)[0];
+
+            return rowView.Row.ItemArray[1].ToString();
+        }
+
+        public String GetClassName(String classCode)
+        {
+            DataView dt = (DataView)bs_Lop.List;
+            dt.Sort = "MALOP";
+
+            DataRowView rowView = dt.FindRows(classCode)[0];
+
+            return rowView.Row.ItemArray[1].ToString();
+        }
+
+        public String GetLevelName(String level)
+        {
+            switch (level)
+            {
+                case "A":
+                    return "Đại Học";
+                case "B":
+                    return "Cao Đẳng";
+                case "C":
+                    return "Trung Cấp";
+                default:
+                    return "";
+            }
         }
     }
 }

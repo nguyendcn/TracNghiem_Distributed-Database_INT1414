@@ -144,7 +144,9 @@
     <Compile Include="Share\CallBackAction.cs" />
     <Compile Include="Share\ErrorHandler.cs" />
     <Compile Include="Share\ErrorCode.cs" />
+    <Compile Include="Share\ExamTest.cs" />
     <Compile Include="Share\StringLibrary.cs" />
+    <Compile Include="Share\TestInfo.cs" />
     <Compile Include="Share\TimerAction.cs" />
     <Compile Include="SupportForm\Frm_ActionInfo.cs">
       <SubType>Form</SubType>
@@ -157,6 +159,12 @@
     </Compile>
     <Compile Include="SupportForm\Frm_RegisterExamSuccess.Designer.cs">
       <DependentUpon>Frm_RegisterExamSuccess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestExam.Designer.cs">
+      <DependentUpon>TestExam.cs</DependentUpon>
     </Compile>
     <Compile Include="TN_CSDLPTDataSet.cs">
       <DependentUpon>TN_CSDLPTDataSet.xsd</DependentUpon>
@@ -208,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SupportForm\Frm_RegisterExamSuccess.resx">
       <DependentUpon>Frm_RegisterExamSuccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestExam.resx">
+      <DependentUpon>TestExam.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

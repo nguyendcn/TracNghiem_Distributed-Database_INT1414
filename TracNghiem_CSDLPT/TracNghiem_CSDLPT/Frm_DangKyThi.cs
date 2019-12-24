@@ -109,6 +109,7 @@ namespace TracNghiem_CSDLPT
 
                 Frm_RegisterExamSuccess frm_Success = new Frm_RegisterExamSuccess(SetUpDataSuccess(data));
 
+                frm_Success.StartPosition = FormStartPosition.CenterParent;
                 frm_Success.TopLevel = false;
                 frm_Success.Parent = this;
                 frm_Success.Show();

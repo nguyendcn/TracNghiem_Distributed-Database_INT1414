@@ -152,6 +152,12 @@
     <Compile Include="SupportForm\Frm_ActionInfo.Designer.cs">
       <DependentUpon>Frm_ActionInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="SupportForm\Frm_RegisterExamSuccess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupportForm\Frm_RegisterExamSuccess.Designer.cs">
+      <DependentUpon>Frm_RegisterExamSuccess.cs</DependentUpon>
+    </Compile>
     <Compile Include="TN_CSDLPTDataSet.cs">
       <DependentUpon>TN_CSDLPTDataSet.xsd</DependentUpon>
     </Compile>
@@ -199,6 +205,9 @@
     </Compile>
     <EmbeddedResource Include="SupportForm\Frm_ActionInfo.resx">
       <DependentUpon>Frm_ActionInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportForm\Frm_RegisterExamSuccess.resx">
+      <DependentUpon>Frm_RegisterExamSuccess.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

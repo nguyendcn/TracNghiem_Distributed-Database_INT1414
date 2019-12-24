@@ -51,6 +51,12 @@ namespace TracNghiem_CSDLPT.Common
             return CodeIsExist("sp_CheckTecherExists", teacherCode);
         }
 
+        public static bool RegisterIsExists(String classCode, String courseCode, int time)
+        {
+            String code = classCode + "', '" + courseCode + "', '" + time;
+            return CodeIsExist("sp_CheckRegisterIsExists", code);
+        }
+
         private static bool CodeIsExist(String sp, String code)
         {
             String query = "Exec " + sp + " '" + code + "'";
@@ -85,6 +91,34 @@ namespace TracNghiem_CSDLPT.Common
             reader.Close(); // <- too easy to forget
             reader.Dispose(); // <- too easy to forget
             return lCode;
+        }
+
+        public static bool IsEnoughQuestion(String courseCode, String level, int quantity)
+        {
+            String val = String.Empty;
+            bool isEnough = true;
+
+            String query = "Exec sp_GetQuestion '" + courseCode + "', '" + level + "', '" + quantity + "'";
+            SqlDataReader reader = ExecSqlDataReader(query);
+
+            try
+            {
+                if (reader.Read())
+                {
+                    int temp = reader.GetInt32(0);
+                }
+
+                
+            }
+            catch (Exception)
+            {
+                isEnough = false;
+            }
+
+            reader.Close(); // <- too easy to forget
+            reader.Dispose(); // <- too easy to forget
+
+            return isEnough;
         }
 
 

@@ -67,6 +67,11 @@
             this.tbla_BoDe = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BODETableAdapter();
             this.splc_Container = new System.Windows.Forms.SplitContainer();
             this.pnl_grv = new System.Windows.Forms.Panel();
+            this.grv_Khoa = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMACS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splc_ConstructArea = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_CodeBrand = new System.Windows.Forms.TextBox();
@@ -88,11 +93,6 @@
             this.simpleSeparator2 = new DevExpress.XtraLayout.SimpleSeparator();
             this.simpleSeparator3 = new DevExpress.XtraLayout.SimpleSeparator();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMACS = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grv_Khoa = new DevExpress.XtraGrid.GridControl();
             ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_Khoa)).BeginInit();
@@ -106,6 +106,8 @@
             this.splc_Container.Panel2.SuspendLayout();
             this.splc_Container.SuspendLayout();
             this.pnl_grv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splc_ConstructArea)).BeginInit();
             this.splc_ConstructArea.Panel1.SuspendLayout();
             this.splc_ConstructArea.Panel2.SuspendLayout();
@@ -117,8 +119,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).BeginInit();
             this.SuspendLayout();
             // 
             // barDockControlTop
@@ -432,6 +432,52 @@
             this.pnl_grv.Size = new System.Drawing.Size(984, 201);
             this.pnl_grv.TabIndex = 0;
             // 
+            // grv_Khoa
+            // 
+            this.grv_Khoa.DataSource = this.bs_Khoa;
+            this.grv_Khoa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grv_Khoa.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
+            this.grv_Khoa.Location = new System.Drawing.Point(0, 0);
+            this.grv_Khoa.MainView = this.gridView1;
+            this.grv_Khoa.Margin = new System.Windows.Forms.Padding(1);
+            this.grv_Khoa.MenuManager = this.brm_Option;
+            this.grv_Khoa.Name = "grv_Khoa";
+            this.grv_Khoa.Size = new System.Drawing.Size(984, 201);
+            this.grv_Khoa.TabIndex = 14;
+            this.grv_Khoa.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMAKH,
+            this.colTENKH,
+            this.colMACS});
+            this.gridView1.GridControl = this.grv_Khoa;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            // 
+            // colMAKH
+            // 
+            this.colMAKH.FieldName = "MAKH";
+            this.colMAKH.Name = "colMAKH";
+            this.colMAKH.Visible = true;
+            this.colMAKH.VisibleIndex = 0;
+            // 
+            // colTENKH
+            // 
+            this.colTENKH.FieldName = "TENKH";
+            this.colTENKH.Name = "colTENKH";
+            this.colTENKH.Visible = true;
+            this.colTENKH.VisibleIndex = 1;
+            // 
+            // colMACS
+            // 
+            this.colMACS.FieldName = "MACS";
+            this.colMACS.Name = "colMACS";
+            this.colMACS.Visible = true;
+            this.colMACS.VisibleIndex = 2;
+            // 
             // splc_ConstructArea
             // 
             this.splc_ConstructArea.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -472,10 +518,10 @@
             this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(437, 173);
             this.tableLayoutPanel1.TabIndex = 20;
@@ -484,7 +530,7 @@
             // 
             this.txt_CodeBrand.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_CodeBrand.Enabled = false;
-            this.txt_CodeBrand.Location = new System.Drawing.Point(100, 133);
+            this.txt_CodeBrand.Location = new System.Drawing.Point(100, 131);
             this.txt_CodeBrand.Margin = new System.Windows.Forms.Padding(1);
             this.txt_CodeBrand.Name = "txt_CodeBrand";
             this.txt_CodeBrand.ReadOnly = true;
@@ -503,7 +549,7 @@
             // txt_NameDepartment
             // 
             this.txt_NameDepartment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_NameDepartment.Location = new System.Drawing.Point(100, 91);
+            this.txt_NameDepartment.Location = new System.Drawing.Point(100, 90);
             this.txt_NameDepartment.Margin = new System.Windows.Forms.Padding(1);
             this.txt_NameDepartment.Name = "txt_NameDepartment";
             this.txt_NameDepartment.Size = new System.Drawing.Size(336, 26);
@@ -524,7 +570,7 @@
             // 
             this.lbl_Error_NameDepart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Error_NameDepart.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error_NameDepart.Location = new System.Drawing.Point(100, 66);
+            this.lbl_Error_NameDepart.Location = new System.Drawing.Point(100, 65);
             this.lbl_Error_NameDepart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_Error_NameDepart.Name = "lbl_Error_NameDepart";
             this.lbl_Error_NameDepart.Size = new System.Drawing.Size(336, 24);
@@ -546,7 +592,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(1, 90);
+            this.label2.Location = new System.Drawing.Point(1, 89);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 40);
@@ -556,7 +602,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1, 132);
+            this.label3.Location = new System.Drawing.Point(1, 130);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 19);
@@ -662,52 +708,6 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(199, 131);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMAKH,
-            this.colTENKH,
-            this.colMACS});
-            this.gridView1.GridControl = this.grv_Khoa;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            // 
-            // colMAKH
-            // 
-            this.colMAKH.FieldName = "MAKH";
-            this.colMAKH.Name = "colMAKH";
-            this.colMAKH.Visible = true;
-            this.colMAKH.VisibleIndex = 0;
-            // 
-            // colTENKH
-            // 
-            this.colTENKH.FieldName = "TENKH";
-            this.colTENKH.Name = "colTENKH";
-            this.colTENKH.Visible = true;
-            this.colTENKH.VisibleIndex = 1;
-            // 
-            // colMACS
-            // 
-            this.colMACS.FieldName = "MACS";
-            this.colMACS.Name = "colMACS";
-            this.colMACS.Visible = true;
-            this.colMACS.VisibleIndex = 2;
-            // 
-            // grv_Khoa
-            // 
-            this.grv_Khoa.DataSource = this.bs_Khoa;
-            this.grv_Khoa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grv_Khoa.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
-            this.grv_Khoa.Location = new System.Drawing.Point(0, 0);
-            this.grv_Khoa.MainView = this.gridView1;
-            this.grv_Khoa.Margin = new System.Windows.Forms.Padding(1);
-            this.grv_Khoa.MenuManager = this.brm_Option;
-            this.grv_Khoa.Name = "grv_Khoa";
-            this.grv_Khoa.Size = new System.Drawing.Size(984, 201);
-            this.grv_Khoa.TabIndex = 14;
-            this.grv_Khoa.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
             // Frm_NhapKhoa
             // 
             this.Appearance.Options.UseFont = true;
@@ -741,6 +741,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splc_Container)).EndInit();
             this.splc_Container.ResumeLayout(false);
             this.pnl_grv.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.splc_ConstructArea.Panel1.ResumeLayout(false);
             this.splc_ConstructArea.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splc_ConstructArea)).EndInit();
@@ -753,8 +755,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grv_Khoa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

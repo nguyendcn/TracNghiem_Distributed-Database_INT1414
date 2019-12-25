@@ -160,7 +160,7 @@ namespace TracNghiem_CSDLPT
         private object[] GetAllDataOfRegister()
         {
             return new object[] { txt_TeacherCode.Text, cmb_Course.SelectedValue, cmb_Class.SelectedValue,
-                                  cmb_Level.SelectedValue, dtp_DateExam.Value, txt_TimesStep.Text,
+                                  cmb_Level.SelectedValue, dtp_DateExam.Value.ToShortDateString(), txt_TimesStep.Text,
                                   txt_Quantity.Text, txt_Minute.Text};
         }
 

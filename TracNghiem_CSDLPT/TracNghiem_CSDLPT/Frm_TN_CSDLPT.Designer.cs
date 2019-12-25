@@ -59,6 +59,7 @@
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.btn_Thi = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -77,9 +78,10 @@
             this.barButtonItem7,
             this.barButtonItem8,
             this.barButtonItem9,
-            this.btn_RegisterExam});
+            this.btn_RegisterExam,
+            this.btn_Thi});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 15;
+            this.ribbon.MaxItemId = 16;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -173,6 +175,7 @@
             // 
             // ribbonPageGroup2
             // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btn_Thi);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "ribbonPageGroup2";
             // 
@@ -293,6 +296,14 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
+            // btn_Thi
+            // 
+            this.btn_Thi.Caption = "Thi";
+            this.btn_Thi.Id = 15;
+            this.btn_Thi.Name = "btn_Thi";
+            this.btn_Thi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_Thi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Thi_ItemClick);
+            // 
             // Frm_TN_CSDLPT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,5 +355,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem btn_RegisterExam;
+        private DevExpress.XtraBars.BarButtonItem btn_Thi;
     }
 }

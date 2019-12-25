@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TracNghiem_CSDLPT.Share;
 
 namespace TracNghiem_CSDLPT.Common
 {
@@ -121,6 +122,56 @@ namespace TracNghiem_CSDLPT.Common
             return isEnough;
         }
 
+        public static StudentInfo GetStudentInfo(String studentCode)
+        {
+            String query = "Exec sp_GetInfoStudent'" + studentCode + "'";
+            SqlDataReader reader = ExecSqlDataReader(query);
+
+            if (reader.Read())
+            {
+                StudentInfo studentInfo = new StudentInfo
+                {
+                    FullName = reader.GetString(0),
+                    ClassCode = reader.GetString(1),
+                    ClassName = reader.GetString(2)
+                };
+
+                reader.Close(); // <- too easy to forget
+                reader.Dispose(); // <- too easy to forget
+
+                return studentInfo;
+            }
+            return null;
+        }
+
+        public static List<ExamTest> GetQuestionForTestExam(String courseCode, String level, int quantity)
+        {
+            String query = "Exec sp_GetQuestion'" + courseCode + "', '" + level + "', " + quantity;
+            SqlDataReader reader = ExecSqlDataReader(query);
+
+            List<ExamTest> listExam = new List<ExamTest>();
+
+            while (reader.Read())
+            {
+                ExamTest exam = new ExamTest
+                {
+                    QuestionCode = reader.GetInt32(0),
+                    QuestionContent = reader.GetString(1),
+                    A = reader.GetString(2),
+                    B = reader.GetString(3),
+                    C = reader.GetString(4),
+                    D = reader.GetString(5),
+                    TrueAnswer = reader.GetString(6),
+                    YourAnswer = String.Empty
+                };
+                listExam.Add(exam);
+            }
+
+            reader.Close(); // <- too easy to forget
+            reader.Dispose(); // <- too easy to forget
+
+            return listExam;
+        }
 
         /// <summary>
         /// Execuse query  by SqlCommand

@@ -90,6 +90,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_CBThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_CBThi.Designer.cs">
+      <DependentUpon>Frm_CBThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_DangKyThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,7 +151,9 @@
     <Compile Include="Share\ErrorHandler.cs" />
     <Compile Include="Share\ErrorCode.cs" />
     <Compile Include="Share\ExamTest.cs" />
+    <Compile Include="Share\RegisterExamInfo.cs" />
     <Compile Include="Share\StringLibrary.cs" />
+    <Compile Include="Share\StudentInfo.cs" />
     <Compile Include="Share\TestInfo.cs" />
     <Compile Include="Share\TimerAction.cs" />
     <Compile Include="SupportForm\Frm_ActionInfo.cs">
@@ -176,6 +184,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_CBThi.resx">
+      <DependentUpon>Frm_CBThi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_DangKyThi.resx">
       <DependentUpon>Frm_DangKyThi.cs</DependentUpon>

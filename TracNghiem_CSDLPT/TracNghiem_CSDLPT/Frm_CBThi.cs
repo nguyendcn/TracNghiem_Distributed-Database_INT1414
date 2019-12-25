@@ -90,6 +90,8 @@ namespace TracNghiem_CSDLPT
                 StudentName = lbl_StudentName.Text,
                 TimesStep = int.Parse(gridView.Cells[5].Value.ToString()),
                 TotalTime = int.Parse(gridView.Cells[7].Value.ToString()),
+                DateExam = Convert.ToDateTime(gridView.Cells[4].Value),
+                ClassName = lbl_ClassName.Text,
                 listQuestion = GetListQuestion()
             };
 

@@ -244,7 +244,61 @@ namespace TracNghiem_CSDLPT
 
         private void SubmitExam(List<ExamTest> listExam)
         {
+            _testInfo.listQuestion = listExam;
 
+            double marks = CalculateMarks(listExam);
+
+            SaveToDb(_testInfo, marks);
+
+            MessageBox.Show("Bạn được " + marks + " điểm", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Frm_ShowResultTestExam frm_Show = new Frm_ShowResultTestExam(_testInfo);
+
+            frm_Show.TopLevel = false;
+            frm_Show.Parent = this;
+            frm_Show.BringToFront();
+            frm_Show.Show();
+        }
+
+        private double CalculateMarks(List<ExamTest> listExam)
+        {
+            int answerTrue = listExam.Count(x => x.TrueAnswer == x.YourAnswer);
+
+            double marks = (10.0 / listExam.Count) * answerTrue;
+
+            return Math.Round(marks, 2);
+        }
+
+        private void SaveToDb(TestInfo info, double marks)
+        {
+            DataRowView newRow = (DataRowView)bs_BANGDIEM.AddNew();
+
+            newRow.Row.ItemArray = SetupDataForSaveToDB(_testInfo, marks);
+
+            this.bs_BANGDIEM.EndEdit();
+            this.bs_BANGDIEM.ResetCurrentItem();
+            this.tbla_BANGDIEM.Update(this.ds_TN_CSDLPT.BANGDIEM);
+        }
+
+        private void TestExam_Load(object sender, EventArgs e)
+        {
+            this.ds_TN_CSDLPT.EnforceConstraints = false;
+
+            this.tbla_BANGDIEM.Connection.ConnectionString = Program.connstr;
+            this.tbla_BANGDIEM.Fill(this.ds_TN_CSDLPT.BANGDIEM);
+
+        }
+
+        private object[] SetupDataForSaveToDB(TestInfo info, double marks)
+        {
+            return new object[]
+            {
+                info.StudentCode
+                ,info.CourseCode
+                ,info.TimesStep
+                ,info.DateExam.ToShortDateString()
+                ,marks
+            };
         }
     }
 }

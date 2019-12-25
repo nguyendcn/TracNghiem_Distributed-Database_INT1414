@@ -14,6 +14,8 @@ namespace TracNghiem_CSDLPT.Share
         public String CourseName { get; set; }
         public int TimesStep { get; set; }
         public int TotalTime { get; set; }
+        public DateTime DateExam { get; set; }
+        public String ClassName { get; set; }
 
         public List<ExamTest> listQuestion { get; set; }
     }

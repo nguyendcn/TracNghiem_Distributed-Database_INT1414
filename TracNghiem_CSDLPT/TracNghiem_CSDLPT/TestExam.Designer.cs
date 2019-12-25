@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Question = new System.Windows.Forms.Label();
@@ -52,6 +53,10 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_Info = new System.Windows.Forms.Label();
+            this.ds_TN_CSDLPT = new TracNghiem_CSDLPT.TN_CSDLPTDataSet();
+            this.bs_BANGDIEM = new System.Windows.Forms.BindingSource(this.components);
+            this.tbla_BANGDIEM = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter();
+            this.tableAdapterManager = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.TableAdapterManager();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -61,6 +66,8 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_BANGDIEM)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -82,6 +89,7 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.lbl_Question);
             this.panel1.Controls.Add(this.btn_Next);
             this.panel1.Controls.Add(this.btn_Submit);
@@ -402,6 +410,34 @@
             this.lbl_Info.TabIndex = 2;
             this.lbl_Info.Text = "label1";
             // 
+            // ds_TN_CSDLPT
+            // 
+            this.ds_TN_CSDLPT.DataSetName = "TN_CSDLPTDataSet";
+            this.ds_TN_CSDLPT.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bs_BANGDIEM
+            // 
+            this.bs_BANGDIEM.DataMember = "BANGDIEM";
+            this.bs_BANGDIEM.DataSource = this.ds_TN_CSDLPT;
+            // 
+            // tbla_BANGDIEM
+            // 
+            this.tbla_BANGDIEM.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BANGDIEMTableAdapter = this.tbla_BANGDIEM;
+            this.tableAdapterManager.BODETableAdapter = null;
+            this.tableAdapterManager.COSOTableAdapter = null;
+            this.tableAdapterManager.GIAOVIEN_DANGKYTableAdapter = null;
+            this.tableAdapterManager.GIAOVIENTableAdapter = null;
+            this.tableAdapterManager.KHOATableAdapter = null;
+            this.tableAdapterManager.LOPTableAdapter = null;
+            this.tableAdapterManager.MONHOCTableAdapter = null;
+            this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // TestExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,6 +446,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TestExam";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.TestExam_Load);
             this.Shown += new System.EventHandler(this.TestExam_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -428,6 +465,8 @@
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_BANGDIEM)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,5 +497,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label lbl_Info;
+        private TN_CSDLPTDataSet ds_TN_CSDLPT;
+        private System.Windows.Forms.BindingSource bs_BANGDIEM;
+        private TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter tbla_BANGDIEM;
+        private TN_CSDLPTDataSetTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

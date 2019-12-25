@@ -138,6 +138,12 @@
     <Compile Include="Frm_NhapSinhVien.Designer.cs">
       <DependentUpon>Frm_NhapSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_ShowResultTestExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ShowResultTestExam.Designer.cs">
+      <DependentUpon>Frm_ShowResultTestExam.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_TN_CSDLPT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_NhapSinhVien.resx">
       <DependentUpon>Frm_NhapSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ShowResultTestExam.resx">
+      <DependentUpon>Frm_ShowResultTestExam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_TN_CSDLPT.resx">
       <DependentUpon>Frm_TN_CSDLPT.cs</DependentUpon>

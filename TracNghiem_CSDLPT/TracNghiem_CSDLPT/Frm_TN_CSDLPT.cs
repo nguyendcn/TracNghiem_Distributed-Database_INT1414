@@ -66,5 +66,10 @@ namespace TracNghiem_CSDLPT
             frm_ViewTranscript.MdiParent = this;
             frm_ViewTranscript.Show();
         }
+
+        private void btn_RegisterReport_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }

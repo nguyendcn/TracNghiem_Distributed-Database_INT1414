@@ -168,6 +168,7 @@
     <Compile Include="Share\StudentInfo.cs" />
     <Compile Include="Share\TestInfo.cs" />
     <Compile Include="Share\TimerAction.cs" />
+    <Compile Include="Share\Transcript.cs" />
     <Compile Include="SupportForm\Frm_ActionInfo.cs">
       <SubType>Form</SubType>
     </Compile>

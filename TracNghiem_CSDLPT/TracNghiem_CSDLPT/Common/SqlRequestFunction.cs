@@ -181,6 +181,35 @@ namespace TracNghiem_CSDLPT.Common
             return listExam;
         }
 
+        public static List<Transcript> GetTranscript(String classCode, String courseCode, int timesStep)
+        {
+            String query = "Exec sp_GetTranscript '" + classCode + "', '" + courseCode + "', " + timesStep;
+            SqlDataReader reader = ExecSqlDataReader(query);
+
+            List<Transcript> listTranscript = new List<Transcript>();
+
+            while (reader.Read())
+            {
+                String sc = reader.GetString(0);
+                String fn = reader.GetString(1);
+                double m = reader.GetDouble(2);
+
+                Transcript transcript = new Transcript
+                {
+                    StudentCode = sc,
+                    FullName = fn,
+                    Marks = (float)m
+                };
+
+                listTranscript.Add(transcript);
+            }
+
+            reader.Close(); // <- too easy to forget
+            reader.Dispose(); // <- too easy to forget
+
+            return listTranscript;
+        }
+
         /// <summary>
         /// Execuse query  by SqlCommand
         /// </summary>

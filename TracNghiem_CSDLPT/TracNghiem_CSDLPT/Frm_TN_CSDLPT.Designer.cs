@@ -41,6 +41,7 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.btn_RegisterExam = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Thi = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -59,7 +60,7 @@
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.btn_Thi = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Transcript = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -79,9 +80,10 @@
             this.barButtonItem8,
             this.barButtonItem9,
             this.btn_RegisterExam,
-            this.btn_Thi});
+            this.btn_Thi,
+            this.btn_Transcript});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 16;
+            this.ribbon.MaxItemId = 17;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -166,6 +168,14 @@
             this.btn_RegisterExam.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btn_RegisterExam.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_RegisterExam_ItemClick);
             // 
+            // btn_Thi
+            // 
+            this.btn_Thi.Caption = "Thi";
+            this.btn_Thi.Id = 15;
+            this.btn_Thi.Name = "btn_Thi";
+            this.btn_Thi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_Thi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Thi_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -226,6 +236,7 @@
             // 
             // ribbonPageGroup4
             // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.btn_Transcript);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
@@ -296,13 +307,13 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // btn_Thi
+            // btn_Transcript
             // 
-            this.btn_Thi.Caption = "Thi";
-            this.btn_Thi.Id = 15;
-            this.btn_Thi.Name = "btn_Thi";
-            this.btn_Thi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_Thi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Thi_ItemClick);
+            this.btn_Transcript.Caption = "Bảng Điểm";
+            this.btn_Transcript.Id = 16;
+            this.btn_Transcript.Name = "btn_Transcript";
+            this.btn_Transcript.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_Transcript.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Transcript_ItemClick);
             // 
             // Frm_TN_CSDLPT
             // 
@@ -356,5 +367,6 @@
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem btn_RegisterExam;
         private DevExpress.XtraBars.BarButtonItem btn_Thi;
+        private DevExpress.XtraBars.BarButtonItem btn_Transcript;
     }
 }

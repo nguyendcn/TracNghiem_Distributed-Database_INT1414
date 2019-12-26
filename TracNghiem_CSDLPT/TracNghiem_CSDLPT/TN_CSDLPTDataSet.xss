@@ -17,18 +17,6 @@
     <Shape ID="DesignTable:SINHVIEN" ZOrder="12" X="623" Y="70" Height="191" Width="203" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:FK_BANGDIEM_SINHVIEN1" ZOrder="10" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>623</X>
-          <Y>175</Y>
-        </Point>
-        <Point>
-          <X>553</X>
-          <Y>175</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
     <Connector ID="DesignRelation:FK_BANGDIEM_MONHOC" ZOrder="11" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -41,15 +29,15 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_BODE_GIAOVIEN" ZOrder="4" LineWidth="11">
+    <Connector ID="DesignRelation:FK_BANGDIEM_SINHVIEN1" ZOrder="10" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>589</X>
-          <Y>763</Y>
+          <X>623</X>
+          <Y>175</Y>
         </Point>
         <Point>
-          <X>519</X>
-          <Y>763</Y>
+          <X>553</X>
+          <Y>175</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -69,6 +57,18 @@
         </Point>
       </RoutePoints>
     </Connector>
+    <Connector ID="DesignRelation:FK_BODE_GIAOVIEN" ZOrder="4" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>589</X>
+          <Y>763</Y>
+        </Point>
+        <Point>
+          <X>519</X>
+          <Y>763</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
     <Connector ID="DesignRelation:FK_GIAOVIEN_KHOA" ZOrder="3" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -78,34 +78,6 @@
         <Point>
           <X>793</X>
           <Y>744</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_GIAOVIEN_DANGKY_GIAOVIEN1" ZOrder="5" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>589</X>
-          <Y>693</Y>
-        </Point>
-        <Point>
-          <X>572</X>
-          <Y>693</Y>
-        </Point>
-        <Point>
-          <X>572</X>
-          <Y>579</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_GIAOVIEN_DANGKY_LOP" ZOrder="7" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>673</X>
-          <Y>426</Y>
-        </Point>
-        <Point>
-          <X>603</X>
-          <Y>426</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -122,6 +94,34 @@
         <Point>
           <X>342</X>
           <Y>367</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_GIAOVIEN_DANGKY_LOP" ZOrder="7" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>673</X>
+          <Y>426</Y>
+        </Point>
+        <Point>
+          <X>603</X>
+          <Y>426</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_GIAOVIEN_DANGKY_GIAOVIEN1" ZOrder="5" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>589</X>
+          <Y>693</Y>
+        </Point>
+        <Point>
+          <X>572</X>
+          <Y>693</Y>
+        </Point>
+        <Point>
+          <X>572</X>
+          <Y>579</Y>
         </Point>
       </RoutePoints>
     </Connector>

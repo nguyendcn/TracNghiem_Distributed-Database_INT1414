@@ -45,6 +45,7 @@
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -85,8 +86,8 @@
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
             this.ribbonPage1,
-            this.ribbonPage5,
-            this.ribbonPage4});
+            this.ribbonPage4,
+            this.ribbonPage5});
             this.ribbon.Size = new System.Drawing.Size(812, 143);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
@@ -164,14 +165,6 @@
             this.btn_RegisterExam.Name = "btn_RegisterExam";
             this.btn_RegisterExam.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btn_RegisterExam.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_RegisterExam_ItemClick);
-            // 
-            // btn_Thi
-            // 
-            this.btn_Thi.Caption = "Thi";
-            this.btn_Thi.Id = 15;
-            this.btn_Thi.Name = "btn_Thi";
-            this.btn_Thi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_Thi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Thi_ItemClick);
             // 
             // ribbonPage2
             // 

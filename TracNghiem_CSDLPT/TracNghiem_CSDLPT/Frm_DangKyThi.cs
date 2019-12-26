@@ -82,7 +82,7 @@ namespace TracNghiem_CSDLPT
             ShowAll(bs_GiaoVien);
             DataView dt = (DataView)bs_GiaoVien.List;
             dt.Sort = "MAGV";
-            
+
             int index = dt.Find(teacherCode);
             return index;
         }
@@ -164,7 +164,7 @@ namespace TracNghiem_CSDLPT
                                   txt_Quantity.Text, txt_Minute.Text};
         }
 
-        private  bool ValidateFrm()
+        private bool ValidateFrm()
         {
             if (!ValidateEmpty())
             {
@@ -172,7 +172,7 @@ namespace TracNghiem_CSDLPT
             }
             else
             {
-                if(ValidateValue())
+                if (ValidateValue())
                 {
                     return true;
                 }
@@ -211,24 +211,24 @@ namespace TracNghiem_CSDLPT
         {
             bool validate = true;
 
-            if(Convert.ToInt32(txt_TimesStep.Text) < 1 || Convert.ToInt32(txt_TimesStep.Text) > 2)
+            if (Convert.ToInt32(txt_TimesStep.Text) < 1 || Convert.ToInt32(txt_TimesStep.Text) > 2)
             {
                 ErrorHandler.ShowError(txt_Err_TimesStep, new string[] { "Ox5002" });
                 this.ActiveControl = this.txt_TimesStep;
                 validate = false;
             }
 
-            validate = ValidateTimeExam() ? validate: false;
+            validate = ValidateTimeExam() ? validate : false;
 
             validate = ValidateQuantityQues() ? validate : false;
 
-            validate = ValidateCodeRegister(cmb_Class.SelectedValue.ToString(), cmb_Course.SelectedValue.ToString(), 
-                                            Convert.ToInt32(txt_TimesStep.Text))? validate : false;
+            validate = ValidateCodeRegister(cmb_Class.SelectedValue.ToString(), cmb_Course.SelectedValue.ToString(),
+                                            Convert.ToInt32(txt_TimesStep.Text)) ? validate : false;
 
             if (validate)
             {
-                validate = ValidateGetQuestion(cmb_Course.SelectedValue.ToString(), cmb_Level.SelectedValue.ToString(), 
-                                               Convert.ToInt32(txt_Quantity.Text)) ?validate : false;
+                validate = ValidateGetQuestion(cmb_Course.SelectedValue.ToString(), cmb_Level.SelectedValue.ToString(),
+                                               Convert.ToInt32(txt_Quantity.Text)) ? validate : false;
             }
 
             return validate;
@@ -284,7 +284,7 @@ namespace TracNghiem_CSDLPT
         {
             if (SqlRequestFunction.RegisterIsExists(classCode, courseCode, time))
             {
-                MessageBox.Show("Lượt thi của Môn thi này cho lớp đó đã được tổ chức thi hai lần. Và không thể tổ chức thêm.", 
+                MessageBox.Show("Lượt thi của Môn thi này cho lớp đó đã được tổ chức thi hai lần. Và không thể tổ chức thêm.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -335,7 +335,7 @@ namespace TracNghiem_CSDLPT
                 String key2 = dr.ItemArray[2].ToString();
                 String key3 = dr.ItemArray[5].ToString();
 
-                int index = dt.Find(new object[] {key1, key2, key3 });
+                int index = dt.Find(new object[] { key1, key2, key3 });
 
                 bs_GVDK.RemoveAt(index);
                 SaveRegisterToDb();
@@ -370,7 +370,7 @@ namespace TracNghiem_CSDLPT
             String className = GetClassName(data[2].ToString());
             String level = GetLevelName(data[3].ToString());
 
-            return new object[] { teacherName, courseName, className, level, data[4], data[5] , data[6] , data[7] };
+            return new object[] { teacherName, courseName, className, level, data[4], data[5], data[6], data[7] };
         }
 
         public String GetTeacherName(String teacherCode)
@@ -378,7 +378,7 @@ namespace TracNghiem_CSDLPT
             DataView dt = (DataView)bs_GiaoVien.List;
             dt.Sort = "MAGV";
 
-            DataRowView  rowView = dt.FindRows(teacherCode)[0];
+            DataRowView rowView = dt.FindRows(teacherCode)[0];
 
             return rowView.Row.ItemArray[1] + " " + rowView.Row.ItemArray[2];
         }

@@ -41,7 +41,7 @@ namespace TracNghiem_CSDLPT
 
         private void btn_NhapDe_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_NhapDe frm_NhapDe= new Frm_NhapDe();
+            Frm_NhapDe frm_NhapDe = new Frm_NhapDe();
             frm_NhapDe.MdiParent = this;
             frm_NhapDe.Show();
         }
@@ -58,6 +58,13 @@ namespace TracNghiem_CSDLPT
             Frm_CBThi frm_CbThi = new Frm_CBThi();
             frm_CbThi.MdiParent = this;
             frm_CbThi.Show();
+        }
+
+        private void btn_Transcript_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_ViewTranscript frm_ViewTranscript = new Frm_ViewTranscript();
+            frm_ViewTranscript.MdiParent = this;
+            frm_ViewTranscript.Show();
         }
     }
 }

@@ -168,6 +168,7 @@
     <Compile Include="Share\StudentInfo.cs" />
     <Compile Include="Share\TestInfo.cs" />
     <Compile Include="Share\TimerAction.cs" />
+    <Compile Include="Share\Transcript.cs" />
     <Compile Include="SupportForm\Frm_ActionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +227,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_TN_CSDLPT.resx">
       <DependentUpon>Frm_TN_CSDLPT.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_ViewTranscript.resx">
       <DependentUpon>Frm_ViewTranscript.cs</DependentUpon>

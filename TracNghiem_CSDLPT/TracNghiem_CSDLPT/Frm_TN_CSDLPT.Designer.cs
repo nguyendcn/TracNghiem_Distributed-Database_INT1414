@@ -229,7 +229,6 @@
             this.btn_NhapDe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_NhapDe.ImageOptions.Image")));
             this.btn_NhapDe.Name = "btn_NhapDe";
             this.btn_NhapDe.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_NhapDe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_NhapDe_ItemClick);
             // 
             // ribbonPage2
             // 

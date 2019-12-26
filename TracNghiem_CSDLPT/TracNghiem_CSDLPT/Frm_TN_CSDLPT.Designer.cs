@@ -41,8 +41,6 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.btn_RegisterExam = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_Thi = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_Transcript = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -60,11 +58,7 @@
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btn_RegisterReport = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_Register = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_ChangePassword = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_Logout = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Thi = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -84,14 +78,9 @@
             this.barButtonItem8,
             this.barButtonItem9,
             this.btn_RegisterExam,
-            this.btn_Thi,
-            this.btn_Transcript,
-            this.btn_RegisterReport,
-            this.btn_Register,
-            this.btn_ChangePassword,
-            this.btn_Logout});
+            this.btn_Thi});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 21;
+            this.ribbon.MaxItemId = 16;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -180,18 +169,9 @@
             // 
             this.btn_Thi.Caption = "Thi";
             this.btn_Thi.Id = 15;
-            this.btn_Thi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Thi.ImageOptions.Image")));
             this.btn_Thi.Name = "btn_Thi";
             this.btn_Thi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btn_Thi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Thi_ItemClick);
-            // 
-            // btn_Transcript
-            // 
-            this.btn_Transcript.Caption = "Bảng Điểm";
-            this.btn_Transcript.Id = 16;
-            this.btn_Transcript.Name = "btn_Transcript";
-            this.btn_Transcript.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_Transcript.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Transcript_ItemClick);
             // 
             // ribbonPage2
             // 
@@ -209,7 +189,8 @@
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup5});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Cấu  hình";
             // 
@@ -223,32 +204,35 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tổ chức";
             // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem7);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem8);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem9);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "ribbonPageGroup5";
+            // 
             // ribbonPage4
             // 
             this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup3});
             this.ribbonPage4.Name = "ribbonPage4";
-            this.ribbonPage4.Text = "Tài Khoản";
+            this.ribbonPage4.Text = "Cập nhật";
             // 
             // ribbonPageGroup3
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.btn_Register);
-            this.ribbonPageGroup3.ItemLinks.Add(this.btn_ChangePassword);
-            this.ribbonPageGroup3.ItemLinks.Add(this.btn_Logout);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
             // ribbonPage5
             // 
             this.ribbonPage5.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup4,
-            this.ribbonPageGroup12});
+            this.ribbonPageGroup4});
             this.ribbonPage5.Name = "ribbonPage5";
             this.ribbonPage5.Text = "Báo cáo";
             // 
             // ribbonPageGroup4
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.btn_Transcript);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
@@ -319,38 +303,13 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // ribbonPageGroup12
+            // btn_Thi
             // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.btn_RegisterReport);
-            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
-            this.ribbonPageGroup12.Text = "ribbonPageGroup12";
-            // 
-            // btn_RegisterReport
-            // 
-            this.btn_RegisterReport.Caption = "Đăng Ký";
-            this.btn_RegisterReport.Id = 17;
-            this.btn_RegisterReport.Name = "btn_RegisterReport";
-            this.btn_RegisterReport.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // btn_Register
-            // 
-            this.btn_Register.Caption = "Tạo Tài Khoản";
-            this.btn_Register.Id = 18;
-            this.btn_Register.Name = "btn_Register";
-            this.btn_Register.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // btn_ChangePassword
-            // 
-            this.btn_ChangePassword.Caption = "Đổi Mật Khẩu";
-            this.btn_ChangePassword.Id = 19;
-            this.btn_ChangePassword.Name = "btn_ChangePassword";
-            this.btn_ChangePassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // btn_Logout
-            // 
-            this.btn_Logout.Caption = "Đăng Xuất";
-            this.btn_Logout.Id = 20;
-            this.btn_Logout.Name = "btn_Logout";
+            this.btn_Thi.Caption = "Thi";
+            this.btn_Thi.Id = 15;
+            this.btn_Thi.Name = "btn_Thi";
+            this.btn_Thi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_Thi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Thi_ItemClick);
             // 
             // Frm_TN_CSDLPT
             // 
@@ -389,6 +348,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage5;
@@ -403,11 +363,5 @@
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem btn_RegisterExam;
         private DevExpress.XtraBars.BarButtonItem btn_Thi;
-        private DevExpress.XtraBars.BarButtonItem btn_Transcript;
-        private DevExpress.XtraBars.BarButtonItem btn_RegisterReport;
-        private DevExpress.XtraBars.BarButtonItem btn_Register;
-        private DevExpress.XtraBars.BarButtonItem btn_ChangePassword;
-        private DevExpress.XtraBars.BarButtonItem btn_Logout;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
     }
 }

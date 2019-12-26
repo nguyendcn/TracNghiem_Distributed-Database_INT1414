@@ -59,12 +59,5 @@ namespace TracNghiem_CSDLPT
             frm_CbThi.MdiParent = this;
             frm_CbThi.Show();
         }
-
-        private void btn_Transcript_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Frm_ViewTranscript frm_ViewTranscript = new Frm_ViewTranscript();
-            frm_ViewTranscript.MdiParent = this;
-            frm_ViewTranscript.Show();
-        }
     }
 }

@@ -180,6 +180,8 @@ namespace TracNghiem_CSDLPT
                 
                 if(result == DialogResult.Yes)
                 {
+                    this._timer.Stop();
+
                     SubmitExam(_listQuestion);
                 }
                 else { return; }
@@ -248,9 +250,16 @@ namespace TracNghiem_CSDLPT
 
             double marks = CalculateMarks(listExam);
 
-            SaveToDb(_testInfo, marks);
+            if (Program.mGroup.Equals("SINHVIEN"))
+            {
+                SaveToDb(_testInfo, marks);
+            }
 
-            MessageBox.Show("Bạn được " + marks + " điểm", "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            StringBuilder stringBuilder = new StringBuilder("Bạn đã trả lời đúng ");
+            stringBuilder.Append(" /" + listExam.Count + " câu.");
+            stringBuilder.AppendLine("Bạn được " + marks + " điểm.");
+
+            MessageBox.Show(stringBuilder.ToString(), "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Frm_ShowResultTestExam frm_Show = new Frm_ShowResultTestExam(_testInfo);
 
@@ -258,6 +267,13 @@ namespace TracNghiem_CSDLPT
             frm_Show.Parent = this;
             frm_Show.BringToFront();
             frm_Show.Show();
+
+            frm_Show.FormClosed += Frm_Show_FormClosed; 
+        }
+
+        private void Frm_Show_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
         }
 
         private double CalculateMarks(List<ExamTest> listExam)

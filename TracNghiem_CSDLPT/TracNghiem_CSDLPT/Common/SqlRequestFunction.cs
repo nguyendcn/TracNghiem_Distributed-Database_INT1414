@@ -58,6 +58,14 @@ namespace TracNghiem_CSDLPT.Common
             return CodeIsExist("sp_CheckRegisterIsExists", code);
         }
 
+        public static bool HasBeenExamined(String studentCode, String courseCode, int timesStep)
+        {
+            String code = studentCode + "', '" + courseCode + "', '" + timesStep;
+            String sp = "sp_HasBeenExamined";
+
+            return CodeIsExist(sp, code);
+        }
+
         private static bool CodeIsExist(String sp, String code)
         {
             String query = "Exec " + sp + " '" + code + "'";

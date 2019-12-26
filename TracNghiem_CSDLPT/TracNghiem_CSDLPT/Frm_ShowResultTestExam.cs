@@ -19,6 +19,7 @@ namespace TracNghiem_CSDLPT
 
         public Frm_ShowResultTestExam()
         {
+            this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
         }
 
@@ -55,7 +56,7 @@ namespace TracNghiem_CSDLPT
 
             table.Columns.AddRange(dc);
 
-            int index = 0;
+            int index = 1;
             foreach (ExamTest item in listExam)
             {
                 DataRow dataRow = table.NewRow();
@@ -83,6 +84,11 @@ namespace TracNghiem_CSDLPT
                 ,test.TrueAnswer
                 ,test.YourAnswer
             };
+        }
+
+        private void dgv_Result_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
+        {
+            e.Column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

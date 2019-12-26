@@ -35,13 +35,15 @@ namespace TracNghiem_CSDLPT
 
         private void SetUp()
         {
-            //Check role xem co phai la sinh vien khong
-            StudentInfo studentInfo = SqlRequestFunction.GetStudentInfo("004");
+            if (Program.mGroup.Equals("SINHVIEN"))
+            {
+                StudentInfo studentInfo = SqlRequestFunction.GetStudentInfo(Program.studentCode);
 
-            this.lbl_StudentCode.Text = "004";
-            this.lbl_StudentName.Text = studentInfo.FullName;
-            this.lbl_ClassCode.Text = studentInfo.ClassCode;
-            this.lbl_ClassName.Text = studentInfo.ClassName;
+                this.lbl_StudentCode.Text = Program.studentCode;
+                this.lbl_StudentName.Text = studentInfo.FullName;
+                this.lbl_ClassCode.Text = studentInfo.ClassCode;
+                this.lbl_ClassName.Text = studentInfo.ClassName;
+            }
 
             this.dtp_DateExam.MinDate = DateTime.Now;
             DateTime currentDateTime = DateTime.Now;
@@ -69,7 +71,13 @@ namespace TracNghiem_CSDLPT
             }
             else
             {
-                MessageBox.Show("Not found");
+                MessageBox.Show("Môn học này không được đăng ký thi. Vui lòng thông báo đến giáo viên để biết thêm chi tiết"
+                    ,"Không tìm thấy bài thi."
+                    ,MessageBoxButtons.OK
+                    ,MessageBoxIcon.Error);
+
+                this.dgv_Results.DataSource = null;
+                return;
             }
         }
 
@@ -94,6 +102,18 @@ namespace TracNghiem_CSDLPT
                 ClassName = lbl_ClassName.Text,
                 listQuestion = GetListQuestion()
             };
+
+            if (Program.mGroup.Equals("SINHVIEN"))
+            {
+                if (SqlRequestFunction.HasBeenExamined(testInfo.StudentCode, testInfo.CourseCode, testInfo.TimesStep))
+                {
+                    MessageBox.Show("Bạn đã thi môn này rồi. Vui lòng kiểm tra lại thông tin."
+                        , "Đã kiểm tra."
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information);
+                    return;
+                }
+            }
 
             TestExam testExam = new TestExam(testInfo);
 

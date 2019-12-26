@@ -66,6 +66,5 @@ namespace TracNghiem_CSDLPT
             frm_ViewTranscript.MdiParent = this;
             frm_ViewTranscript.Show();
         }
-
     }
 }

@@ -39,13 +39,6 @@ namespace TracNghiem_CSDLPT
             frm_Lop.Show();
         }
 
-        private void btn_NhapDe_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Frm_NhapDe frm_NhapDe= new Frm_NhapDe();
-            frm_NhapDe.MdiParent = this;
-            frm_NhapDe.Show();
-        }
-
         private void btn_RegisterExam_ItemClick(object sender, ItemClickEventArgs e)
         {
             Frm_DangKyThi frm_DangKyThi = new Frm_DangKyThi();
@@ -67,5 +60,11 @@ namespace TracNghiem_CSDLPT
             frm_ViewTranscript.Show();
         }
 
+        private void btn_NhapDe_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_NhapDe frm_NhapDe = new Frm_NhapDe();
+            frm_NhapDe.MdiParent = this;
+            frm_NhapDe.Show();
+        }
     }
 }

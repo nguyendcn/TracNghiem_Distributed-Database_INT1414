@@ -82,6 +82,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Frm_ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Frm_ChangePassword.Designer.cs">
+      <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Frm_CreateAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Frm_CreateAccount.Designer.cs">
+      <DependentUpon>Frm_CreateAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\SqlRequestFunction.cs" />
     <Compile Include="Common\SqlString.cs" />
     <Compile Include="Form1.cs">
@@ -195,6 +207,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TN_CSDLPTDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Account\Frm_ChangePassword.resx">
+      <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -210,6 +210,25 @@ namespace TracNghiem_CSDLPT.Common
             return listTranscript;
         }
 
+        public static bool ChangePassword(String loginName, String oldPassword, String newPassword)
+        {
+            String query = SqlString.GetQueryChangePassword(loginName, newPassword, oldPassword);
+
+            try
+            {
+                SqlDataReader reader = ExecSqlDataReader(query);
+                if (reader != null)
+                    return true;
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Execuse query  by SqlCommand
         /// </summary>

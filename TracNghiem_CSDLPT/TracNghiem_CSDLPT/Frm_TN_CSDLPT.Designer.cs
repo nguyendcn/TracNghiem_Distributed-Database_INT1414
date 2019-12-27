@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_TN_CSDLPT));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btn_Khoa = new DevExpress.XtraBars.BarButtonItem();
@@ -50,6 +51,7 @@
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -63,8 +65,9 @@
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
-            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btn_DeleteAccount = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -89,9 +92,10 @@
             this.btn_RegisterReport,
             this.btn_Register,
             this.btn_ChangePassword,
-            this.btn_Logout});
+            this.btn_Logout,
+            this.btn_DeleteAccount});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 21;
+            this.ribbon.MaxItemId = 22;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -213,6 +217,7 @@
             this.btn_Register.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Register.ImageOptions.Image")));
             this.btn_Register.Name = "btn_Register";
             this.btn_Register.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_Register.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Register_ItemClick);
             // 
             // btn_ChangePassword
             // 
@@ -221,6 +226,7 @@
             this.btn_ChangePassword.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_ChangePassword.ImageOptions.Image")));
             this.btn_ChangePassword.Name = "btn_ChangePassword";
             this.btn_ChangePassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_ChangePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ChangePassword_ItemClick);
             // 
             // btn_Logout
             // 
@@ -229,6 +235,7 @@
             this.btn_Logout.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Logout.ImageOptions.Image")));
             this.btn_Logout.Name = "btn_Logout";
             this.btn_Logout.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_Logout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Logout_ItemClick);
             // 
             // ribbonPage2
             // 
@@ -249,7 +256,7 @@
             this.ribbonPageGroup1,
             this.ribbonPageGroup5});
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Cấu  hình";
+            this.ribbonPage1.Text = "Quản Lý";
             // 
             // ribbonPageGroup1
             // 
@@ -257,6 +264,14 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btn_Lop);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tổ chức";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.btn_RegisterExam);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup5.ItemLinks.Add(this.btn_NhapDe);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "ribbonPageGroup5";
             // 
             // ribbonPage5
             // 
@@ -281,7 +296,8 @@
             // ribbonPage4
             // 
             this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup13});
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "Tài Khoản";
             // 
@@ -360,13 +376,20 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // ribbonPageGroup5
+            // ribbonPageGroup13
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.btn_RegisterExam);
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem6);
-            this.ribbonPageGroup5.ItemLinks.Add(this.btn_NhapDe);
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.Text = "ribbonPageGroup5";
+            this.ribbonPageGroup13.ItemLinks.Add(this.btn_DeleteAccount);
+            this.ribbonPageGroup13.Name = "ribbonPageGroup13";
+            this.ribbonPageGroup13.Text = "ribbonPageGroup13";
+            // 
+            // btn_DeleteAccount
+            // 
+            this.btn_DeleteAccount.Caption = "Xóa Tài Khoản";
+            this.btn_DeleteAccount.Id = 21;
+            this.btn_DeleteAccount.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btn_DeleteAccount.Name = "btn_DeleteAccount";
+            this.btn_DeleteAccount.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_DeleteAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_DeleteAccount_ItemClick);
             // 
             // Frm_TN_CSDLPT
             // 
@@ -426,5 +449,7 @@
         private DevExpress.XtraBars.BarButtonItem btn_Logout;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
+        private DevExpress.XtraBars.BarButtonItem btn_DeleteAccount;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
     }
 }

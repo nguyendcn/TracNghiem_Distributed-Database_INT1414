@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using TracNghiem_CSDLPT.Account;
 
 namespace TracNghiem_CSDLPT
 {
@@ -68,6 +70,40 @@ namespace TracNghiem_CSDLPT
         }
 
         private void btn_RegisterReport_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btn_Logout_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if(XtraMessageBox.Show("Bạn có chắc muốn đăng xuất không?"
+                , "Confirmation", MessageBoxButtons.YesNo) 
+                == DialogResult.Yes)
+            {
+                this.Dispose();
+            }
+        }
+
+        private void btn_DeleteAccount_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (XtraMessageBox.Show("Bạn có chắc muốn xóa tài khoản không?"
+               , "Confirmation", MessageBoxButtons.YesNo)
+               == DialogResult.Yes)
+            {
+                //Delete account and logout
+                this.Dispose();
+            }
+        }
+
+        private void btn_ChangePassword_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frm_ChangePassword frm_ChangePassword = new Frm_ChangePassword();
+            frm_ChangePassword.MdiParent = this;
+
+            frm_ChangePassword.Show();
+        }
+
+        private void btn_Register_ItemClick(object sender, ItemClickEventArgs e)
         {
 
         }

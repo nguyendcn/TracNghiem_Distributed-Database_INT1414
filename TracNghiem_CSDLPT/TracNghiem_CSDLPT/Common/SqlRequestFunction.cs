@@ -248,6 +248,64 @@ namespace TracNghiem_CSDLPT.Common
             return false;
         }
 
+        public static int CreateAccount(String loginName, String userName, String password, String role)
+        {
+            String query = "Exec sp_TaoTaiKhoan '" + loginName + "', '" + password + "', '"  + userName + "', '" + role + "'";
+
+            SqlDataReader myreader;
+            SqlCommand sqlcmd = new SqlCommand(query, Program.conn);
+            sqlcmd.CommandType = CommandType.Text;
+            if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
+            try
+            {
+                myreader = sqlcmd.ExecuteReader();
+
+                return 1;
+            }
+            catch (SqlException ex)
+            {
+                Program.conn.Close(); ;
+                Debug.WriteLine(ex.Message);
+                return ex.Number;
+            }
+        }
+
+        public static List<object[]> GetListTeacherHadNotAccount()
+        {
+            string query = "Exec sp_GetListTeacherHadNotAccount";
+
+            SqlDataReader reader = ExecSqlDataReader(query);
+
+            List<object[]> list = new List<object[]>();
+
+            while (reader.Read())
+            {
+                object []info = new object[]
+                {
+                   reader.GetString(0),
+                   reader.GetString(1),
+                };
+
+                list.Add(info);
+            }
+            reader.Close(); // <- too easy to forget
+            reader.Dispose(); // <- too easy to forget
+
+            return list;
+        }
+
+        public static void Logout(String loginName)
+        {
+            string query = "Exec sp_LogOut '" + loginName + "'";
+
+            SqlDataReader reader = ExecSqlDataReader(query);
+            if (reader != null)
+            {
+                reader.Close(); // <- too easy to forget
+                reader.Dispose(); // <- too easy to forget
+            }
+        }
+
         /// <summary>
         /// Execuse query  by SqlCommand
         /// </summary>
@@ -265,7 +323,7 @@ namespace TracNghiem_CSDLPT.Common
 
             }
             catch (SqlException ex)
-            {
+             {
                 Program.conn.Close();;
                 Debug.WriteLine(ex.Message);
                 return null;

@@ -18,6 +18,9 @@ namespace TracNghiem_CSDLPT.Share
         public static String Ox5001 = "Thời gian thi không thuộc [15-60] phút.";
         public static String Ox5002 = "Lần thi không thuộc [1-2]";
         public static String Ox5003 = "Số câu thi không thuộc [10-100] câu.";
+        public static String Ox6001 = "Quyền hạn không chính xác.";
+        public static String Ox6002 = "Tài khoản đăng nhập đã tồn tại.";
+        public static String Ox6003 = "Giáo viên này đã được tạo tài khoản.";
 
         public static String GetPropertyValue(String propName)
         {

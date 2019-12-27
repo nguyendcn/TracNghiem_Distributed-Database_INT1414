@@ -84,7 +84,12 @@ namespace TracNghiem_CSDLPT
             {
                 try
                 {
-                    Program.conn.Close();
+                    SqlRequestFunction.Logout(Program.mlogin);
+
+                    if(Program.conn.State == ConnectionState.Open)
+                    {
+                        Program.conn.Close();
+                    }
 
                     this.Dispose();
                 }
@@ -106,28 +111,34 @@ namespace TracNghiem_CSDLPT
                , "Confirmation", MessageBoxButtons.YesNo)
                == DialogResult.Yes)
             {
-                //Delete account and logout
-                if(SqlRequestFunction.DeleteAccount(Program.mlogin, Program.username))
+
+                try
                 {
-                    MessageBox.Show("Xóa tài khoản thành công.",
-                        "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SqlRequestFunction.Logout(Program.mlogin);
 
-                    try
+                    if (SqlRequestFunction.DeleteAccount(Program.mlogin, Program.username))
                     {
-                        Program.conn.Close();
+                        if (Program.conn.State == ConnectionState.Open)
+                        {
+                            Program.conn.Close();
+                        }
 
-                        this.Dispose();
+                        MessageBox.Show("Xóa tài khoản thành công.",
+                            "Success",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (SqlException)
-                    {
-                        MessageBox.Show("Không thể đăng xuất. Vui lòng thử lại."
-                            , "Lỗi đăng xuất."
-                            , MessageBoxButtons.OK
-                            , MessageBoxIcon.Error);
-                        return;
-                    }
+
+                    this.Dispose();
                 }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Không thể đăng xuất. Vui lòng thử lại."
+                        , "Lỗi đăng xuất."
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Error);
+                    return;
+                }
+               
 
             }
         }
@@ -142,7 +153,9 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Register_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            Frm_CreateAccount frm_CreateAccount = new Frm_CreateAccount();
+            frm_CreateAccount.MdiParent = this;
+            frm_CreateAccount.Show();
         }
     }
 }

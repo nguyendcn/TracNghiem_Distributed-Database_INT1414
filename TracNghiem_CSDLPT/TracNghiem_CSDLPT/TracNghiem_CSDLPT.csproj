@@ -210,6 +210,9 @@
     <EmbeddedResource Include="Account\Frm_ChangePassword.resx">
       <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Frm_CreateAccount.resx">
+      <DependentUpon>Frm_CreateAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

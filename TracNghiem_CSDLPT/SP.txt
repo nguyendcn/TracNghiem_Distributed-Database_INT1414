@@ -1,0 +1,528 @@
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_CheckClassExists]    Script Date: 12/27/2019 17:16:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER proc [dbo].[sp_CheckClassExists] @MALOP char(8)
+as
+begin
+	IF NOT EXISTS ( SELECT 1 FROM [LINK_SV3].[TN_CSDLPT].[dbo].[LOP] l where l.MALOP = @MALOP)
+		SELECT '0';
+	else 
+		SELECT '1';
+ 
+end
+
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_CheckCourseExists]    Script Date: 12/27/2019 17:17:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_CheckCourseExists] @MAMH char(8)
+as
+begin
+ IF EXISTS ( SELECT 1 FROM [MONHOC] mh where mh.MAMH = @MAMH)
+	SELECT '1';
+ ELSE
+	SELECT '0';
+
+ 
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_CheckDepartmentExists]    Script Date: 12/27/2019 17:17:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_CheckDepartmentExists] @MAKH char(8)
+as
+begin
+ 
+ IF EXISTS ( SELECT 1 FROM [KHOA] k where k.MAKH = @MAKH)
+	SELECT '1';
+ ELSE
+	IF NOT EXISTS ( SELECT 1 FROM [LINK_SV_MAIN].[TN_CSDLPT].[dbo].[KHOA] k where k.MAKH = @MAKH)
+		SELECT '0';
+	else 
+		SELECT '1';
+ 
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_CheckRegisterIsExists]    Script Date: 12/27/2019 17:17:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_CheckRegisterIsExists] @MALOP char(8), @MAMH char(8), @LAN int
+as
+begin
+ 
+ IF EXISTS ( SELECT 1 
+				 FROM [GIAOVIEN_DANGKY] gvdk 
+				 WHERE gvdk.MALOP = @MALOP AND gvdk.MAMH = @MAMH AND gvdk.LAN = @LAN )
+	SELECT '1';
+ ELSE
+	IF NOT EXISTS ( SELECT 1 
+				 FROM [LINK_SV_MAIN].[TN_CSDLPT].[dbo].[GIAOVIEN_DANGKY] gvdk 
+				 WHERE gvdk.MALOP = @MALOP AND gvdk.MAMH = @MAMH AND gvdk.LAN = @LAN )
+		SELECT '0';
+	else 
+		SELECT '1';
+ 
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_CheckStudentExists]    Script Date: 12/27/2019 17:17:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_CheckStudentExists] @MASV char(8)
+as
+begin
+ 
+ IF NOT EXISTS ( SELECT 1 FROM [LINK_SV3].[TN_CSDLPT].[dbo].[SINHVIEN] sv where sv.MASV = @MASV)
+	SELECT '0';
+ else 
+	SELECT '1';
+ 
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_CheckTecherExists]    Script Date: 12/27/2019 17:17:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_CheckTecherExists] @MAGV char(8)
+as
+begin
+ 
+ IF NOT EXISTS ( SELECT 1 FROM GIAOVIEN gv where gv.MAGV = @MAGV)
+	SELECT '0';
+ else 
+	SELECT '1';
+ 
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_GetInfoStudent]    Script Date: 12/27/2019 17:17:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_GetInfoStudent] @MASV char(8)
+as
+begin
+	Select (sv.HO + sv.TEN) as 'FULL NAME', sv.MALOP
+	INTO TTSV
+	From LINK_SV3.TN_CSDLPT.dbo.SINHVIEN sv WHERE sv.MASV = @MASV
+
+	Select TTSV.[FULL NAME], TTSV.MALOP, l.TENLOP
+	FROM TTSV
+	INNER JOIN LINK_SV3.TN_CSDLPT.dbo.LOP l on TTSV.MALOP = l.MALOP
+	
+	Drop Table TTSV
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_GetListQuestionCode]    Script Date: 12/27/2019 17:17:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc  [dbo].[sp_GetListQuestionCode]
+as
+begin
+select BODE.CAUHOI from BODE order by CAUHOI asc
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_GetListTeacherHadNotAccount]    Script Date: 12/27/2019 17:18:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_GetListTeacherHadNotAccount]
+as
+begin
+select MAGV,(HO + TEN) as 'HO TEN' 
+from  
+GIAOVIEN g 
+left join 
+sys.sysusers  ss
+on g.MAGV = ss.name
+where ss.uid is null
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_GetQuestion]    Script Date: 12/27/2019 17:18:08 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- @result MONEY OUT
+ALTER PROC [dbo].[sp_GetQuestion]
+@maMonHoc NCHAR(5), @trinhDo NChar(1), @soCau int
+AS
+BEGIN
+	DECLARE @trinhDo2 Nchar(1) = 'N'
+	DECLARE @countQuestion int = 0
+	DECLARE @countQuestionCungTrinhDo int = 0
+	DECLARE @countQuestionTrinhDoDuoi int = 0
+
+	set @countQuestionCungTrinhDo = (select count(*) from BODE where (MAMH = @maMonHoc and TRINHDO = @trinhDo))
+
+	if (@trinhDo = 'A') 
+		set @trinhDo2 = 'B'
+	else if (@trinhDo = 'B')
+		set @trinhDo2 = 'C' 
+	
+		set @countQuestionTrinhDoDuoi = (select count(*) from BODE where (MAMH = @maMonHoc and TRINHDO = @trinhDo2))
+		set @countQuestion = @countQuestionCungTrinhDo+@countQuestionTrinhDoDuoi
+		
+		--set @countQuestion = @countQuestionCungTrinhDo
+
+	if(@countQuestion <@soCau or @countQuestionCungTrinhDo<(@soCau*70/100))
+		begin
+			Select('Khong du cau hoi de thi') as 'ERROR'
+			return -1
+		end
+	
+	-- tạo bảng tạm chưa các câu hỏi tại tất cả các site theo input ban đầu
+	create table AtSiteTable(
+	CAUHOI int primary key,
+	TRINHDO char(1),
+	NOIDUNG ntext,
+	A ntext,
+	B ntext,
+	C ntext,
+	D ntext,
+	DAP_AN nchar(1),
+	)
+
+	select * into CungTrinhDoAtSiteTable from BODE  where MAMH = @maMonHoc and TRINHDO = @trinhDo and MAGV in (Select MAGV from GIAOVIEN where MAKH in(select MAKH from KHOA))
+	select * into TrinhDoDuoiAtSiteTable from BODE  where MAMH = @maMonHoc and TRINHDO = @trinhDo2 and MAGV in (Select MAGV from GIAOVIEN where MAKH in(select MAKH from KHOA))
+	
+	Insert into AtSiteTable
+			select CAUHOI,TRINHDO,CAST(NOIDUNG as nvarchar(max)),CAST(A as nvarchar(max)),CAST(B as nvarchar(max)),CAST(C as nvarchar(max)),
+			CAST(D as nvarchar(max)),DAP_AN from CungTrinhDoAtSiteTable
+			UNION
+			select CAUHOI,TRINHDO,CAST(NOIDUNG as nvarchar(max)),CAST(A as nvarchar(max)),CAST(B as nvarchar(max)),CAST(C as nvarchar(max)),
+			CAST(D as nvarchar(max)),DAP_AN  from TrinhDoDuoiAtSiteTable 
+	
+	Declare @countCungTrinhDoAtSite int = (select count(*) from CungTrinhDoAtSiteTable)
+	Declare @countTrinhDoDuoiAtSite int = (select count(*) from TrinhDoDuoiAtSiteTable)
+	if((@countCungTrinhDoAtSite+@countTrinhDoDuoiAtSite) < @soCau OR @countCungTrinhDoAtSite < (@soCau*70/100))
+		begin
+			print 'here'
+			select * into CungTrinhDoOtherSiteTable from BODE  where MAMH = @maMonHoc and TRINHDO = @trinhDo and MAGV in (Select MAGV from GIAOVIEN where MAKH not in(select MAKH from KHOA))
+			select * into TrinhDoDuoiOtherSiteTable from BODE  where MAMH = @maMonHoc and TRINHDO = @trinhDo2 and MAGV in (Select MAGV from GIAOVIEN where MAKH not in(select MAKH from KHOA))
+
+			Insert into AtSiteTable
+			select CAUHOI,TRINHDO,CAST(NOIDUNG as nvarchar(max)),CAST(A as nvarchar(max)),CAST(B as nvarchar(max)),CAST(C as nvarchar(max)),
+			CAST(D as nvarchar(max)),DAP_AN from CungTrinhDoOtherSiteTable
+			UNION
+			select CAUHOI,TRINHDO,CAST(NOIDUNG as nvarchar(max)),CAST(A as nvarchar(max)),CAST(B as nvarchar(max)),CAST(C as nvarchar(max)),
+			CAST(D as nvarchar(max)),DAP_AN  from TrinhDoDuoiOtherSiteTable 
+			drop table CungTrinhDoOtherSiteTable
+			drop table TrinhDoDuoiOtherSiteTable
+		end
+	Declare @slCanLayCungTrinhDo int,@slCanLayTrinhDoDuoi int
+		set @slCanLayCungTrinhDo = @soCau*70/100
+		if ((@slCanLayCungTrinhDo + @countQuestionTrinhDoDuoi)<@soCau)
+			set @slCanLayCungTrinhDo = @slCanLayCungTrinhDo + (@soCau - (@slCanLayCungTrinhDo+@countQuestionTrinhDoDuoi))
+			set @slCanLayTrinhDoDuoi = @soCau - @slCanLayCungTrinhDo
+		
+	select top (@slCanLayCungTrinhDo) * into temp1 from AtSiteTable where TRINHDO = @trinhDo
+	ORDER BY NEWID()
+	
+	select top (@slCanLayTrinhDoDuoi) * into temp2 from AtSiteTable where TRINHDO = @trinhDo2
+	ORDER BY NEWID()
+
+	select CAUHOI,CAST(NOIDUNG as nvarchar(max)) as [NOIDUNG],CAST(A as nvarchar(max)) as [A],CAST(B as nvarchar(max)) as [B],CAST(C as nvarchar(max)) as [C],
+	CAST(D as nvarchar(max)) as [D],DAP_AN  from temp1
+	UNION
+	select CAUHOI,CAST(NOIDUNG as nvarchar(max)) as [NOIDUNG],CAST(A as nvarchar(max)) as [A],CAST(B as nvarchar(max)) as [B],CAST(C as nvarchar(max)) as [C],
+	CAST(D as nvarchar(max)) as [D],DAP_AN  from temp2
+
+	drop table AtSiteTable
+	drop table CungTrinhDoAtSiteTable
+	drop table TrinhDoDuoiAtSiteTable
+	drop table temp1
+	drop table temp2
+	--
+	
+END
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_GetReport]    Script Date: 12/27/2019 17:18:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_GetReport] @MACS char(3), @FROM date, @TO date
+as
+begin
+
+create table #tbl_temp(
+					MALOP char(8)
+					,TENLOP varchar(40)
+					,MAMH char(8)
+					,LAN smallint
+				)
+create table #tbl_temp2(
+					MALOP char(8)
+					,TENLOP varchar(40)
+					,MAGV char(8)
+					,MAMH char(8)
+					,LAN smallint
+				    ,NGAYTHI date
+					,SOCAUTHI smallint
+					,DATHI bit
+					)			
+
+--Lấy danh sách các lượt đăng ký thi theo cơ sở		
+insert into #tbl_temp(MALOP, TENLOP, MAMH, LAN)
+select ll.MALOP, ll.TENLOP, gvdk.MAMH, gvdk.LAN
+from
+	(select l.MALOP, l.TENLOP, l.MAKH 
+	from
+		LINK_SV_MAIN.TN_CSDLPT.dbo.KHOA k, LINK_SV_MAIN.TN_CSDLPT.dbo.LOP l
+	where (k.MACS = @MACS AND l.MAKH = k.MAKH)
+	) as ll, LINK_SV_MAIN.TN_CSDLPT.dbo.GIAOVIEN_DANGKY gvdk
+where ((gvdk.NGAYTHI Between @FROM AND @TO) AND ll.MALOP = gvdk.MALOP) 
+
+--Đếm số lượt đã thi thông qua table bảng điểm
+select lsv.TENLOP, lsv.MALOP, lsv.MAMH, lsv.LAN, COUNT(bd.MASV) as 'DATHI' 
+into #tbl_temp3
+from
+(
+	select t.TENLOP, t.MALOP, t.MAMH, t.LAN, sv.MASV 
+	from 
+	(
+		#tbl_temp t left join LINK_SV_MAIN.TN_CSDLPT.dbo.SINHVIEN sv
+		on t.MALOP = sv.MALOP
+	)
+)as lsv
+left join
+LINK_SV_MAIN.TN_CSDLPT.dbo.BANGDIEM bd
+on bd.MASV = lsv.MASV And bd.MAMH = lsv.MAMH And bd.LAN = lsv.LAN
+group by lsv.MALOP, lsv.TENLOP, lsv.MAMH, lsv.LAN
+
+--Lấy thêm thông tin cho báo cáo
+select t.TENLOP, t.MAMH, gvdk.MAGV, gvdk.SOCAUTHI, t.LAN, gvdk.NGAYTHI, t.DATHI
+into #tbl_Info
+from 
+#tbl_temp3 t
+inner join 
+LINK_SV_MAIN.TN_CSDLPT.dbo.GIAOVIEN_DANGKY gvdk
+on (t.MALOP = gvdk.MALOP And t.MAMH = gvdk.MAMH And t.LAN = gvdk.LAN)
+
+--Sửa các mã thành tên
+select t.TENLOP, rs1.TENMH, ftt.HOTEN, t.SOCAUTHI,t.LAN, t.NGAYTHI, t.DATHI
+from 
+(
+#tbl_Info t
+inner join 
+(select mh.MAMH, mh.TENMH from LINK_SV_MAIN.TN_CSDLPT.dbo.MONHOC mh 
+ where mh.MAMH in (select ti.MAMH from #tbl_Info ti)) as rs1
+on t.MAMH = rs1.MAMH
+)
+inner join 
+(select gv.MAGV, (gv.HO + gv.TEN) as 'HOTEN' from LINK_SV_MAIN.TN_CSDLPT.dbo.GIAOVIEN gv 
+ where gv.MAGV in (select ti.MAGV from #tbl_Info ti)) as ftt
+on t.MAGV = ftt.MAGV
+
+drop table #tbl_temp
+drop table #tbl_temp2
+drop table #tbl_temp3
+drop table #tbl_Info
+
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_GetTranscript]    Script Date: 12/27/2019 17:18:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER proc [dbo].[sp_GetTranscript] @MALOP char(8), @MAMH char(8), @LAN int
+as
+begin
+	Select lsv.MASV, [HO VA TEN], DIEM
+	From
+		(Select sv.MASV, (sv.HO + sv.TEN) as 'HO VA TEN'  
+		 From SINHVIEN sv
+		 Where (sv.MALOP = @MALOP)) As lsv
+	   Inner Join
+		(Select bd.MASV, bd.DIEM 
+		 From  BANGDIEM bd
+		 Where (bd.MAMH = @MAMH AND bd.LAN = @LAN )) As bdl 
+	   On lsv.MASV = bdl.MASV
+end
+
+
+
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_HasBeenExamined]    Script Date: 12/27/2019 17:18:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_HasBeenExamined] @MASV char(8), @MAMH char(8), @LAN int
+as
+begin
+	IF NOT EXISTS(Select 1 from BANGDIEM bd where (bd.MASV = @MASV AND bd.MAMH = @MAMH AND bd.LAN = @LAN))
+		SELECT '0'
+	ELSE
+		SELECT '1'
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_LogOut]    Script Date: 12/27/2019 17:18:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER proc [dbo].[sp_LogOut] @loginName char(50)
+as
+begin
+DECLARE @kill varchar(8000) = '';  
+SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5), session_id) + ';'  
+FROM sys.dm_exec_sessions
+WHERE login_name = @loginName
+
+EXEC(@kill);
+end
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_TaoTaiKhoan]    Script Date: 12/27/2019 17:18:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[sp_TaoTaiKhoan]
+	@LGNAME VARCHAR(50),
+	@PASS VARCHAR(50),
+	@USERNAME VARCHAR(50),
+	@ROLE VARCHAR(50)
+AS
+BEGIN
+  DECLARE @RET INT
+  EXEC @RET= SP_ADDLOGIN @LGNAME, @PASS,'TN_CSDLPT'                     
+
+  IF (@RET =1)  -- LOGIN NAME BI TRUNG
+     RETURN 1
+
+  EXEC @RET= SP_GRANTDBACCESS @LGNAME, @USERNAME
+  IF (@RET =1)  -- USER  NAME BI TRUNG
+  BEGIN
+       EXEC SP_DROPLOGIN @LGNAME
+       RETURN 2
+  END
+  EXEC sp_addrolemember @ROLE, @USERNAME
+
+  IF @ROLE= 'TRUONG' 
+	BEGIN
+		EXEC sp_addsrvrolemember @LGNAME, 'sysadmin'
+		EXEC sp_addsrvrolemember @LGNAME, 'SecurityAdmin'
+		EXEC sp_addsrvrolemember @LGNAME, 'ProcessAdmin'
+	END
+
+  IF @ROLE= 'COSO'
+	BEGIN 
+		EXEC sp_addsrvrolemember @LGNAME, 'sysadmin'
+		EXEC sp_addsrvrolemember @LGNAME, 'SecurityAdmin'
+		EXEC sp_addsrvrolemember @LGNAME, 'ProcessAdmin'
+	END
+  IF @ROLE= 'GIANGVIEN'
+	BEGIN  
+		EXEC sp_addsrvrolemember @LGNAME, 'ProcessAdmin'
+	END
+  IF @ROLE= 'SINHVIEN'
+	BEGIN  
+		EXEC sp_addsrvrolemember @LGNAME, 'ProcessAdmin'
+	END
+
+END
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_THONGTINDANGNHAPGV]    Script Date: 12/27/2019 17:19:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[SP_THONGTINDANGNHAPGV]
+@TENLOGIN NVARCHAR (50)
+AS
+DECLARE @TENUSER NVARCHAR(50)
+SELECT @TENUSER=NAME FROM sys.sysusers WHERE sid = SUSER_SID(@TENLOGIN)
+ SELECT USERNAME = @TENUSER, 
+  HOTEN = (SELECT HO+ ' '+ TEN FROM GIAOVIEN  WHERE MAGV = @TENUSER ),
+   NAME
+   FROM sys.sysusers 
+   WHERE UID = (SELECT GROUPUID 
+                 FROM SYS.SYSMEMBERS 
+               WHERE MEMBERUID= (SELECT UID FROM sys.sysusers  WHERE NAME=@TENUSER))
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_THONGTINDANGNHAPSV]    Script Date: 12/27/2019 17:19:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[SP_THONGTINDANGNHAPSV] @MASV NVARCHAR (50)
+AS
+DECLARE @TENUSER NVARCHAR(50)
+SELECT @TENUSER=NAME FROM sys.sysusers WHERE sid = SUSER_SID('student')
+SELECT USERNAME = @TENUSER, 
+  HOTEN = (SELECT HO+ ' '+ TEN FROM SINHVIEN  WHERE MASV = @MASV ),
+   NAME
+   FROM sys.sysusers 
+   WHERE UID = (SELECT GROUPUID 
+                 FROM SYS.SYSMEMBERS 
+               WHERE MEMBERUID= (SELECT UID FROM sys.sysusers  WHERE NAME=@TENUSER))
+
+
+
+USE [TN_CSDLPT]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_XoaTaiKhoan]    Script Date: 12/27/2019 17:19:16 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[sp_XoaTaiKhoan]
+  @LGNAME VARCHAR(50),
+  @USRNAME VARCHAR(50)
+  
+AS
+EXEC SP_DROPUSER @USRNAME
+  EXEC SP_DROPLOGIN @LGNAME

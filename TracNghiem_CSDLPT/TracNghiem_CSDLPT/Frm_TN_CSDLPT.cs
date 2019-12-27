@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using TracNghiem_CSDLPT.Account;
+using System.Data.SqlClient;
+using TracNghiem_CSDLPT.Common;
 
 namespace TracNghiem_CSDLPT
 {
@@ -80,7 +82,21 @@ namespace TracNghiem_CSDLPT
                 , "Confirmation", MessageBoxButtons.YesNo) 
                 == DialogResult.Yes)
             {
-                this.Dispose();
+                try
+                {
+                    Program.conn.Close();
+
+                    this.Dispose();
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Không thể đăng xuất. Vui lòng thử lại."
+                        , "Lỗi đăng xuất."
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Error);
+                    return;
+                }
+
             }
         }
 
@@ -91,7 +107,28 @@ namespace TracNghiem_CSDLPT
                == DialogResult.Yes)
             {
                 //Delete account and logout
-                this.Dispose();
+                if(SqlRequestFunction.DeleteAccount(Program.mlogin, Program.username))
+                {
+                    MessageBox.Show("Xóa tài khoản thành công.",
+                        "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    try
+                    {
+                        Program.conn.Close();
+
+                        this.Dispose();
+                    }
+                    catch (SqlException)
+                    {
+                        MessageBox.Show("Không thể đăng xuất. Vui lòng thử lại."
+                            , "Lỗi đăng xuất."
+                            , MessageBoxButtons.OK
+                            , MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
             }
         }
 

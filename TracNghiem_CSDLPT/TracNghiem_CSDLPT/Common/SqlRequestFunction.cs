@@ -229,6 +229,25 @@ namespace TracNghiem_CSDLPT.Common
             return false;
         }
 
+        public static bool DeleteAccount(String loginName, String userName)
+        {
+            String query = "Exec sp_XoaTaiKhoan '" + loginName + "', '" + userName + "'";
+
+            try
+            {
+                SqlDataReader reader = ExecSqlDataReader(query);
+                if (reader != null)
+                    return true;
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Execuse query  by SqlCommand
         /// </summary>

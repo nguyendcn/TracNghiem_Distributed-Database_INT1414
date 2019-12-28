@@ -27,6 +27,8 @@ namespace TracNghiem_CSDLPT
         {
             InitializeComponent();
 
+            DeniceFeatureByRole();
+
             this.dgv_Students.Controls.Add(datePicker);
             datePicker.Visible = false;
             datePicker.Format = DateTimePickerFormat.Custom;
@@ -866,5 +868,15 @@ namespace TracNghiem_CSDLPT
             }
             return false;
         }
+
+        private void DeniceFeatureByRole()
+        {
+            
+            if (Program.mGroup.Equals("TRUONG"))
+            {
+                btn_Add.Enabled = btn_Delete.Enabled = btn_Edit.Enabled = btn_Exit.Enabled = btn_Write.Enabled = btn_Reset.Enabled = false;
+            }
+        }
+
     }
 }

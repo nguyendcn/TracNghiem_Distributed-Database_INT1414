@@ -175,7 +175,7 @@ namespace TracNghiem_CSDLPT
                 btn_Transcript.Enabled = btn_RegisterReport.Enabled = false;
 
             }
-            else if(Program.mGroup.Equals("GIAOVIEN"))
+            else if(Program.mGroup.Equals("GIANGVIEN"))
             {
                 btn_Khoa.Enabled = btn_Lop.Enabled = false;
                 btn_MonHoc.Enabled = false;
@@ -187,6 +187,7 @@ namespace TracNghiem_CSDLPT
             }
             else if (Program.mGroup.Equals("TRUONG"))
             {
+                btn_Thi.Enabled = false;
                 btn_NhapDe.Enabled = btn_RegisterExam.Enabled = btn_MonHoc.Enabled = false;
             }
         }

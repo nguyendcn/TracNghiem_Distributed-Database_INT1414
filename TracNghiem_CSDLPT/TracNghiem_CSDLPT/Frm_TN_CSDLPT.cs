@@ -21,6 +21,8 @@ namespace TracNghiem_CSDLPT
         public Frm_TN_CSDLPT()
         {
             InitializeComponent();
+
+            DeniceFeatureByRole();
         }
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
@@ -164,6 +166,29 @@ namespace TracNghiem_CSDLPT
         }
 
 
-        private void Denice
+        private void DeniceFeatureByRole()
+        {
+            if (Program.mGroup.Equals("SINHVIEN"))
+            {
+                btn_Khoa.Enabled = btn_Lop.Enabled = false;
+                btn_NhapDe.Enabled = btn_RegisterExam.Enabled = btn_MonHoc.Enabled = false;
+                btn_Transcript.Enabled = btn_RegisterReport.Enabled = false;
+
+            }
+            else if(Program.mGroup.Equals("GIAOVIEN"))
+            {
+                btn_Khoa.Enabled = btn_Lop.Enabled = false;
+                btn_MonHoc.Enabled = false;
+                btn_RegisterReport.Enabled = false;
+            }
+            else if (Program.mGroup.Equals("COSO"))
+            {
+                btn_Thi.Enabled = false;
+            }
+            else if (Program.mGroup.Equals("TRUONG"))
+            {
+                btn_NhapDe.Enabled = btn_RegisterExam.Enabled = btn_MonHoc.Enabled = false;
+            }
+        }
     }
 }

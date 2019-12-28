@@ -35,7 +35,7 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.btn_NhapDe = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Lop = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_MonHoc = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
@@ -82,7 +82,7 @@
             this.barButtonItem3,
             this.btn_NhapDe,
             this.btn_Lop,
-            this.barButtonItem6,
+            this.btn_MonHoc,
             this.barButtonItem7,
             this.barButtonItem8,
             this.barButtonItem9,
@@ -144,14 +144,14 @@
             this.btn_Lop.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btn_Lop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Lop_ItemClick);
             // 
-            // barButtonItem6
+            // btn_MonHoc
             // 
-            this.barButtonItem6.Caption = "Môn học";
-            this.barButtonItem6.Id = 9;
-            this.barButtonItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
-            this.barButtonItem6.Name = "barButtonItem6";
-            this.barButtonItem6.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            this.btn_MonHoc.Caption = "Môn học";
+            this.btn_MonHoc.Id = 9;
+            this.btn_MonHoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
+            this.btn_MonHoc.Name = "btn_MonHoc";
+            this.btn_MonHoc.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_MonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // barButtonItem7
             // 
@@ -277,7 +277,7 @@
             // ribbonPageGroup5
             // 
             this.ribbonPageGroup5.ItemLinks.Add(this.btn_RegisterExam);
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup5.ItemLinks.Add(this.btn_MonHoc);
             this.ribbonPageGroup5.ItemLinks.Add(this.btn_NhapDe);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "ribbonPageGroup5";
@@ -349,7 +349,7 @@
             this.ribbonPageGroup7.ItemLinks.Add(this.btn_Khoa);
             this.ribbonPageGroup7.ItemLinks.Add(this.btn_NhapDe);
             this.ribbonPageGroup7.ItemLinks.Add(this.btn_Lop);
-            this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup7.ItemLinks.Add(this.btn_MonHoc);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             this.ribbonPageGroup7.Text = "Tổ chức";
             // 
@@ -366,7 +366,7 @@
             this.ribbonPageGroup9.ItemLinks.Add(this.btn_Khoa);
             this.ribbonPageGroup9.ItemLinks.Add(this.btn_NhapDe);
             this.ribbonPageGroup9.ItemLinks.Add(this.btn_Lop);
-            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup9.ItemLinks.Add(this.btn_MonHoc);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             this.ribbonPageGroup9.Text = "Tổ chức";
             // 
@@ -375,7 +375,7 @@
             this.ribbonPageGroup10.ItemLinks.Add(this.btn_Khoa);
             this.ribbonPageGroup10.ItemLinks.Add(this.btn_NhapDe);
             this.ribbonPageGroup10.ItemLinks.Add(this.btn_Lop);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btn_MonHoc);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
             this.ribbonPageGroup10.Text = "Tổ chức";
             // 
@@ -427,7 +427,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem btn_NhapDe;
         private DevExpress.XtraBars.BarButtonItem btn_Lop;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem btn_MonHoc;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;

@@ -255,6 +255,7 @@
             this.btn_Register.TabIndex = 23;
             this.btn_Register.Text = "Tạo";
             this.btn_Register.UseVisualStyleBackColor = true;
+            this.btn_Register.Click += new System.EventHandler(this.btn_Register_Click);
             // 
             // lbl_Title
             // 
@@ -279,7 +280,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_CreateAccount";
-            this.Text = "Frm_CreateAccount";
+            this.Text = "Tạo tài khoản";
             this.Load += new System.EventHandler(this.Frm_CreateAccount_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

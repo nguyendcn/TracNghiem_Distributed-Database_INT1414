@@ -23,7 +23,9 @@ namespace TracNghiem_CSDLPT.Account
             cmb_Employees.DisplayMember = "HOTEN";
             cmb_Employees.ValueMember = "MAGV";
 
-            txt_Role.Text = Program.mGroup;
+            cmb_Role.DataSource = GetListRole(Program.mGroup);
+            cmb_Role.DisplayMember = "DESCRIPTION";
+            cmb_Role.ValueMember = "SYMBOL";
 
             lbl_Err_Summary.Text = lbl_Err_Password.Text = lbl_Err_LoginName.Text = lbl_Err_Employee.Text = "";
         }
@@ -94,7 +96,7 @@ namespace TracNghiem_CSDLPT.Account
                 int code = SqlRequestFunction.CreateAccount(txt_LoginName.Text
                     , cmb_Employees.SelectedValue.ToString()
                     , txt_Password.Text
-                    , txt_Role.Text);
+                    , cmb_Role.SelectedValue.ToString());
 
                 switch (code)
                 {
@@ -122,16 +124,56 @@ namespace TracNghiem_CSDLPT.Account
             }
         }
 
+        private DataTable GetListRole(String role)
+        {
+            DataTable table = new DataTable();
+
+            DataColumn column = new DataColumn("SYMBOL");
+            table.Columns.Add(column);
+            column = new DataColumn("DESCRIPTION");
+            table.Columns.Add(column);
+
+            DataRow row;
+
+            if (role.Equals("COSO"))
+            {
+                row = table.NewRow();
+                row.ItemArray = new object[] { "GIANGVIEN", "Giảng Viên" };
+                table.Rows.Add(row);
+
+                row = table.NewRow();
+                row.ItemArray = new object[] { "COSO", "Cơ Sở" };
+                table.Rows.Add(row);
+            }
+            else if(role.Equals("SINHVIEN"))
+            {
+                row = table.NewRow();
+                row.ItemArray = new object[] { "SINHVIEN", "Sinh Viên" };
+                table.Rows.Add(row);
+            }
+            else if (role.Equals("GIANGVIEN"))
+            {
+                row = table.NewRow();
+                row.ItemArray = new object[] { "GIANGVIEN", "Giảng Viên" };
+                table.Rows.Add(row);
+            }
+            else if (role.Equals("TRUONG"))
+            {
+                row = table.NewRow();
+                row.ItemArray = new object[] { "TRUONG", "Trường" };
+                table.Rows.Add(row);
+            }
+
+            return table;
+        }
+
         private void UpdateInfo()
         {
-
             txt_LoginName.Text = txt_Password.Text = "";
 
             cmb_Employees.DataSource = SetUpListTeacher();
             cmb_Employees.DisplayMember = "HOTEN";
             cmb_Employees.ValueMember = "MAGV";
-
-            txt_Role.Text = Program.mGroup;
         }
     }
 }

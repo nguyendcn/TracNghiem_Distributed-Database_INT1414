@@ -35,13 +35,13 @@
             this.txt_LoginName = new System.Windows.Forms.TextBox();
             this.txt_Password = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_Role = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_Register = new System.Windows.Forms.Button();
             this.lbl_Err_Employee = new System.Windows.Forms.Label();
             this.lbl_Err_LoginName = new System.Windows.Forms.Label();
             this.lbl_Err_Password = new System.Windows.Forms.Label();
             this.lbl_Err_Summary = new System.Windows.Forms.Label();
+            this.cmb_Role = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lbl_Title
@@ -105,14 +105,6 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Mật khẩu";
             // 
-            // txt_Role
-            // 
-            this.txt_Role.Location = new System.Drawing.Point(149, 297);
-            this.txt_Role.Name = "txt_Role";
-            this.txt_Role.ReadOnly = true;
-            this.txt_Role.Size = new System.Drawing.Size(179, 26);
-            this.txt_Role.TabIndex = 8;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -173,18 +165,30 @@
             this.lbl_Err_Summary.TabIndex = 13;
             this.lbl_Err_Summary.Text = "label9";
             // 
+            // cmb_Role
+            // 
+            this.cmb_Role.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb_Role.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_Role.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cmb_Role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Role.FormattingEnabled = true;
+            this.cmb_Role.Location = new System.Drawing.Point(149, 294);
+            this.cmb_Role.Name = "cmb_Role";
+            this.cmb_Role.Size = new System.Drawing.Size(179, 27);
+            this.cmb_Role.TabIndex = 14;
+            // 
             // Frm_CreateAccount
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 448);
+            this.Controls.Add(this.cmb_Role);
             this.Controls.Add(this.lbl_Err_Summary);
             this.Controls.Add(this.lbl_Err_Password);
             this.Controls.Add(this.lbl_Err_LoginName);
             this.Controls.Add(this.lbl_Err_Employee);
             this.Controls.Add(this.btn_Register);
-            this.Controls.Add(this.txt_Role);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.label4);
@@ -194,7 +198,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbl_Title);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_CreateAccount";
             this.Text = "Frm_CreateAccount";
             this.Load += new System.EventHandler(this.Frm_CreateAccount_Load);
@@ -212,12 +216,12 @@
         private System.Windows.Forms.TextBox txt_LoginName;
         private System.Windows.Forms.TextBox txt_Password;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_Role;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_Register;
         private System.Windows.Forms.Label lbl_Err_Employee;
         private System.Windows.Forms.Label lbl_Err_LoginName;
         private System.Windows.Forms.Label lbl_Err_Password;
         private System.Windows.Forms.Label lbl_Err_Summary;
+        private System.Windows.Forms.ComboBox cmb_Role;
     }
 }

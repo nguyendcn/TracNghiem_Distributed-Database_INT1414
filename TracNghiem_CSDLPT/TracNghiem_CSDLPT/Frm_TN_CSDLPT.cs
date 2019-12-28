@@ -12,6 +12,7 @@ using DevExpress.XtraEditors;
 using TracNghiem_CSDLPT.Account;
 using System.Data.SqlClient;
 using TracNghiem_CSDLPT.Common;
+using DevExpress.XtraReports.UI;
 
 namespace TracNghiem_CSDLPT
 {
@@ -73,7 +74,11 @@ namespace TracNghiem_CSDLPT
 
         private void btn_RegisterReport_ItemClick(object sender, ItemClickEventArgs e)
         {
+            XtraReport1 report = new XtraReport1("CS1", "2019-12-12", "2019-12-29");
 
+            ReportPrintTool tool = new ReportPrintTool(report);
+
+            tool.ShowPreviewDialog();
         }
 
         private void btn_Logout_ItemClick(object sender, ItemClickEventArgs e)

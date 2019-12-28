@@ -255,8 +255,10 @@ namespace TracNghiem_CSDLPT
                 SaveToDb(_testInfo, marks);
             }
 
+            int answerTrue = listExam.Where(x => x.TrueAnswer == x.YourAnswer).Count();
+
             StringBuilder stringBuilder = new StringBuilder("Bạn đã trả lời đúng ");
-            stringBuilder.Append(" /" + listExam.Count + " câu.");
+            stringBuilder.Append(answerTrue + " /" + listExam.Count + " câu.");
             stringBuilder.AppendLine("Bạn được " + marks + " điểm.");
 
             MessageBox.Show(stringBuilder.ToString(), "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);

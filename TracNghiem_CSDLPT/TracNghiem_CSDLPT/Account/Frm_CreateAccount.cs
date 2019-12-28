@@ -175,5 +175,11 @@ namespace TracNghiem_CSDLPT.Account
             cmb_Employees.DisplayMember = "HOTEN";
             cmb_Employees.ValueMember = "MAGV";
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
     }
 }

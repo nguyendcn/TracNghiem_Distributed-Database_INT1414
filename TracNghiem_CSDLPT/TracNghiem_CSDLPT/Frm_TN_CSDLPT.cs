@@ -162,5 +162,8 @@ namespace TracNghiem_CSDLPT
             frm_CreateAccount.MdiParent = this;
             frm_CreateAccount.Show();
         }
+
+
+        private void Denice
     }
 }

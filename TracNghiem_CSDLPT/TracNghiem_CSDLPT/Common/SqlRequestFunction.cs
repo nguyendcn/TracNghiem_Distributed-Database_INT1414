@@ -132,7 +132,7 @@ namespace TracNghiem_CSDLPT.Common
 
         public static StudentInfo GetStudentInfo(String studentCode)
         {
-            String query = "Exec sp_GetInfoStudent'" + studentCode + "'";
+            String query = "Exec sp_GetInfoStudent '" + studentCode + "'";
             SqlDataReader reader = ExecSqlDataReader(query);
 
             if (reader.Read())
@@ -154,7 +154,7 @@ namespace TracNghiem_CSDLPT.Common
 
         public static List<ExamTest> GetQuestionForTestExam(String courseCode, String level, int quantity)
         {
-            String query = "Exec sp_GetQuestion'" + courseCode + "', '" + level + "', " + quantity;
+            String query = "Exec sp_GetQuestion '" + courseCode + "', '" + level + "', " + quantity;
             SqlDataReader reader = ExecSqlDataReader(query);
 
             List<ExamTest> listExam = new List<ExamTest>();

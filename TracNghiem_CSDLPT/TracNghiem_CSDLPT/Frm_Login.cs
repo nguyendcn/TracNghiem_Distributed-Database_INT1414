@@ -128,6 +128,8 @@ namespace TracNghiem_CSDLPT
             Program.conn.Close();
             MessageBox.Show("Nhan vien - Nhom : " + Program.mHoten + " - " + Program.mGroup, "", MessageBoxButtons.OK);
 
+            Frm_TN_CSDLPT frm_Tn_csdlpt = new Frm_TN_CSDLPT();
+            frm_Tn_csdlpt.Show();
         }
 
         private void cmb_Brand_SV_SelectedIndexChanged(object sender, EventArgs e)

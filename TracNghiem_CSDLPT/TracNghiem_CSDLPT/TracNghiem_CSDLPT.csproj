@@ -110,12 +110,6 @@
     </Compile>
     <Compile Include="Common\SqlRequestFunction.cs" />
     <Compile Include="Common\SqlString.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm_CBThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,12 +151,6 @@
     </Compile>
     <Compile Include="frm_NhapMH.Designer.cs">
       <DependentUpon>frm_NhapMH.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_NhapSinhVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_NhapSinhVien.Designer.cs">
-      <DependentUpon>Frm_NhapSinhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_ShowResultTestExam.cs">
       <SubType>Form</SubType>
@@ -233,9 +221,6 @@
     <EmbeddedResource Include="Account\Frm_CreateAccount.resx">
       <DependentUpon>Frm_CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm_CBThi.resx">
       <DependentUpon>Frm_CBThi.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,9 +241,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_NhapMH.resx">
       <DependentUpon>frm_NhapMH.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_NhapSinhVien.resx">
-      <DependentUpon>Frm_NhapSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_ShowResultTestExam.resx">
       <DependentUpon>Frm_ShowResultTestExam.cs</DependentUpon>

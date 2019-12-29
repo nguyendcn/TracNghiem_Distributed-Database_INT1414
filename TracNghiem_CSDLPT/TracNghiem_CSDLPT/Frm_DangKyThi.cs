@@ -25,6 +25,8 @@ namespace TracNghiem_CSDLPT
 
             _backAction = new CallBackAction();
 
+            JustNumber(txt_Minute);
+            JustNumber(txt_Quantity);
         }
 
         public void SetUp()
@@ -56,6 +58,8 @@ namespace TracNghiem_CSDLPT
             this.dtp_DateExam.MinDate = DateTime.Now;
             DateTime currentDateTime = DateTime.Now;
             this.dtp_DateExam.MaxDate = currentDateTime.AddDays(60);
+
+            txt_Err_DateExam.Text = txt_Err_QuantityQues.Text = txt_Err_TimeExam.Text = txt_Err_TimesStep.Text = "";
         }
 
         private void Frm_DangKyThi_Load(object sender, EventArgs e)
@@ -160,7 +164,7 @@ namespace TracNghiem_CSDLPT
         private object[] GetAllDataOfRegister()
         {
             return new object[] { txt_TeacherCode.Text, cmb_Course.SelectedValue, cmb_Class.SelectedValue,
-                                  cmb_Level.SelectedValue, dtp_DateExam.Value.ToShortDateString(), txt_TimesStep.Text,
+                                  cmb_Level.SelectedValue, dtp_DateExam.Value.ToShortDateString(), nud_TimesStep.Value,
                                   txt_Quantity.Text, txt_Minute.Text};
         }
 
@@ -192,10 +196,10 @@ namespace TracNghiem_CSDLPT
                 this.ActiveControl = this.txt_Quantity;
                 validate = false;
             }
-            if (txt_TimesStep.Text.Trim().Equals(String.Empty))
+            if (nud_TimesStep.Text.Trim().Equals(String.Empty))
             {
                 ErrorHandler.ShowError(txt_Err_TimesStep, new string[] { "Ox0001" });
-                this.ActiveControl = this.txt_TimesStep;
+                this.ActiveControl = this.nud_TimesStep;
                 validate = false;
             }
             if (txt_Minute.Text.Trim().Equals(String.Empty))
@@ -211,10 +215,10 @@ namespace TracNghiem_CSDLPT
         {
             bool validate = true;
 
-            if (Convert.ToInt32(txt_TimesStep.Text) < 1 || Convert.ToInt32(txt_TimesStep.Text) > 2)
+            if (Convert.ToInt32(nud_TimesStep.Text) < 1 || Convert.ToInt32(nud_TimesStep.Text) > 2)
             {
                 ErrorHandler.ShowError(txt_Err_TimesStep, new string[] { "Ox5002" });
-                this.ActiveControl = this.txt_TimesStep;
+                this.ActiveControl = this.nud_TimesStep;
                 validate = false;
             }
 
@@ -223,7 +227,7 @@ namespace TracNghiem_CSDLPT
             validate = ValidateQuantityQues() ? validate : false;
 
             validate = ValidateCodeRegister(cmb_Class.SelectedValue.ToString(), cmb_Course.SelectedValue.ToString(),
-                                            Convert.ToInt32(txt_TimesStep.Text)) ? validate : false;
+                                            Convert.ToInt32(nud_TimesStep.Text)) ? validate : false;
 
             if (validate)
             {
@@ -418,5 +422,13 @@ namespace TracNghiem_CSDLPT
             }
         }
 
+        public void JustNumber(TextBox textBox)
+        {
+            textBox.KeyPress += (sender, e) =>
+            {
+                if(e.KeyChar < '0' || e.KeyChar > '9')
+                    e.Handled = true;
+            };
+        }
     }
 }

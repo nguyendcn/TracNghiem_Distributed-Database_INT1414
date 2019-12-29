@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraBars;
+﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
-using TracNghiem_CSDLPT.Account;
-using System.Data.SqlClient;
-using TracNghiem_CSDLPT.Common;
 using DevExpress.XtraReports.UI;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Windows.Forms;
+using TracNghiem_CSDLPT.Account;
+using TracNghiem_CSDLPT.Common;
 
 namespace TracNghiem_CSDLPT
 {
@@ -85,15 +80,15 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Logout_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if(XtraMessageBox.Show("Bạn có chắc muốn đăng xuất không?"
-                , "Confirmation", MessageBoxButtons.YesNo) 
+            if (XtraMessageBox.Show("Bạn có chắc muốn đăng xuất không?"
+                , "Confirmation", MessageBoxButtons.YesNo)
                 == DialogResult.Yes)
             {
                 try
                 {
                     SqlRequestFunction.Logout(Program.mlogin);
 
-                    if(Program.conn.State == ConnectionState.Open)
+                    if (Program.conn.State == ConnectionState.Open)
                     {
                         Program.conn.Close();
                     }
@@ -121,6 +116,8 @@ namespace TracNghiem_CSDLPT
 
                 try
                 {
+                    ChangeCurrentLogToKillSession();
+
                     SqlRequestFunction.Logout(Program.mlogin);
 
                     if (SqlRequestFunction.DeleteAccount(Program.mlogin, Program.username))
@@ -145,7 +142,7 @@ namespace TracNghiem_CSDLPT
                         , MessageBoxIcon.Error);
                     return;
                 }
-               
+
 
             }
         }
@@ -175,7 +172,7 @@ namespace TracNghiem_CSDLPT
                 btn_Transcript.Enabled = btn_RegisterReport.Enabled = false;
 
             }
-            else if(Program.mGroup.Equals("GIANGVIEN"))
+            else if (Program.mGroup.Equals("GIANGVIEN"))
             {
                 btn_Khoa.Enabled = btn_Lop.Enabled = false;
                 btn_MonHoc.Enabled = false;
@@ -190,6 +187,25 @@ namespace TracNghiem_CSDLPT
                 btn_Thi.Enabled = false;
                 btn_NhapDe.Enabled = btn_RegisterExam.Enabled = btn_MonHoc.Enabled = false;
             }
+        }
+
+        private void ChangeCurrentLogToKillSession()
+        {
+            String newUser = "HTKN; Password=nguyenne";
+
+            int length = Program.connstr.IndexOf("User ID=") + "User ID=".Length;
+
+            String newConnString = Program.connstr.Substring(0, length);
+
+            newConnString += newUser;
+
+            if (Program.conn.State == ConnectionState.Open)
+            {
+                Program.conn.Close();
+            }
+
+            Program.connstr = newConnString;
+            Program.conn.ConnectionString = Program.connstr;
         }
     }
 }

@@ -18,6 +18,8 @@ namespace TracNghiem_CSDLPT.Account
         public Frm_ChangePassword()
         {
             InitializeComponent();
+
+            lbl_Err_NewPassword.Text = lbl_Err_OldPassword.Text = lbl_Err_RepeatNewPassword.Text = lbl_Err_Summary.Text = "";
         }
 
         private void btn_ChagePassword_Click(object sender, EventArgs e)

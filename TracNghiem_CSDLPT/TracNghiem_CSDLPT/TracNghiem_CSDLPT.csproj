@@ -110,6 +110,12 @@
     </Compile>
     <Compile Include="Common\SqlRequestFunction.cs" />
     <Compile Include="Common\SqlString.cs" />
+    <Compile Include="Form_Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Test.Designer.cs">
+      <DependentUpon>Form_Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_CBThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Frm_CreateAccount.resx">
       <DependentUpon>Frm_CreateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Test.resx">
+      <DependentUpon>Form_Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_CBThi.resx">
       <DependentUpon>Frm_CBThi.cs</DependentUpon>

@@ -71,7 +71,7 @@ namespace TracNghiem_CSDLPT
 
         private void btn_RegisterReport_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraReport1 report = new XtraReport1("CS1", "2019-12-12", "2019-12-29");
+            XtraReport1 report = new XtraReport1("CS1", "2019-12-12", "2019-12-26");
 
             ReportPrintTool tool = new ReportPrintTool(report);
 
@@ -209,6 +209,12 @@ namespace TracNghiem_CSDLPT
             Program.conn.ConnectionString = Program.connstr;
         }
 
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Form_Test test = new Form_Test();
 
+            test.MdiParent = this;
+            test.Show();
+        }
     }
 }

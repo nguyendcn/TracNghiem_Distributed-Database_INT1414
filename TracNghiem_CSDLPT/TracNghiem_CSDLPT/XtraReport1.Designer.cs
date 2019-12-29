@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraReport1));
+            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery2 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter4 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter5 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter6 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -47,7 +52,7 @@
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.xrPageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource();
+            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.reportHeaderBand1 = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.groupHeaderBand1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
@@ -78,6 +83,7 @@
             this.tN_CSDLPTDataSet1 = new TracNghiem_CSDLPT.TN_CSDLPTDataSet();
             this.bANGDIEMTableAdapter = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter();
             this.sp_GetReportTableAdapter1 = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter();
+            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tN_CSDLPTDataSet1)).BeginInit();
@@ -126,9 +132,10 @@
             // xrTableCell15
             // 
             this.xrTableCell15.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", this.sqlDataSource1, "sp_GetReport(@MACS, @FROM, @TO).TENMH")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "sp_GetReport(@MACS, @FROM, @TO).TENMH")});
             this.xrTableCell15.Name = "xrTableCell15";
             this.xrTableCell15.StyleName = "DetailData3";
+            this.xrTableCell15.Text = "xrTableCell15";
             this.xrTableCell15.Weight = 0.15384615384615386D;
             // 
             // xrTableCell16
@@ -146,9 +153,7 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "sp_GetReport(@MACS, @FROM, @TO).SOCAUTHI")});
             this.xrTableCell17.Name = "xrTableCell17";
             this.xrTableCell17.StyleName = "DetailData3";
-            this.xrTableCell17.StylePriority.UseTextAlignment = false;
             this.xrTableCell17.Text = "xrTableCell17";
-            this.xrTableCell17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell17.Weight = 0.15384615384615386D;
             // 
             // xrTableCell18
@@ -157,9 +162,7 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "sp_GetReport(@MACS, @FROM, @TO).LAN")});
             this.xrTableCell18.Name = "xrTableCell18";
             this.xrTableCell18.StyleName = "DetailData3";
-            this.xrTableCell18.StylePriority.UseTextAlignment = false;
             this.xrTableCell18.Text = "xrTableCell18";
-            this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell18.Weight = 0.15384615384615386D;
             // 
             // xrTableCell19
@@ -177,9 +180,7 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "sp_GetReport(@MACS, @FROM, @TO).DATHI")});
             this.xrTableCell20.Name = "xrTableCell20";
             this.xrTableCell20.StyleName = "DetailData3";
-            this.xrTableCell20.StylePriority.UseTextAlignment = false;
             this.xrTableCell20.Text = "xrTableCell20";
-            this.xrTableCell20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell20.Weight = 0.15384615384615386D;
             // 
             // TopMargin
@@ -228,10 +229,10 @@
             queryParameter1.ValueInfo = "CS1";
             queryParameter2.Name = "@FROM";
             queryParameter2.Type = typeof(string);
-            queryParameter2.ValueInfo = "2019/12/12";
+            queryParameter2.ValueInfo = "2019-12-12";
             queryParameter3.Name = "@TO";
             queryParameter3.Type = typeof(string);
-            queryParameter3.ValueInfo = "2019/12/29";
+            queryParameter3.ValueInfo = "2019-12-29";
             storedProcQuery1.Parameters.Add(queryParameter1);
             storedProcQuery1.Parameters.Add(queryParameter2);
             storedProcQuery1.Parameters.Add(queryParameter3);
@@ -244,7 +245,7 @@
             // 
             this.reportHeaderBand1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel1});
-            this.reportHeaderBand1.HeightF = 60F;
+            this.reportHeaderBand1.HeightF = 63.12501F;
             this.reportHeaderBand1.Name = "reportHeaderBand1";
             // 
             // xrLabel1
@@ -254,7 +255,7 @@
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(638F, 26F);
             this.xrLabel1.StyleName = "Title";
-            this.xrLabel1.Text = "Nguyenne";
+            this.xrLabel1.Text = "vczcxv";
             // 
             // groupHeaderBand1
             // 
@@ -319,18 +320,14 @@
             // 
             this.xrTableCell7.Name = "xrTableCell7";
             this.xrTableCell7.StyleName = "DetailCaption3";
-            this.xrTableCell7.StylePriority.UseTextAlignment = false;
             this.xrTableCell7.Text = "SOCAUTHI";
-            this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell7.Weight = 0.15384615384615386D;
             // 
             // xrTableCell8
             // 
             this.xrTableCell8.Name = "xrTableCell8";
             this.xrTableCell8.StyleName = "DetailCaption3";
-            this.xrTableCell8.StylePriority.UseTextAlignment = false;
             this.xrTableCell8.Text = "LAN";
-            this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell8.Weight = 0.15384615384615386D;
             // 
             // xrTableCell9
@@ -344,9 +341,7 @@
             // 
             this.xrTableCell10.Name = "xrTableCell10";
             this.xrTableCell10.StyleName = "DetailCaption3";
-            this.xrTableCell10.StylePriority.UseTextAlignment = false;
             this.xrTableCell10.Text = "DATHI";
-            this.xrTableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell10.Weight = 0.15384615384615386D;
             // 
             // xrTableRow1
@@ -472,6 +467,28 @@
             // 
             this.sp_GetReportTableAdapter1.ClearBeforeFill = true;
             // 
+            // sqlDataSource2
+            // 
+            this.sqlDataSource2.ConnectionName = "TracNghiem_CSDLPT.Properties.Settings.TN_CSDLPTConnectionStringGetReport";
+            this.sqlDataSource2.Name = "sqlDataSource2";
+            storedProcQuery2.Name = "sp_GetReport(@MACS, @FROM, @TO)";
+            queryParameter4.Name = "@MACS";
+            queryParameter4.Type = typeof(string);
+            queryParameter4.ValueInfo = "CS1";
+            queryParameter5.Name = "@FROM";
+            queryParameter5.Type = typeof(string);
+            queryParameter5.ValueInfo = "2019-12-12";
+            queryParameter6.Name = "@TO";
+            queryParameter6.Type = typeof(string);
+            queryParameter6.ValueInfo = "2019-12-29";
+            storedProcQuery2.Parameters.Add(queryParameter4);
+            storedProcQuery2.Parameters.Add(queryParameter5);
+            storedProcQuery2.Parameters.Add(queryParameter6);
+            storedProcQuery2.StoredProcName = "sp_GetReport";
+            this.sqlDataSource2.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            storedProcQuery2});
+            this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
+            // 
             // XtraReport1
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -481,10 +498,11 @@
             this.reportHeaderBand1,
             this.groupHeaderBand1});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.sqlDataSource1});
+            this.sqlDataSource1,
+            this.sqlDataSource2});
             this.DataAdapter = this.sp_GetReportTableAdapter1;
-            this.DataMember = "sp_GetReport";
-            this.DataSource = this.tN_CSDLPTDataSet1;
+            this.DataMember = "sp_GetReport(@MACS, @FROM, @TO)";
+            this.DataSource = this.sqlDataSource2;
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.DetailCaption3,
@@ -547,5 +565,6 @@
         private TN_CSDLPTDataSet tN_CSDLPTDataSet1;
         private TN_CSDLPTDataSetTableAdapters.BANGDIEMTableAdapter bANGDIEMTableAdapter;
         private TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter sp_GetReportTableAdapter1;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource2;
     }
 }

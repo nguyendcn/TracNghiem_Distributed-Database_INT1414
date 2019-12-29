@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9InNwX0dldFJlcG9ydChATUFDUywgQEZST00sIEBUTykiPjxGaWVsZCBOYW1lPSJURU5MT1AiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVEVOTUgiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iSE9URU4iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU09DQVVUSEkiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJMQU4iIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJOR0FZVEhJIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkRBVEhJIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9InNwX0dldFJlcG9ydChATUFDUywgQEZST00sIEBUTykiPjxGaWVsZCBOYW1lPSJURU5MT1AiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVEVOTUgiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iSE9URU4iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU09DQVVUSEkiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iTEFOIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ik5HQVlUSEkiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iREFUSEkiIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
   </data>
   <metadata name="tN_CSDLPTDataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
@@ -132,4 +132,10 @@
   <metadata name="sp_GetReportTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 134</value>
   </metadata>
+  <metadata name="sqlDataSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+  <data name="sqlDataSource2.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTIiPjxWaWV3IE5hbWU9InNwX0dldFJlcG9ydChATUFDUywgQEZST00sIEBUTykiPjxGaWVsZCBOYW1lPSJURU5MT1AiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVEVOTUgiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iSE9URU4iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU09DQVVUSEkiIFR5cGU9IkludDE2IiAvPjxGaWVsZCBOYW1lPSJMQU4iIFR5cGU9IkludDE2IiAvPjxGaWVsZCBOYW1lPSJOR0FZVEhJIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iREFUSEkiIFR5cGU9IkludDMyIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
+  </data>
 </root>

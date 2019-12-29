@@ -171,6 +171,7 @@ namespace TracNghiem_CSDLPT
                 btn_NhapDe.Enabled = btn_RegisterExam.Enabled = btn_MonHoc.Enabled = false;
                 btn_Transcript.Enabled = btn_RegisterReport.Enabled = false;
 
+                btn_ChangePassword.Enabled = btn_DeleteAccount.Enabled = btn_Register.Enabled = false;
             }
             else if (Program.mGroup.Equals("GIANGVIEN"))
             {
@@ -207,5 +208,7 @@ namespace TracNghiem_CSDLPT
             Program.connstr = newConnString;
             Program.conn.ConnectionString = Program.connstr;
         }
+
+
     }
 }

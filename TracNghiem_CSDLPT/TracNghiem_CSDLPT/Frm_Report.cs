@@ -71,7 +71,7 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Print_Click(object sender, EventArgs e)
         {
-            if(dtp_From.Value > dtp_To.Value)
+            if (dtp_From.Value > dtp_To.Value)
             {
                 ErrorHandler.ShowError(lbl_Err_Summary, new string[] { "OxA001" });
                 return;

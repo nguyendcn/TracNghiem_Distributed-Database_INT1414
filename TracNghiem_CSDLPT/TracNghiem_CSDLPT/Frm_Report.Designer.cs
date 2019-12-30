@@ -55,6 +55,8 @@
             this.sp_GetReportTableAdapter = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter();
             this.tableAdapterManager = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.TableAdapterManager();
             this.lbl_Err_Summary = new System.Windows.Forms.Label();
+            this.sp_GetReportTableAdapter1 = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tN_CSDLPTDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -337,6 +340,10 @@
             this.lbl_Err_Summary.TabIndex = 2;
             this.lbl_Err_Summary.Text = "label4";
             // 
+            // sp_GetReportTableAdapter1
+            // 
+            this.sp_GetReportTableAdapter1.ClearBeforeFill = true;
+            // 
             // Frm_Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,6 +365,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tN_CSDLPTDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,5 +398,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colNGAYTHI;
         private DevExpress.XtraGrid.Columns.GridColumn colDATHI;
         private System.Windows.Forms.Label lbl_Err_Summary;
+        private TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter sp_GetReportTableAdapter1;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
     }
 }

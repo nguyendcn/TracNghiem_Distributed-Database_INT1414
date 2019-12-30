@@ -22,6 +22,8 @@ namespace TracNghiem_CSDLPT.Share
         public static String Ox6002 = "Tài khoản đăng nhập đã tồn tại.";
         public static String Ox6003 = "Giáo viên này đã được tạo tài khoản.";
 
+        public static String OxA001 = "Ngày trước phải nhỏ hơn hoặc bằng ngày sau.";
+
         public static String GetPropertyValue(String propName)
         {
             Type type = typeof(ErrorCode);

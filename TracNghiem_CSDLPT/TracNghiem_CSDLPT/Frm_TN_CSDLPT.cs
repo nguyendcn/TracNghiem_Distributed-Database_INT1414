@@ -71,11 +71,10 @@ namespace TracNghiem_CSDLPT
 
         private void btn_RegisterReport_ItemClick(object sender, ItemClickEventArgs e)
         {
-            xrp_RegisterExam report = new xrp_RegisterExam("CS1", "2019-12-12", "2019-12-26");
+            Frm_Report frm_Report = new Frm_Report();
 
-            ReportPrintTool tool = new ReportPrintTool(report);
-
-            tool.ShowPreviewDialog();
+            frm_Report.MdiParent = this;
+            frm_Report.Show();
         }
 
         private void btn_Logout_ItemClick(object sender, ItemClickEventArgs e)

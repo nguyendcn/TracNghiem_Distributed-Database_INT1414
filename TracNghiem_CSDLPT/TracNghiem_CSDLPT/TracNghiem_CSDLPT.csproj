@@ -215,11 +215,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TN_CSDLPTDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="XtraReport1.cs">
+    <Compile Include="xrp_RegisterExam.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="XtraReport1.Designer.cs">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
+    <Compile Include="xrp_RegisterExam.Designer.cs">
+      <DependentUpon>xrp_RegisterExam.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Account\Frm_ChangePassword.resx">
       <DependentUpon>Frm_ChangePassword.cs</DependentUpon>
@@ -280,8 +280,8 @@
     <EmbeddedResource Include="TestExam.resx">
       <DependentUpon>TestExam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport1.resx">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
+    <EmbeddedResource Include="xrp_RegisterExam.resx">
+      <DependentUpon>xrp_RegisterExam.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

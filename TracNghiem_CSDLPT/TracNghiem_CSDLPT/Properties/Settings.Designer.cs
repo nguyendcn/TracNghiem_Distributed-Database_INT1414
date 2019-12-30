@@ -22,7 +22,17 @@ namespace TracNghiem_CSDLPT.Properties {
                 return defaultInstance;
             }
         }
-       
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NGUYEN-PC\\SQLSERVER_1;Initial Catalog=TN_CSDLPT;User ID=sa;Password=n" +
+            "guyenne")]
+        public string TN_CSDLPTConnectionString {
+            get {
+                return ((string)(this["TN_CSDLPTConnectionString"]));
+            }
+        }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -32,6 +42,17 @@ namespace TracNghiem_CSDLPT.Properties {
         public string TN_CSDLPTConnectionString1 {
             get {
                 return ((string)(this["TN_CSDLPTConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("XpoProvider=MSSqlServer;data source=NGUYEN-PC\\SQLSERVER_1;integrated security=SSP" +
+            "I;initial catalog=TN_CSDLPT")]
+        public string TN_CSDLPTConnectionStringGetReport {
+            get {
+                return ((string)(this["TN_CSDLPTConnectionStringGetReport"]));
             }
         }
     }

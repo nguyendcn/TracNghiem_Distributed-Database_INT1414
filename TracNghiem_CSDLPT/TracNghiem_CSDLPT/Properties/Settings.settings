@@ -18,5 +18,12 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=NGUYEN-PC\SQLSERVER_1;Initial Catalog=TN_CSDLPT;User ID=TUYET;Password=nguyenne</Value>
     </Setting>
+    <Setting Name="TN_CSDLPTConnectionStringGetReport" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;XpoProvider=MSSqlServer;data source=NGUYEN-PC\SQLSERVER_1;integrated security=SSPI;initial catalog=TN_CSDLPT&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">XpoProvider=MSSqlServer;data source=NGUYEN-PC\SQLSERVER_1;integrated security=SSPI;initial catalog=TN_CSDLPT</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

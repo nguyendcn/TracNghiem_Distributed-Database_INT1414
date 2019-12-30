@@ -71,7 +71,7 @@ namespace TracNghiem_CSDLPT
 
         private void btn_RegisterReport_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraReport1 report = new XtraReport1("CS1", "2019-12-12", "2019-12-26");
+            xrp_RegisterExam report = new xrp_RegisterExam("CS1", "2019-12-12", "2019-12-26");
 
             ReportPrintTool tool = new ReportPrintTool(report);
 

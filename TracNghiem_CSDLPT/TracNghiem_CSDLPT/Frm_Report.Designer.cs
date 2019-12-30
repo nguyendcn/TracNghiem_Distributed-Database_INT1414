@@ -41,6 +41,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Print = new System.Windows.Forms.Button();
             this.btn_Preview = new System.Windows.Forms.Button();
+            this.lbl_Err_Summary = new System.Windows.Forms.Label();
             this.sp_GetReportGridControl = new DevExpress.XtraGrid.GridControl();
             this.sp_GetReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tN_CSDLPTDataSet = new TracNghiem_CSDLPT.TN_CSDLPTDataSet();
@@ -54,9 +55,9 @@
             this.colDATHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sp_GetReportTableAdapter = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter();
             this.tableAdapterManager = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.TableAdapterManager();
-            this.lbl_Err_Summary = new System.Windows.Forms.Label();
             this.sp_GetReportTableAdapter1 = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.sp_GetReportTableAdapter2 = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -225,6 +226,18 @@
             this.btn_Preview.UseVisualStyleBackColor = true;
             this.btn_Preview.Click += new System.EventHandler(this.btn_Preview_Click);
             // 
+            // lbl_Err_Summary
+            // 
+            this.lbl_Err_Summary.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_Err_Summary.AutoSize = true;
+            this.lbl_Err_Summary.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Err_Summary.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Err_Summary.Location = new System.Drawing.Point(395, 7);
+            this.lbl_Err_Summary.Name = "lbl_Err_Summary";
+            this.lbl_Err_Summary.Size = new System.Drawing.Size(47, 17);
+            this.lbl_Err_Summary.TabIndex = 2;
+            this.lbl_Err_Summary.Text = "label4";
+            // 
             // sp_GetReportGridControl
             // 
             this.sp_GetReportGridControl.DataSource = this.sp_GetReportBindingSource;
@@ -318,6 +331,7 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.BANGDIEMTableAdapter = null;
             this.tableAdapterManager.BODETableAdapter = null;
+            this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.COSOTableAdapter = null;
             this.tableAdapterManager.GIAOVIEN_DANGKYTableAdapter = null;
             this.tableAdapterManager.GIAOVIENTableAdapter = null;
@@ -325,24 +339,15 @@
             this.tableAdapterManager.LOPTableAdapter = null;
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
-            this.tableAdapterManager.sp_GetReportTableAdapter = this.sp_GetReportTableAdapter;
             this.tableAdapterManager.UpdateOrder = TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // lbl_Err_Summary
-            // 
-            this.lbl_Err_Summary.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_Err_Summary.AutoSize = true;
-            this.lbl_Err_Summary.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Err_Summary.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Err_Summary.Location = new System.Drawing.Point(395, 7);
-            this.lbl_Err_Summary.Name = "lbl_Err_Summary";
-            this.lbl_Err_Summary.Size = new System.Drawing.Size(47, 17);
-            this.lbl_Err_Summary.TabIndex = 2;
-            this.lbl_Err_Summary.Text = "label4";
             // 
             // sp_GetReportTableAdapter1
             // 
             this.sp_GetReportTableAdapter1.ClearBeforeFill = true;
+            // 
+            // sp_GetReportTableAdapter2
+            // 
+            this.sp_GetReportTableAdapter2.ClearBeforeFill = true;
             // 
             // Frm_Report
             // 
@@ -400,5 +405,6 @@
         private System.Windows.Forms.Label lbl_Err_Summary;
         private TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter sp_GetReportTableAdapter1;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private TN_CSDLPTDataSetTableAdapters.sp_GetReportTableAdapter sp_GetReportTableAdapter2;
     }
 }

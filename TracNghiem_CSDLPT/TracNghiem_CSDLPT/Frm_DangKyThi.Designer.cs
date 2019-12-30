@@ -87,10 +87,10 @@
             this.txt_Err_QuantityQues = new System.Windows.Forms.Label();
             this.txt_Err_TimeExam = new System.Windows.Forms.Label();
             this.dtp_DateExam = new System.Windows.Forms.DateTimePicker();
+            this.nud_TimesStep = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tbl_MonHoc = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.MONHOCTableAdapter();
             this.tbl_Lop = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.LOPTableAdapter();
-            this.nud_TimesStep = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GiaoVien)).BeginInit();
             this.cms_Menu.SuspendLayout();
@@ -407,7 +407,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.Controls.Add(this.cmb_Level, 4, 7);
             this.tableLayoutPanel1.Controls.Add(this.txt_TeacherCode, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 7);
@@ -441,7 +441,7 @@
             this.cmb_Level.Location = new System.Drawing.Point(104, 184);
             this.cmb_Level.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_Level.Name = "cmb_Level";
-            this.cmb_Level.Size = new System.Drawing.Size(144, 25);
+            this.cmb_Level.Size = new System.Drawing.Size(122, 25);
             this.cmb_Level.TabIndex = 7;
             // 
             // txt_TeacherCode
@@ -451,7 +451,7 @@
             this.txt_TeacherCode.Name = "txt_TeacherCode";
             this.txt_TeacherCode.ReadOnly = true;
             this.txt_TeacherCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_TeacherCode.Size = new System.Drawing.Size(62, 25);
+            this.txt_TeacherCode.Size = new System.Drawing.Size(74, 25);
             this.txt_TeacherCode.TabIndex = 0;
             // 
             // label4
@@ -486,7 +486,7 @@
             this.cmb_Class.Location = new System.Drawing.Point(104, 124);
             this.cmb_Class.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_Class.Name = "cmb_Class";
-            this.cmb_Class.Size = new System.Drawing.Size(221, 25);
+            this.cmb_Class.Size = new System.Drawing.Size(220, 25);
             this.cmb_Class.TabIndex = 6;
             this.cmb_Class.ValueMember = "MALOP";
             // 
@@ -507,7 +507,7 @@
             this.cmb_Course.Location = new System.Drawing.Point(104, 64);
             this.cmb_Course.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_Course.Name = "cmb_Course";
-            this.cmb_Course.Size = new System.Drawing.Size(221, 25);
+            this.cmb_Course.Size = new System.Drawing.Size(220, 25);
             this.cmb_Course.TabIndex = 5;
             this.cmb_Course.ValueMember = "MAMH";
             // 
@@ -563,7 +563,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel2.Controls.Add(this.label8, 1, 7);
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label6, 1, 3);
@@ -627,7 +627,7 @@
             this.txt_Quantity.Location = new System.Drawing.Point(87, 143);
             this.txt_Quantity.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Quantity.Name = "txt_Quantity";
-            this.txt_Quantity.Size = new System.Drawing.Size(52, 25);
+            this.txt_Quantity.Size = new System.Drawing.Size(46, 25);
             this.txt_Quantity.TabIndex = 2;
             // 
             // label7
@@ -648,13 +648,13 @@
             this.panel1.Location = new System.Drawing.Point(87, 203);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(182, 38);
+            this.panel1.Size = new System.Drawing.Size(180, 38);
             this.panel1.TabIndex = 7;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(59, 2);
+            this.label10.Location = new System.Drawing.Point(50, 5);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 17);
@@ -666,7 +666,7 @@
             this.txt_Minute.Location = new System.Drawing.Point(2, 2);
             this.txt_Minute.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Minute.Name = "txt_Minute";
-            this.txt_Minute.Size = new System.Drawing.Size(53, 25);
+            this.txt_Minute.Size = new System.Drawing.Size(44, 25);
             this.txt_Minute.TabIndex = 3;
             // 
             // txt_Err_DateExam
@@ -677,7 +677,7 @@
             this.txt_Err_DateExam.Location = new System.Drawing.Point(87, 0);
             this.txt_Err_DateExam.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txt_Err_DateExam.Name = "txt_Err_DateExam";
-            this.txt_Err_DateExam.Size = new System.Drawing.Size(182, 21);
+            this.txt_Err_DateExam.Size = new System.Drawing.Size(180, 21);
             this.txt_Err_DateExam.TabIndex = 8;
             this.txt_Err_DateExam.Text = "Err";
             // 
@@ -689,7 +689,7 @@
             this.txt_Err_TimesStep.Location = new System.Drawing.Point(87, 60);
             this.txt_Err_TimesStep.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txt_Err_TimesStep.Name = "txt_Err_TimesStep";
-            this.txt_Err_TimesStep.Size = new System.Drawing.Size(182, 21);
+            this.txt_Err_TimesStep.Size = new System.Drawing.Size(180, 21);
             this.txt_Err_TimesStep.TabIndex = 9;
             this.txt_Err_TimesStep.Text = "Err";
             // 
@@ -701,7 +701,7 @@
             this.txt_Err_QuantityQues.Location = new System.Drawing.Point(87, 120);
             this.txt_Err_QuantityQues.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txt_Err_QuantityQues.Name = "txt_Err_QuantityQues";
-            this.txt_Err_QuantityQues.Size = new System.Drawing.Size(182, 21);
+            this.txt_Err_QuantityQues.Size = new System.Drawing.Size(180, 21);
             this.txt_Err_QuantityQues.TabIndex = 10;
             this.txt_Err_QuantityQues.Text = "Err";
             // 
@@ -713,7 +713,7 @@
             this.txt_Err_TimeExam.Location = new System.Drawing.Point(87, 180);
             this.txt_Err_TimeExam.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txt_Err_TimeExam.Name = "txt_Err_TimeExam";
-            this.txt_Err_TimeExam.Size = new System.Drawing.Size(182, 21);
+            this.txt_Err_TimeExam.Size = new System.Drawing.Size(180, 21);
             this.txt_Err_TimeExam.TabIndex = 11;
             this.txt_Err_TimeExam.Text = "Err";
             // 
@@ -724,8 +724,31 @@
             this.dtp_DateExam.Location = new System.Drawing.Point(87, 23);
             this.dtp_DateExam.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_DateExam.Name = "dtp_DateExam";
-            this.dtp_DateExam.Size = new System.Drawing.Size(182, 25);
+            this.dtp_DateExam.Size = new System.Drawing.Size(180, 25);
             this.dtp_DateExam.TabIndex = 0;
+            // 
+            // nud_TimesStep
+            // 
+            this.nud_TimesStep.Location = new System.Drawing.Point(87, 83);
+            this.nud_TimesStep.Margin = new System.Windows.Forms.Padding(2);
+            this.nud_TimesStep.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.nud_TimesStep.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nud_TimesStep.Name = "nud_TimesStep";
+            this.nud_TimesStep.Size = new System.Drawing.Size(46, 25);
+            this.nud_TimesStep.TabIndex = 12;
+            this.nud_TimesStep.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // tableLayoutPanel3
             // 
@@ -735,7 +758,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
@@ -760,28 +783,6 @@
             // 
             this.tbl_Lop.ClearBeforeFill = true;
             // 
-            // nud_TimesStep
-            // 
-            this.nud_TimesStep.Location = new System.Drawing.Point(88, 84);
-            this.nud_TimesStep.Maximum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.nud_TimesStep.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nud_TimesStep.Name = "nud_TimesStep";
-            this.nud_TimesStep.Size = new System.Drawing.Size(54, 25);
-            this.nud_TimesStep.TabIndex = 12;
-            this.nud_TimesStep.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // Frm_DangKyThi
             // 
             this.Appearance.Options.UseFont = true;
@@ -796,7 +797,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_DangKyThi";
-            this.Text = "Frm_DangKyThi";
+            this.Text = "Đăng Ký Thi";
             this.Load += new System.EventHandler(this.Frm_DangKyThi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GiaoVien)).EndInit();

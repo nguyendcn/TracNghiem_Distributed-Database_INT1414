@@ -406,7 +406,7 @@
             this.pnl_grv.Controls.Add(this.grv_Lop);
             this.pnl_grv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_grv.Location = new System.Drawing.Point(0, 0);
-            this.pnl_grv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_grv.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.pnl_grv.Name = "pnl_grv";
             this.pnl_grv.Size = new System.Drawing.Size(991, 186);
             this.pnl_grv.TabIndex = 0;
@@ -418,7 +418,7 @@
             this.grv_Lop.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
             this.grv_Lop.Location = new System.Drawing.Point(0, 0);
             this.grv_Lop.MainView = this.gridView1;
-            this.grv_Lop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grv_Lop.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.grv_Lop.MenuManager = this.brm_Option;
             this.grv_Lop.Name = "grv_Lop";
             this.grv_Lop.Size = new System.Drawing.Size(991, 186);
@@ -462,7 +462,7 @@
             this.pnl_ConstructArea.Controls.Add(this.splc_ConstructArea);
             this.pnl_ConstructArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_ConstructArea.Location = new System.Drawing.Point(0, 0);
-            this.pnl_ConstructArea.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_ConstructArea.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.pnl_ConstructArea.Name = "pnl_ConstructArea";
             this.pnl_ConstructArea.Size = new System.Drawing.Size(991, 203);
             this.pnl_ConstructArea.TabIndex = 0;
@@ -472,7 +472,7 @@
             this.splc_ConstructArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splc_ConstructArea.Enabled = false;
             this.splc_ConstructArea.Location = new System.Drawing.Point(0, 0);
-            this.splc_ConstructArea.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splc_ConstructArea.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.splc_ConstructArea.Name = "splc_ConstructArea";
             // 
             // splc_ConstructArea.Panel1
@@ -484,7 +484,7 @@
             this.splc_ConstructArea.Panel2.Controls.Add(this.dgv_Students);
             this.splc_ConstructArea.Size = new System.Drawing.Size(991, 203);
             this.splc_ConstructArea.SplitterDistance = 342;
-            this.splc_ConstructArea.SplitterWidth = 3;
+            this.splc_ConstructArea.SplitterWidth = 2;
             this.splc_ConstructArea.TabIndex = 14;
             // 
             // tableLayoutPanel1
@@ -502,18 +502,18 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 9);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(342, 203);
             this.tableLayoutPanel1.TabIndex = 21;
@@ -522,10 +522,10 @@
             // 
             this.lbl_Error_CodeClass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Error_CodeClass.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error_CodeClass.Location = new System.Drawing.Point(83, 3);
+            this.lbl_Error_CodeClass.Location = new System.Drawing.Point(83, 2);
             this.lbl_Error_CodeClass.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_Error_CodeClass.Name = "lbl_Error_CodeClass";
-            this.lbl_Error_CodeClass.Size = new System.Drawing.Size(258, 25);
+            this.lbl_Error_CodeClass.Size = new System.Drawing.Size(258, 26);
             this.lbl_Error_CodeClass.TabIndex = 19;
             this.lbl_Error_CodeClass.Text = "Err";
             // 
@@ -536,26 +536,26 @@
             this.lbl_Error_NameClass.Location = new System.Drawing.Point(83, 76);
             this.lbl_Error_NameClass.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_Error_NameClass.Name = "lbl_Error_NameClass";
-            this.lbl_Error_NameClass.Size = new System.Drawing.Size(258, 25);
+            this.lbl_Error_NameClass.Size = new System.Drawing.Size(258, 26);
             this.lbl_Error_NameClass.TabIndex = 20;
             this.lbl_Error_NameClass.Text = "Err";
             // 
             // txt_CodeClass
             // 
             this.txt_CodeClass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_CodeClass.Location = new System.Drawing.Point(84, 33);
-            this.txt_CodeClass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_CodeClass.Location = new System.Drawing.Point(83, 31);
+            this.txt_CodeClass.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.txt_CodeClass.Name = "txt_CodeClass";
-            this.txt_CodeClass.Size = new System.Drawing.Size(256, 26);
+            this.txt_CodeClass.Size = new System.Drawing.Size(258, 26);
             this.txt_CodeClass.TabIndex = 8;
             // 
             // txt_NameClass
             // 
             this.txt_NameClass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_NameClass.Location = new System.Drawing.Point(84, 106);
-            this.txt_NameClass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_NameClass.Location = new System.Drawing.Point(83, 105);
+            this.txt_NameClass.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.txt_NameClass.Name = "txt_NameClass";
-            this.txt_NameClass.Size = new System.Drawing.Size(256, 26);
+            this.txt_NameClass.Size = new System.Drawing.Size(258, 26);
             this.txt_NameClass.TabIndex = 10;
             // 
             // cmb_Khoa
@@ -564,10 +564,10 @@
             this.cmb_Khoa.DisplayMember = "TENKH";
             this.cmb_Khoa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmb_Khoa.FormattingEnabled = true;
-            this.cmb_Khoa.Location = new System.Drawing.Point(84, 162);
-            this.cmb_Khoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_Khoa.Location = new System.Drawing.Point(83, 159);
+            this.cmb_Khoa.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.cmb_Khoa.Name = "cmb_Khoa";
-            this.cmb_Khoa.Size = new System.Drawing.Size(256, 27);
+            this.cmb_Khoa.Size = new System.Drawing.Size(258, 27);
             this.cmb_Khoa.TabIndex = 12;
             this.cmb_Khoa.ValueMember = "MAKH";
             // 
@@ -575,10 +575,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(2, 31);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(1, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 42);
+            this.label1.Size = new System.Drawing.Size(80, 44);
             this.label1.TabIndex = 7;
             this.label1.Text = "Mã Lớp:";
             // 
@@ -586,10 +586,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(2, 104);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(1, 104);
+            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 42);
+            this.label2.Size = new System.Drawing.Size(80, 44);
             this.label2.TabIndex = 9;
             this.label2.Text = "Tên Lớp:";
             // 
@@ -597,10 +597,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(2, 160);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(1, 158);
+            this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 43);
+            this.label3.Size = new System.Drawing.Size(80, 45);
             this.label3.TabIndex = 11;
             this.label3.Text = "Mã Khoa:";
             // 
@@ -620,11 +620,11 @@
             this.dgv_Students.DataSource = this.bs_SinhVien;
             this.dgv_Students.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Students.Location = new System.Drawing.Point(0, 0);
-            this.dgv_Students.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_Students.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.dgv_Students.MultiSelect = false;
             this.dgv_Students.Name = "dgv_Students";
             this.dgv_Students.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgv_Students.Size = new System.Drawing.Size(646, 203);
+            this.dgv_Students.Size = new System.Drawing.Size(647, 203);
             this.dgv_Students.TabIndex = 7;
             // 
             // mASVDataGridViewTextBoxColumn
@@ -692,6 +692,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_NhapLop";
+            this.Text = "Nhập Lớp";
             this.Load += new System.EventHandler(this.Frm_NhapLop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).EndInit();

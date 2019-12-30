@@ -443,12 +443,12 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 5;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.tableLayoutPanel3.Controls.Add(this.txt_QuestionCode, 3, 1);
             this.tableLayoutPanel3.Controls.Add(this.label8, 1, 5);
             this.tableLayoutPanel3.Controls.Add(this.label7, 1, 3);
@@ -460,32 +460,32 @@
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 6;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(312, 243);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // txt_QuestionCode
             // 
-            this.txt_QuestionCode.Location = new System.Drawing.Point(86, 10);
+            this.txt_QuestionCode.Location = new System.Drawing.Point(80, 7);
             this.txt_QuestionCode.Margin = new System.Windows.Forms.Padding(2);
             this.txt_QuestionCode.Name = "txt_QuestionCode";
             this.txt_QuestionCode.ReadOnly = true;
-            this.txt_QuestionCode.Size = new System.Drawing.Size(30, 25);
+            this.txt_QuestionCode.Size = new System.Drawing.Size(49, 25);
             this.txt_QuestionCode.TabIndex = 3;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(10, 170);
+            this.label8.Location = new System.Drawing.Point(6, 167);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 73);
+            this.label8.Size = new System.Drawing.Size(66, 76);
             this.label8.TabIndex = 6;
             this.label8.Text = "Trình độ:";
             // 
@@ -493,10 +493,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(10, 89);
+            this.label7.Location = new System.Drawing.Point(6, 86);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 73);
+            this.label7.Size = new System.Drawing.Size(66, 76);
             this.label7.TabIndex = 5;
             this.label7.Text = "Môn học:";
             // 
@@ -507,20 +507,20 @@
             this.cmb_Level.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmb_Level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Level.FormattingEnabled = true;
-            this.cmb_Level.Location = new System.Drawing.Point(86, 172);
+            this.cmb_Level.Location = new System.Drawing.Point(80, 169);
             this.cmb_Level.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_Level.Name = "cmb_Level";
-            this.cmb_Level.Size = new System.Drawing.Size(201, 25);
+            this.cmb_Level.Size = new System.Drawing.Size(206, 25);
             this.cmb_Level.TabIndex = 2;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(10, 8);
+            this.label6.Location = new System.Drawing.Point(6, 5);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 73);
+            this.label6.Size = new System.Drawing.Size(66, 76);
             this.label6.TabIndex = 4;
             this.label6.Text = "Câu hỏi:";
             // 
@@ -533,10 +533,10 @@
             this.cmb_CourseCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmb_CourseCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_CourseCode.FormattingEnabled = true;
-            this.cmb_CourseCode.Location = new System.Drawing.Point(86, 91);
+            this.cmb_CourseCode.Location = new System.Drawing.Point(80, 88);
             this.cmb_CourseCode.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_CourseCode.Name = "cmb_CourseCode";
-            this.cmb_CourseCode.Size = new System.Drawing.Size(201, 25);
+            this.cmb_CourseCode.Size = new System.Drawing.Size(206, 25);
             this.cmb_CourseCode.TabIndex = 0;
             this.cmb_CourseCode.ValueMember = "MAMH";
             // 
@@ -616,8 +616,9 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(34, 4);
+            this.label9.Location = new System.Drawing.Point(91, 8);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(125, 17);
@@ -744,7 +745,7 @@
             this.cmb_TrueAnswer.Location = new System.Drawing.Point(80, 206);
             this.cmb_TrueAnswer.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_TrueAnswer.Name = "cmb_TrueAnswer";
-            this.cmb_TrueAnswer.Size = new System.Drawing.Size(32, 25);
+            this.cmb_TrueAnswer.Size = new System.Drawing.Size(57, 25);
             this.cmb_TrueAnswer.TabIndex = 0;
             // 
             // label1
@@ -857,7 +858,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_NhapDe";
-            this.Text = "Frm_NhapDe";
+            this.Text = "Nhập Đề";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Frm_NhapDe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.brm_Option)).EndInit();

@@ -313,6 +313,7 @@
             this.ClientSize = new System.Drawing.Size(603, 523);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Frm_ShowResultTestExam";
+            this.Text = "Xem Điểm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

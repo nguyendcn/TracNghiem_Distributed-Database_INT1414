@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.grb_InfoFind = new System.Windows.Forms.GroupBox();
+            this.cmb_Course = new System.Windows.Forms.ComboBox();
+            this.bs_MonHoc = new System.Windows.Forms.BindingSource(this.components);
+            this.ds_TN_CSDLPT = new TracNghiem_CSDLPT.TN_CSDLPTDataSet();
             this.btn_Find = new System.Windows.Forms.Button();
             this.dtp_DateExam = new System.Windows.Forms.DateTimePicker();
             this.nud_TimesStep = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.bs_MonHoc = new System.Windows.Forms.BindingSource(this.components);
-            this.ds_TN_CSDLPT = new TracNghiem_CSDLPT.TN_CSDLPTDataSet();
             this.tbla_MONHOC = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.MONHOCTableAdapter();
             this.tableAdapterManager = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.TableAdapterManager();
             this.tbla_GVDK = new TracNghiem_CSDLPT.TN_CSDLPTDataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter();
@@ -54,12 +55,11 @@
             this.lbl_ClassCode = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmb_Course = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grb_InfoFind.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_TimesStep)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_MonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_TimesStep)).BeginInit();
             this.grb_StartExam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Results)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GVDK)).BeginInit();
@@ -85,6 +85,30 @@
             this.grb_InfoFind.TabIndex = 1;
             this.grb_InfoFind.TabStop = false;
             this.grb_InfoFind.Text = "Thông tin thi";
+            // 
+            // cmb_Course
+            // 
+            this.cmb_Course.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb_Course.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_Course.DataSource = this.bs_MonHoc;
+            this.cmb_Course.DisplayMember = "TENMH";
+            this.cmb_Course.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Course.FormattingEnabled = true;
+            this.cmb_Course.Location = new System.Drawing.Point(113, 23);
+            this.cmb_Course.Name = "cmb_Course";
+            this.cmb_Course.Size = new System.Drawing.Size(114, 27);
+            this.cmb_Course.TabIndex = 7;
+            this.cmb_Course.ValueMember = "MAMH";
+            // 
+            // bs_MonHoc
+            // 
+            this.bs_MonHoc.DataMember = "MONHOC";
+            this.bs_MonHoc.DataSource = this.ds_TN_CSDLPT;
+            // 
+            // ds_TN_CSDLPT
+            // 
+            this.ds_TN_CSDLPT.DataSetName = "TN_CSDLPTDataSet";
+            this.ds_TN_CSDLPT.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btn_Find
             // 
@@ -154,16 +178,6 @@
             this.label1.Size = new System.Drawing.Size(59, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Môn thi:";
-            // 
-            // bs_MonHoc
-            // 
-            this.bs_MonHoc.DataMember = "MONHOC";
-            this.bs_MonHoc.DataSource = this.ds_TN_CSDLPT;
-            // 
-            // ds_TN_CSDLPT
-            // 
-            this.ds_TN_CSDLPT.DataSetName = "TN_CSDLPTDataSet";
-            this.ds_TN_CSDLPT.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tbla_MONHOC
             // 
@@ -347,20 +361,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Mã lớp:";
             // 
-            // cmb_Course
-            // 
-            this.cmb_Course.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmb_Course.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmb_Course.DataSource = this.bs_MonHoc;
-            this.cmb_Course.DisplayMember = "TENMH";
-            this.cmb_Course.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Course.FormattingEnabled = true;
-            this.cmb_Course.Location = new System.Drawing.Point(113, 23);
-            this.cmb_Course.Name = "cmb_Course";
-            this.cmb_Course.Size = new System.Drawing.Size(114, 27);
-            this.cmb_Course.TabIndex = 7;
-            this.cmb_Course.ValueMember = "MAMH";
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -387,13 +387,13 @@
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_CBThi";
-            this.Text = "Frm_CBThi";
+            this.Text = "Chuẩn Bị Thi";
             this.Load += new System.EventHandler(this.Frm_CBThi_Load);
             this.grb_InfoFind.ResumeLayout(false);
             this.grb_InfoFind.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_TimesStep)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_MonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_TN_CSDLPT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_TimesStep)).EndInit();
             this.grb_StartExam.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Results)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_GVDK)).EndInit();

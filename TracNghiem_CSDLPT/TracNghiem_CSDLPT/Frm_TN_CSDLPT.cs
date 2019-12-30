@@ -22,59 +22,107 @@ namespace TracNghiem_CSDLPT
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-            frm_NhapMH frm_NhapMh = new frm_NhapMH();
-            frm_NhapMh.MdiParent = this;
-            frm_NhapMh.Show();
+            Form frm = this.CheckExists(typeof(frm_NhapMH));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frm_NhapMH frm_NhapMh = new frm_NhapMH();
+                frm_NhapMh.MdiParent = this;
+                frm_NhapMh.Show();
+            }
+
         }
 
         private void btn_Khoa_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_NhapKhoa frm_Khoa = new Frm_NhapKhoa();
-            frm_Khoa.MdiParent = this;
-            frm_Khoa.Show();
+            Form frm = this.CheckExists(typeof(Frm_NhapKhoa));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Frm_NhapKhoa frm_Khoa = new Frm_NhapKhoa();
+                frm_Khoa.MdiParent = this;
+                frm_Khoa.Show();
+            }
+
         }
 
         private void btn_Lop_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_NhapLop frm_Lop = new Frm_NhapLop();
-            frm_Lop.MdiParent = this;
-            frm_Lop.Show();
+            Form frm = this.CheckExists(typeof(Frm_NhapLop));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Frm_NhapLop frm_Lop = new Frm_NhapLop();
+                frm_Lop.MdiParent = this;
+                frm_Lop.Show();
+            }
+
         }
 
         private void btn_NhapDe_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_NhapDe frm_NhapDe = new Frm_NhapDe();
-            frm_NhapDe.MdiParent = this;
-            frm_NhapDe.Show();
+            Form frm = this.CheckExists(typeof(Frm_NhapDe));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Frm_NhapDe frm_NhapDe = new Frm_NhapDe();
+                frm_NhapDe.MdiParent = this;
+                frm_NhapDe.Show();
+            }
+
         }
 
         private void btn_RegisterExam_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_DangKyThi frm_DangKyThi = new Frm_DangKyThi();
-            frm_DangKyThi.MdiParent = this;
-            frm_DangKyThi.Show();
+            Form frm = this.CheckExists(typeof(Frm_DangKyThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Frm_DangKyThi frm_DangKyThi = new Frm_DangKyThi();
+                frm_DangKyThi.MdiParent = this;
+                frm_DangKyThi.Show();
+            }
+
         }
 
         private void btn_Thi_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_CBThi frm_CbThi = new Frm_CBThi();
-            frm_CbThi.MdiParent = this;
-            frm_CbThi.Show();
+            Form frm = this.CheckExists(typeof(Frm_CBThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Frm_CBThi frm_CbThi = new Frm_CBThi();
+                frm_CbThi.MdiParent = this;
+                frm_CbThi.Show();
+            }
+
         }
 
         private void btn_Transcript_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_ViewTranscript frm_ViewTranscript = new Frm_ViewTranscript();
-            frm_ViewTranscript.MdiParent = this;
-            frm_ViewTranscript.Show();
+            Form frm = this.CheckExists(typeof(Frm_ViewTranscript));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Frm_ViewTranscript frm_ViewTranscript = new Frm_ViewTranscript();
+                frm_ViewTranscript.MdiParent = this;
+                frm_ViewTranscript.Show();
+            }
+
         }
 
         private void btn_RegisterReport_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_Report frm_Report = new Frm_Report();
+            Form frm = this.CheckExists(typeof(Frm_Report));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Frm_Report frm_Report = new Frm_Report();
 
-            frm_Report.MdiParent = this;
-            frm_Report.Show();
+                frm_Report.MdiParent = this;
+                frm_Report.Show();
+            }
+
         }
 
         private void btn_Logout_ItemClick(object sender, ItemClickEventArgs e)
@@ -148,17 +196,29 @@ namespace TracNghiem_CSDLPT
 
         private void btn_ChangePassword_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_ChangePassword frm_ChangePassword = new Frm_ChangePassword();
-            frm_ChangePassword.MdiParent = this;
+            Form frm = this.CheckExists(typeof(Frm_ChangePassword));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Frm_ChangePassword frm_ChangePassword = new Frm_ChangePassword();
+                frm_ChangePassword.MdiParent = this;
 
-            frm_ChangePassword.Show();
+                frm_ChangePassword.Show();
+            }
+
         }
 
         private void btn_Register_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Frm_CreateAccount frm_CreateAccount = new Frm_CreateAccount();
-            frm_CreateAccount.MdiParent = this;
-            frm_CreateAccount.Show();
+            Form frm = this.CheckExists(typeof(Frm_CreateAccount));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Frm_CreateAccount frm_CreateAccount = new Frm_CreateAccount();
+                frm_CreateAccount.MdiParent = this;
+                frm_CreateAccount.Show();
+            }
+
         }
 
 
@@ -208,12 +268,13 @@ namespace TracNghiem_CSDLPT
             Program.conn.ConnectionString = Program.connstr;
         }
 
-        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        private Form CheckExists(Type ftype)
         {
-            Form_Test test = new Form_Test();
-
-            test.MdiParent = this;
-            test.Show();
+            foreach (Form f in this.MdiChildren)
+                if (f.GetType() == ftype)
+                    return f;
+            return null;
         }
+
     }
 }

@@ -82,8 +82,8 @@ namespace TracNghiem_CSDLPT
                     , dtp_To.Value.ToShortDateString());
 
             xrp_RegisterExam.lbl_BrandNumber.Text = cmb_Brand.SelectedValue.ToString().Substring(2, 1);
-            xrp_RegisterExam.lbl_DateFrom.Text = dtp_From.Value.ToShortDateString();
-            xrp_RegisterExam.lbl_DateTo.Text = dtp_To.Value.ToShortDateString();
+            xrp_RegisterExam.lbl_DateFrom.Text = dtp_From.Value.ToString("dd-MM-yyyy");
+            xrp_RegisterExam.lbl_DateTo.Text = dtp_To.Value.ToString("dd-MM-yyyy");
 
             ReportPrintTool tool = new ReportPrintTool(xrp_RegisterExam);
 

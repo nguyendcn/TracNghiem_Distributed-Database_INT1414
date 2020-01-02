@@ -13,11 +13,28 @@ namespace TracNghiem_CSDLPT
 {
     public partial class Frm_TN_CSDLPT : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+
+        private Timer _timer;
+        
         public Frm_TN_CSDLPT()
         {
             InitializeComponent();
 
             DeniceFeatureByRole();
+
+            _timer = new Timer();
+            _timer.Interval = 1000;
+            _timer.Tick += _timer_Tick;
+            _timer.Start();
+
+            lbl_Profile.Caption = "Xin chào " + Program.mHoten;
+        }
+
+        private void _timer_Tick(object sender, EventArgs e)
+        {
+            DateTime current = DateTime.Now;
+            lbl_Time.Caption = current.ToShortTimeString();
+            lbl_Date.Caption = current.ToShortDateString();
         }
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)

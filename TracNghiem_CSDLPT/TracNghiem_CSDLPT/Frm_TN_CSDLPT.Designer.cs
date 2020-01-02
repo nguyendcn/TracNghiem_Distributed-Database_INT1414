@@ -69,6 +69,9 @@
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.lbl_Profile = new DevExpress.XtraBars.BarStaticItem();
+            this.lbl_Time = new DevExpress.XtraBars.BarStaticItem();
+            this.lbl_Date = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -94,9 +97,12 @@
             this.btn_Register,
             this.btn_ChangePassword,
             this.btn_Logout,
-            this.btn_DeleteAccount});
+            this.btn_DeleteAccount,
+            this.lbl_Profile,
+            this.lbl_Time,
+            this.lbl_Date});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 23;
+            this.ribbon.MaxItemId = 26;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -327,6 +333,9 @@
             // 
             // ribbonStatusBar
             // 
+            this.ribbonStatusBar.ItemLinks.Add(this.lbl_Profile);
+            this.ribbonStatusBar.ItemLinks.Add(this.lbl_Date);
+            this.ribbonStatusBar.ItemLinks.Add(this.lbl_Time);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 530);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -397,6 +406,26 @@
             this.ribbonPage7.Name = "ribbonPage7";
             this.ribbonPage7.Text = "ribbonPage7";
             // 
+            // lbl_Profile
+            // 
+            this.lbl_Profile.Caption = "who";
+            this.lbl_Profile.Id = 23;
+            this.lbl_Profile.Name = "lbl_Profile";
+            // 
+            // lbl_Time
+            // 
+            this.lbl_Time.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.lbl_Time.Caption = "time";
+            this.lbl_Time.Id = 24;
+            this.lbl_Time.Name = "lbl_Time";
+            // 
+            // lbl_Date
+            // 
+            this.lbl_Date.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.lbl_Date.Caption = "date";
+            this.lbl_Date.Id = 25;
+            this.lbl_Date.Name = "lbl_Date";
+            // 
             // Frm_TN_CSDLPT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,5 +486,8 @@
         private DevExpress.XtraBars.BarButtonItem btn_DeleteAccount;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage7;
+        private DevExpress.XtraBars.BarStaticItem lbl_Profile;
+        private DevExpress.XtraBars.BarStaticItem lbl_Time;
+        private DevExpress.XtraBars.BarStaticItem lbl_Date;
     }
 }

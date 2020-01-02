@@ -24,6 +24,11 @@ namespace TracNghiem_CSDLPT.Share
 
         public static String OxA001 = "Ngày trước phải nhỏ hơn hoặc bằng ngày sau.";
 
+        public static String OxB001 = "Vui lòng chọn cơ sở để đăng nhập.";
+        public static String OxB002 = "Mã sinh viên không được để trống.";
+        public static String OxB003 = "Tên tài khoản không được để trống.";
+        public static String OxB004 = "Mật khẩu không được để trống.";
+
         public static String GetPropertyValue(String propName)
         {
             Type type = typeof(ErrorCode);

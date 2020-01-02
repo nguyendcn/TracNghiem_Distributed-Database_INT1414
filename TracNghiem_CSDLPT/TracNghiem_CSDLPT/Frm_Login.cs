@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TracNghiem_CSDLPT.Common;
+using TracNghiem_CSDLPT.Share;
 
 namespace TracNghiem_CSDLPT
 {
@@ -19,8 +20,7 @@ namespace TracNghiem_CSDLPT
 
             InitDataForCmbBrand();
 
-            txt_UserName.Text = "TUYET";
-            txt_Password.Text = "nguyenne";
+            lbl_Error_GV.Text = lbl_Error_SV.Text = "";
         }
 
         #region Function
@@ -44,24 +44,43 @@ namespace TracNghiem_CSDLPT
             cmb_Brand_SV.Text = "Chọn cơ sở";
         }
 
-        private String CheckValidateLogin(int indexBrand, String studentCode)
+        private bool CheckValidateLogin(int indexBrand, String studentCode)
         {
+            bool validate = true;
             if (indexBrand == -1)
-                return "Vui lòng chọn cơ sở.";
+            {
+                ErrorHandler.ShowError(lbl_Error_SV, new string[] { "OxB001" });
+                validate = false;
+            }
             if (studentCode.Trim().Equals(String.Empty))
-                return "Mã sinh viên không được để trống.";
-            return String.Empty;
+            {
+                ErrorHandler.ShowError(lbl_Error_SV, new string[] { "OxB002" });
+                validate = false;
+            }
+
+            return validate;
         }
 
-        private String CheckValidateLogin(int indexBrand, String userName, String password)
+        private bool CheckValidateLogin(int indexBrand, String userName, String password)
         {
+            bool validate = true;
             if (indexBrand == -1)
-                return "Vui lòng chọn cơ sở.";
+            {
+                ErrorHandler.ShowError(lbl_Error_GV, new string[] { "OxB001" });
+                validate = false;
+            }
             if (userName.Trim().Equals(String.Empty))
-                return "Tên tài khoản không được để trống.";
+            {
+                ErrorHandler.ShowError(lbl_Error_GV, new string[] { "OxB003" });
+                validate = false;
+            }
             if (password.Trim().Equals(String.Empty))
-                return "Mật khẩu không được để trống.";
-            return String.Empty;
+            {
+                ErrorHandler.ShowError(lbl_Error_SV, new string[] { "OxB004" });
+                validate = false;
+            }
+
+            return validate;
         }
 
         #endregion
@@ -92,11 +111,10 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Login_SV_Click(object sender, EventArgs e)
         {
-            String checkVal = CheckValidateLogin(cmb_Brand_SV.SelectedIndex, txt_StudentCode.Text);
+            bool checkVal = CheckValidateLogin(cmb_Brand_SV.SelectedIndex, txt_StudentCode.Text);
 
-            if (!checkVal.Equals(String.Empty))
+            if (!checkVal)
             {
-                lbl_Error_SV.Text = checkVal;
                 return;
             }
 
@@ -119,14 +137,17 @@ namespace TracNghiem_CSDLPT
             Program.username = Program.myReader.GetString(0);     // Lay name
             if (Convert.IsDBNull(Program.username))
             {
-                MessageBox.Show("Ma Sinh Vien khong ton tai.", "", MessageBoxButtons.OK);
+                MessageBox.Show("Sinh viên không tồn tại.", "", MessageBoxButtons.OK);
                 return;
             }
             Program.mHoten = Program.myReader.GetString(1);
             Program.mGroup = Program.myReader.GetString(2);
             Program.myReader.Close();
             Program.conn.Close();
-            MessageBox.Show("Nhan vien - Nhom : " + Program.mHoten + " - " + Program.mGroup, "", MessageBoxButtons.OK);
+            MessageBox.Show("Sinh Viên " + Program.mHoten
+                , "Đăng nhập thành công!"
+                , MessageBoxButtons.OK
+                , MessageBoxIcon.Information);
 
             Frm_TN_CSDLPT frm_Tn_csdlpt = new Frm_TN_CSDLPT();
             frm_Tn_csdlpt.Show();
@@ -144,11 +165,10 @@ namespace TracNghiem_CSDLPT
 
         private void btn_Login_GV_Click(object sender, EventArgs e)
         {
-            String checkVal = CheckValidateLogin(cmb_Brand_GV.SelectedIndex, txt_UserName.Text, txt_Password.Text);
+            bool checkVal = CheckValidateLogin(cmb_Brand_GV.SelectedIndex, txt_UserName.Text, txt_Password.Text);
 
-            if (!checkVal.Equals(String.Empty))
+            if (!checkVal)
             {
-                lbl_Error_GV.Text = checkVal;
                 return;
             }
 
@@ -170,14 +190,16 @@ namespace TracNghiem_CSDLPT
             Program.username = Program.myReader.GetString(0);     // Lay user name
             if (Convert.IsDBNull(Program.username))
             {
-                MessageBox.Show("User khong ton tai.", "", MessageBoxButtons.OK);
+                MessageBox.Show("Giáo viên không tồn tại.", "", MessageBoxButtons.OK);
                 return;
             }
             Program.mHoten = Program.myReader.GetString(1);
             Program.mGroup = Program.myReader.GetString(2);
             Program.myReader.Close();
             Program.conn.Close();
-            MessageBox.Show("Nhan vien - Nhom : " + Program.mHoten + " - " + Program.mGroup, "", MessageBoxButtons.OK);
+            MessageBox.Show("Nhân viên - Nhóm : " + Program.mHoten + " - " + Program.mGroup
+                , "Đăng nhập thành công!"
+                , MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             //Application.Run(new Frm_TN_CSDLPT());

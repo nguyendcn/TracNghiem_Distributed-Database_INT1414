@@ -33,6 +33,12 @@ namespace TracNghiem_CSDLPT.Share
 
             String[] str = str_mark.Split('.');
 
+            if(str.Length == 1)
+            {
+                MarksStr = "Không";
+                return;
+            }
+
             String words = String.Empty;
 
             words += ReadNumber(int.Parse(str[0]));

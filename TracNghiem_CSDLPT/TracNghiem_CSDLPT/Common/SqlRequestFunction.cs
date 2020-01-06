@@ -192,7 +192,15 @@ namespace TracNghiem_CSDLPT.Common
             {
                 String sc = reader.GetString(0);
                 String fn = reader.GetString(1);
-                double m = reader.GetDouble(2);
+                double m = 0.0;
+                try
+                {
+                   m= reader.GetDouble(2);
+                }
+                catch (Exception)
+                {
+
+                }
 
                 Transcript transcript = new Transcript
                 {
